@@ -1,0 +1,49 @@
+.container {
+  position: absolute;
+  right: 4%;
+  top: 80%;
+  background-color: var(--dark-white);
+  max-width: 17.7rem;
+  width: 100%;
+  padding: 1.8rem;
+  border-radius: 11px;
+  z-index: 1000000000000000;
+}
+
+.container h3 {
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+
+.container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 1.6rem;
+}
+
+.container ul li {
+  list-style: none;
+}
+
+.container ul li:nth-child(3) {
+  padding-bottom: 1rem;
+}
+
+.container ul li:hover {
+  color: var(--orange-hover);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.signout {
+  font-weight: 700;
+  font-size: 1.6rem;
+  padding-top: 0.7rem;
+  border-top: 0.5px solid var(--dark-black);
+  color: var(--orange-hover);
+}
+
+.signout:hover {
+  text-decoration: underline;
+}

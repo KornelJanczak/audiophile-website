@@ -1,0 +1,14 @@
+.section__baner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-black);
+  padding: 7.4rem 0;
+}
+
+.section__baner h2 {
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--dark-white);
+}

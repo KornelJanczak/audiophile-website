@@ -1,0 +1,43 @@
+.section {
+  max-width: 111rem;
+  margin: 0 auto;
+  padding: 3rem 0 4rem 0;
+  border-bottom: 0.5px solid #979797;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo {
+  margin-bottom: 2rem;
+}
+
+.logo path {
+  fill: var(--dark-black);
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box h2 {
+  font-size: 3.4rem;
+}
+
+.box p {
+  font-size: 2em;
+  text-align: center;
+  color: var(--dark-black);
+  font-weight: 250;
+  max-width: 35rem;
+}
+
+.box strong {
+  color: var(--orange-hover);
+}

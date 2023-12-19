@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+}
+
+.container input {
+  text-align: center;
+  border: none;
+  outline: none;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 1.5rem;
+  max-width: 4rem;
+  margin-left: 1rem;
+}
+
+.container button {
+  border: none;
+  background: none;
+  font-size: 1.6rem;
+  color: #979797;
+  width: 4rem;
+  font-family: inherit;
+}
+
+.container button:hover {
+  cursor: pointer;
+}

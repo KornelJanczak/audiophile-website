@@ -1,0 +1,39 @@
+.content_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding: 5.4rem;
+}
+
+.content_box span {
+  color: var(--orange-hover);
+  font-size: 2.4rem;
+  letter-spacing: 8px;
+}
+
+.content_box h2 {
+  font-size: 4rem;
+  line-height: 4rem;
+  text-transform: uppercase;
+  color: var(--dark-black);
+}
+
+.content_box p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #979797;
+  max-width: 44.5rem;
+}
+
+.btn {
+  background-color: var(--orange-hover);
+  color: var(--dark-white);
+  border: none;
+}
+
+.btn:hover {
+  background-color: var(--orange-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}

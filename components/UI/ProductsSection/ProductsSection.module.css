@@ -1,0 +1,14 @@
+.products__section {
+  margin: 0 auto;
+  padding: 18rem 0;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 4rem;
+  max-width: 111rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}

@@ -1,0 +1,134 @@
+.showcase__section {
+  margin: 0 auto;
+  padding-bottom: 7.4rem;
+}
+
+.showcase__speaker {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+  place-items: center;
+  column-gap: 8.6rem;
+  background-color: var(--orange-hover);
+  background-image: url(../../../public/assets/home/desktop/pattern-circles.svg);
+  background-position: -145px -50px;
+  background-repeat: no-repeat;
+  max-width: 111rem;
+  height: 56rem;
+  padding: 0 12.8rem;
+  border-radius: 9px;
+}
+
+.showcase__speaker__img__box {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+.speaker__img {
+  max-height: 49rem;
+  max-width: 41rem;
+  margin: auto 0 0;
+  position: relative;
+  bottom: -2rem;
+}
+
+.showcase__speaker__content__box {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transform: translate(17%, -10%);
+}
+
+.showcase__speaker__content__box h2 {
+  font-size: 5.6rem;
+  letter-spacing: 1.5px;
+  color: var(--dark-white);
+}
+
+.showcase__speaker__content__box span {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  font-weight: 200;
+  color: var(--dark-white);
+}
+
+.showcase__btn {
+  background-color: var(--dark-black);
+  color: var(--dark-white);
+  border: none;
+  margin-top: 2rem;
+}
+
+.showcase__btn:hover {
+  transition: all 0.3s ease;
+  background-color: #4c4c4c;
+}
+
+/* SECOND SPEAKER */
+
+.showcase__second__speaker {
+  display: flex;
+  align-items: center;
+  max-width: 111rem;
+  height: 32rem;
+  margin: 6rem auto;
+  border-radius: 9px;
+  background-size: cover;
+  background-image: url(../../../public/assets/home/desktop/image-speaker-zx7.jpg);
+}
+
+.showcase__second__content__box {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 2.4rem;
+  transform: translate(35%, 0);
+}
+
+.showcase__second__content__box h3 {
+  font-size: 3.2rem;
+  letter-spacing: 1px;
+}
+
+.showcase__second__btn {
+  background: none;
+  border: 1.7px solid var(--dark-black);
+}
+
+.showcase__second__btn:hover {
+  transition: all 0.3s ease;
+  background-color: var(--dark-black);
+  color: var(--dark-white);
+}
+
+/* Earphones */
+
+.showcase__third__earphones {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+  max-width: 111rem;
+  height: 32rem;
+  margin: 6rem auto;
+  border-radius: 9px;
+}
+
+.showcase__third__img {
+  border-radius: 9px;
+}
+
+.showcase__third__content__box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  background-color: var(--white);
+  border-radius: 9px;
+  padding-left: 7.4rem;
+}
+
+.showcase__third__content__box h3 {
+  font-size: 3.2rem;
+  letter-spacing: 1px;
+}

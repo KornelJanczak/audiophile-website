@@ -1,0 +1,32 @@
+:root {
+  --dark-black: #000000;
+  --lighter-black: #101010;
+  --orange-hover: #d87d4a;
+  --orange-light: #fbaf85;
+  --dark-white: #ffffff;
+  --white: #f1f1f1;
+  --light-white: #fafafa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html {
+  font-size: 62.5%;
+}
+
+.error__page {
+  align-items: center;
+  font-size: 4rem;
+}
+
+.section__category,
+.section__detail {
+  margin: 0 auto;
+  max-width: 111rem;
+  padding-top: 9.8rem;
+}

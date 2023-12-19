@@ -1,0 +1,20 @@
+.nav__ul {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+  text-decoration: none;
+}
+
+.nav__li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.nav__li a:hover {
+  color: var(--orange-hover);
+  transition: all 0.3s ease;
+}

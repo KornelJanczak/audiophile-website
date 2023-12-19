@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.container label {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-right: auto;
+  padding-bottom: 0.5rem;
+}
+
+.input__container {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  border: 2px solid #cfcfcf;
+  border-radius: 9px;
+  padding: 1rem;
+}
+
+.input__container button {
+  padding: 0;
+  margin: 0;
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.input__container button:hover {
+  cursor: pointer;
+}
+
+.input__container svg {
+  width: 30px;
+  height: 30px;
+}
+
+.input__container svg path {
+  fill: var(--dark-white);
+}
+
+.input__container input {
+  border: none;
+  background: var(--light-white);
+  outline: var(--orange-hover);
+  font-size: 1.7rem;
+  font-family: inherit;
+  font-weight: 600;
+  width: 100%;
+}
+
+.input__error {
+  border: 2px solid #cc0000;
+}
+
+.error__input {
+  margin-right: auto;
+  color: #cc0000;
+  font-size: 1.4rem;
+}

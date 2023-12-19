@@ -1,0 +1,78 @@
+.container__login__providers {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.github__btn,
+.google__btn {
+  width: 100% !important;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.8rem !important;
+  font-weight: 650;
+  letter-spacing: 1.2px;
+  background: none;
+  border: 1.5px solid var(--dark-black);
+}
+
+.btn__img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #cfcfcf;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 4rem 0 2rem 0;
+  width: 100%;
+}
+
+.line::after,
+.line::before {
+  content: "";
+  background-color: #cfcfcf;
+  height: 0.2rem;
+  width: 80%;
+  display: block;
+}
+
+.line::after {
+  margin-left: 1rem;
+}
+
+.line::before {
+  margin-right: 1rem;
+}
+
+.form {
+  width: 100%;
+  background-color: var(--light-white);
+  border-radius: 9px;
+}
+
+.btn {
+  margin-top: 4rem;
+  width: 100% !important;
+  text-transform: uppercase;
+  background-color: var(--orange-hover);
+  border: none;
+  color: var(--dark-white);
+  font-weight: 650;
+  font-size: 1.8rem !important;
+  letter-spacing: 1.2px;
+}
+
+.btn:hover {
+  transition: all 0.3s ease;
+  background-color: var(--orange-light);
+}

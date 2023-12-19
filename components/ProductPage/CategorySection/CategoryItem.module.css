@@ -1,0 +1,12 @@
+.category__item {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 6.8rem 0;
+  column-gap: 6rem;
+}
+
+.category__item img {
+  max-width: 54rem;
+  max-height: 56rem;
+  border-radius: 9px;
+}
