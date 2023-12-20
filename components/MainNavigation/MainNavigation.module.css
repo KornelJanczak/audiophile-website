@@ -57,7 +57,6 @@
   overflow-x: hidden;
   overflow-y: hidden;
   background-color: rgba(0, 0, 0, 0.65);
-  /* backdrop-filter: blur(1px); */
   z-index: 122;
 }
 
@@ -72,4 +71,20 @@
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 1px;
+}
+
+/* 1330px */
+
+@media (max-width: 71em) {
+  .header {
+    padding: 0 6.4rem;
+  }
+}
+
+/* 800px */
+
+@media (max-width: 50em) {
+  .nav {
+   
+  }
 }

@@ -1,26 +1,37 @@
 .hero__section {
-  /* margin: -10rem auto; */
-  background-image: url(../../../public/assets/home/desktop/image-hero.jpg);
   background-size: cover;
-  /* position: relative; */
-  /* padding-bottom: 9.8rem; */
+  height: 100vh;
+  margin: 0 auto;
+  --tw-bg-opacity: 1;
+  background-color: rgb(18 18 18 / var(--tw-bg-opacity));
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 111rem;
+  padding-top: 9.4rem;
+  margin: 0 auto;
+  align-items: center;
 }
 
 .hero {
-  display: grid;
-  max-width: 111rem;
-  height: 100vh;
-  grid-template-columns: 1fr 1fr;
-  margin: auto;
-  align-items: center;
-  /* background-color: black; */
+  padding-top: 4rem;
+  max-width: 39.8rem;
+  max-height: 34.6rem;
+}
+
+.hero__logo {
+  max-width: 54.6rem;
+  max-height: 59.8rem;
+  margin-bottom: 2rem;
+  border-radius: 9px;
 }
 
 .hero__text__box {
   display: flex;
   flex-direction: column;
   transform: translate(0, -20%);
-
 }
 
 .hero__span {
@@ -29,8 +40,6 @@
   letter-spacing: 6px;
   color: #979797;
 }
-
-/* #fafafa80; */
 
 .hero__h1 {
   font-size: 5.6rem;
@@ -42,23 +51,13 @@
 }
 
 .hero__text {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 200;
   text-align: left;
   max-width: 35.8rem;
   color: var(--light-white);
   letter-spacing: 0.3px;
   padding-bottom: 4rem;
-}
-
-.hero__img__box {
-  /* width: 100%;
-  height: 100%; */
-  /* width: 70.8rem;
-  height: 88.6rem; */
-  /* width: 100%;
-  position: absolute;
-  height: auto; */
 }
 
 .hero__img {
@@ -75,4 +74,66 @@
 .btn__hero:hover {
   background-color: var(--orange-light);
   color: var(--light-white);
+}
+
+/* 1330px */
+
+@media (max-width: 71em) {
+  .container {
+    padding: 9.4rem 6.4rem 0 6.4rem;
+  }
+
+  .hero__logo {
+    max-width: 47rem;
+    max-height: 50rem;
+  }
+
+  .hero__span {
+    font-size: 2.4rem;
+  }
+
+  .hero__h1 {
+    font-size: 3.8rem;
+  }
+
+  .hero__text {
+    font-size: 1.6rem;
+  }
+}
+
+/* 930px */
+
+@media (max-width: 58em) {
+  .hero__section {
+    width: 100%;
+  }
+  .hero__logo {
+    max-width: 32rem;
+    height: auto;
+  }
+
+
+
+  .hero {
+    max-width: 32.8rem;
+    max-height: 34.6rem;
+  }
+
+  .hero__span{
+    font-size: 2.4rem;
+  }
+
+  .hero__h1 {
+    font-size: 2.8rem;
+    line-height: 1;
+  }
+
+  .hero__text {
+    font-size: 1.5rem;
+  }
+}
+
+
+@media (max-width: 48em){
+
 }

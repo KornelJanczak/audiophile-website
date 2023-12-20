@@ -18,3 +18,19 @@
   color: var(--orange-hover);
   transition: all 0.3s ease;
 }
+
+/* 930px */
+
+@media (max-width: 58em) {
+  .nav__li a {
+    font-size: 1.4rem;
+  }
+}
+
+/* 800px */
+
+@media (max-width: 50em) {
+  .nav__ul {
+    gap: 2rem;
+  }
+}
