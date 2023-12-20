@@ -2,12 +2,12 @@
 
 For DEMO, use [Stripe Testing Cards](https://stripe.com/docs/testing)
 
-Key Features:
--Authorization using NextAuth (Google, Github, Email)
--Beautiful emails for signing up and after purchase
--Stripe Checkout
--Locally persisted shopping cart
--You will be to see your orders
--You will be to change your password
--Animations using Framer motion
--100% written in TypeScript
+## Key Features:
+-Authorization using NextAuth (Google, Github, Email).
+-Beautiful emails for signing up and after purchase.
+-Stripe Checkout.
+-Locally persisted shopping cart.
+-You will be to see your orders.
+-You will be to change your password.
+-Animations using Framer motion.
+-100% written in TypeScript.
