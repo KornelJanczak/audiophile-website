@@ -23,7 +23,7 @@ const ResponsiveImage = ({
 }: Data) => {
   return (
     <picture className={pictureClassName}>
-      <source media="(min-width: 768px)" srcSet={images.desktop} />
+      <source media="(min-width: 769px)" srcSet={images.desktop} />
       <source media="(min-width: 480px)" srcSet={images.tablet} />
       <source media="(min-width: 1px)" srcSet={images.mobile} />
       <Image

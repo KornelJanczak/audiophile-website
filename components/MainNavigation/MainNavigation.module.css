@@ -1,6 +1,6 @@
 .header {
   margin: 0 auto;
-  background-color: var(--dark-black);
+  background-color: var(--lighter-black);
   z-index: 1000000000000000000000000000000000000000000;
 }
 
@@ -85,6 +85,5 @@
 
 @media (max-width: 50em) {
   .nav {
-   
   }
 }
