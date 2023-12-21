@@ -1,19 +1,24 @@
 import Button from "@/components/UI/Button/Button";
 import classes from "./ShowcaseSection.module.css";
-import speakerImg from "../../../public/assets/home/desktop/image-speaker-zx9.png";
 import earphonesImg from "../../../public/assets/home/desktop/image-earphones-yx1.jpg";
 
 import Image from "next/image";
+import ResponsiveImage from "@/components/UI/ResponsiveImage";
 
 const ShowcaseSection: React.FC = () => {
   return (
     <section className={classes.showcase__section}>
       <div className={classes.showcase__speaker}>
         <div className={classes.showcase__speaker__img__box}>
-          <Image
-            src={speakerImg}
-            alt="speaker"
-            className={classes.speaker__img}
+          <ResponsiveImage
+            imgClassName={classes.speaker__img}
+            pictureClassName={classes.speaker__img}
+            images={{
+              desktop: "/assets/home/desktop/image-speaker-zx9.png",
+              mobile: "/assets/home/mobile/image-speaker-zx9.png",
+              tablet: "/assets/home/tablet/image-speaker-zx9.png",
+            }}
+            altText="Speaker ZX9"
             width={410}
             height={493}
           />
@@ -34,12 +39,17 @@ const ShowcaseSection: React.FC = () => {
         </div>
       </div>
       <div className={classes.showcase__third__earphones}>
-        <Image
-          src={earphonesImg}
-          alt="earphones"
+        <ResponsiveImage
+          imgClassName={classes.showcase__third__img}
+          pictureClassName={classes.showcase__third__img}
+          images={{
+            desktop: "/assets/home/desktop/image-earphones-yx1.jpg",
+            mobile: "/assets/home/mobile/image-earphones-yx1.jpg",
+            tablet: "/assets/home/tablet/image-earphones-yx1.jpg",
+          }}
           width={540}
           height={320}
-          className={classes.showcase__third__img}
+          altText="Earphones YX1"
         />
 
         <div className={classes.showcase__third__content__box}>

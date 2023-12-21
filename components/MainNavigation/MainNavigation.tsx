@@ -12,13 +12,18 @@ import { useSession } from "next-auth/react";
 import UserPanel from "./UserPanel";
 import Logo from "../UI/Logo/Logo";
 import { AnimatePresence } from "framer-motion";
+import { useRef } from "react";
+import HamburgerIcon from "@/public/Icons/HamburgerIcon";
+import ProductsSection from "../UI/ProductsSection/ProductsSection";
 
 export default function MainNavigation() {
   const [cart, setCart] = useState<boolean>(false);
   const [userPanel, setUserPanel] = useState<boolean>(false);
+  const [mobileNav, setMobileNav] = useState<boolean>(false);
   const { data: session } = useSession();
 
   const isOverlay = cart || userPanel;
+  const navRef = useRef<HTMLElement>(null);
 
   return (
     <>
@@ -37,14 +42,28 @@ export default function MainNavigation() {
         )}
       </AnimatePresence>
       <header className={classes.header}>
-        <nav className={`${classes.nav}  ${cart && classes.nav__border}`}>
+        <nav
+          className={`${classes.nav}  ${
+            (cart || userPanel) && classes.nav__border
+          }`}
+          ref={navRef}
+        >
+          <button
+            className={classes.mobile__nav__btn}
+            onClick={() => {
+              setMobileNav((mobileNav) => !mobileNav);
+            }}
+          >
+            <HamburgerIcon />
+          </button>
           <Logo className={classes.main_logo} />
-          <NavigationUL />
+          <NavigationUL className={classes.nav__ul} />
           <div className={classes.icons}>
             {session ? (
               <button
                 onClick={() => {
                   setCart(false);
+                  setMobileNav(false);
                   setUserPanel((panel) => !panel);
                 }}
               >
@@ -63,6 +82,7 @@ export default function MainNavigation() {
               className={classes.cart__img}
               onClick={() => {
                 setUserPanel(false);
+                setMobileNav(false);
                 setCart((cart) => !cart);
               }}
             />
@@ -70,6 +90,9 @@ export default function MainNavigation() {
           <AnimatePresence>
             {userPanel && <UserPanel />}
             {cart && <Cart />}
+            {mobileNav && (
+              <ProductsSection mobileClass={classes.responsive__nav} />
+            )}
           </AnimatePresence>
         </nav>
       </header>

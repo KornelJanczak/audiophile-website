@@ -1,9 +1,9 @@
 import Link from "next/link";
 import classes from "./NavigationUL.module.css";
 
-const NavigationUL: React.FC = () => {
+const NavigationUL: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <ul className={classes.nav__ul}>
+    <ul className={`${classes.nav__ul} ${className}`}>
       <li className={classes.nav__li}>
         <Link href="/">Home</Link>
       </li>

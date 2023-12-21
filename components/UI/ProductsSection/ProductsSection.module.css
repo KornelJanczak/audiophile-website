@@ -12,3 +12,9 @@
   justify-content: center;
   margin: 0 auto;
 }
+
+@media (max-width: 58em) {
+  .products {
+    max-width: 84.6rem;
+  }
+}

@@ -10,7 +10,6 @@ const HeroSection: React.FC = () => {
   return (
     <section className={classes.hero__section}>
       <div className={classes.container}>
-        {/* <div className={classes.hero}> */}
         <div className={classes.hero__text__box}>
           <p className={classes.hero__span}>NEW PRODUCT</p>
           <h1 className={classes.hero__h1}>XX99 MARK II HEADPHONES</h1>
@@ -27,7 +26,6 @@ const HeroSection: React.FC = () => {
             SEE PRODUCT
           </Button>
         </div>
-        {/* </div> */}
         <ResponsiveImage
           images={{
             desktop: "/assets/home/desktop/Bitmap.png",

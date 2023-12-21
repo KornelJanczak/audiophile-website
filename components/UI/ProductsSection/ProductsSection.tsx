@@ -1,29 +1,28 @@
 "use client";
 import classes from "./ProductsSection.module.css";
-import headphonesImg from "../../../public/assets/shared/desktop/image-category-thumbnail-headphones.png";
-import speakersImg from "../../../public/assets/shared/desktop/image-category-thumbnail-speakers.png";
-import earnphonesImg from "../../../public/assets/shared/desktop/image-category-thumbnail-earphones.png";
-import Product from "./Prodcut";
-
+import Product from "./Product";
 
 const products = [
   {
-    img: headphonesImg,
+    img: "/assets/shared/desktop/image-category-thumbnail-headphones.png",
+
     title: "HEADPHONES",
   },
   {
-    img: speakersImg,
+    img: "/assets/shared/desktop/image-category-thumbnail-speakers.png",
     title: "SPEAKERS",
   },
   {
-    img: earnphonesImg,
+    img: "/assets/shared/desktop/image-category-thumbnail-earphones.png",
     title: "EARNPHONES",
   },
 ];
 
-const ProductsSection: React.FC = () => {
+const ProductsSection: React.FC<{ mobileClass?: string }> = ({
+  mobileClass,
+}) => {
   return (
-    <section className={classes.products__section}>
+    <section className={`${classes.products__section} ${mobileClass}`}>
       <div className={classes.products}>
         {products.map((product, i) => (
           <Product key={i} img={product.img} title={product.title} />

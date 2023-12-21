@@ -132,3 +132,55 @@
   font-size: 3.2rem;
   letter-spacing: 1px;
 }
+
+@media (max-width: 58em) {
+  .showcase__speaker {
+    max-width: 84.6rem;
+    column-gap: 12.6rem;
+  }
+
+  .showcase__second__speaker {
+    max-width: 84.6rem;
+  }
+
+  .showcase__third__earphones {
+    max-width: 84.6rem;
+  }
+}
+
+@media (max-width: 50em) {
+  .showcase__speaker {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 68.9rem;
+    height: 72rem;
+    /* height: 100%; */
+    width: 100%;
+    /* padding: 6.4rem 0; */
+    background-position: -135px -410px;
+  }
+
+  .speaker__img {
+    bottom: 0;
+    position: static;
+    max-width: 19.721rem;
+    max-height: 23.7rem;
+  }
+
+  .showcase__speaker__content__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: none;
+  }
+
+  .showcase__speaker__content__box span {
+    max-width: 34.9rem;
+    text-align: center;
+  }
+}

@@ -28,7 +28,7 @@ export interface IPropsCounter {
 }
 
 export interface IPropsProducts {
-  img: StaticImageData;
+  img: string;
   title: string;
 }
 

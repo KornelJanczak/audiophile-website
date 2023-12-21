@@ -15,7 +15,7 @@ const Cart: React.FC = () => {
   return (
     <motion.div
       className={classes.container}
-      transition={{ duration: 0.2 }}
+      transition={{ duration: 0.25 }}
       variants={{
         hidden: { opacity: 0, y: -50 },
         visible: { opacity: 1, y: -10 },
@@ -86,6 +86,7 @@ const Cart: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.35 }}
             key="fallback"
             className={classes.empty__cart}
           >
