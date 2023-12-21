@@ -116,6 +116,8 @@
 
 .showcase__third__img {
   border-radius: 9px;
+  max-width: 54rem;
+  max-height: 32rem;
 }
 
 .showcase__third__content__box {
@@ -150,18 +152,25 @@
 
 @media (max-width: 50em) {
   .showcase__speaker {
-    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    background-position: -13.5rem -32rem;
     max-width: 68.9rem;
-    height: 72rem;
-    /* height: 100%; */
     width: 100%;
-    /* padding: 6.4rem 0; */
-    background-position: -135px -410px;
+    height: 72rem;
+    gap: 6rem;
+  }
+
+  .showcase__speaker__content__box h2 {
+    max-width: 26.1rem;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .showcase__speaker__img__box {
+    height: auto;
   }
 
   .speaker__img {
@@ -177,10 +186,77 @@
     align-items: center;
     justify-content: center;
     transform: none;
+    padding-bottom: 2rem;
   }
 
   .showcase__speaker__content__box span {
     max-width: 34.9rem;
     text-align: center;
+    padding: 2rem 0;
+  }
+
+  .showcase__btn {
+    margin-top: 0;
+  }
+
+  .showcase__second__speaker {
+    max-width: 68.9rem;
+    background-image: url(../../../public/assets/home/tablet/image-speaker-zx7.jpg);
+  }
+
+  .showcase__second__content__box {
+    transform: translate(25%, 0);
+  }
+
+  .showcase__third__earphones {
+    max-width: 68.9rem;
+  }
+
+  .showcase__third__img {
+    max-width: 33.9rem;
+    max-height: 32rem;
+  }
+}
+
+@media (max-width: 41em) {
+  .showcase__third__earphones {
+    max-width: 65.9rem;
+  }
+
+  .showcase__speaker {
+    background-position: -14.5rem -32rem;
+  }
+
+  .showcase__third__content__box {
+    gap: 1.4rem;
+    padding-left: 2rem;
+  }
+
+  .showcase__second__content__box h3 {
+    font-size: 2.8rem;
+    width: 10rem;
+  }
+
+  .showcase__third__content__box h3 {
+    font-size: 2.8rem;
+    width: 20rem;
+  }
+}
+
+@media (max-width: 41em) {
+  .showcase__speaker {
+    background-position: -14.5rem -32rem;
+  }
+}
+
+@media (max-width: 36em) {
+  .showcase__speaker {
+    background-position: -18.6rem -32rem;
+  }
+
+  .showcase__third__earphones {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 }

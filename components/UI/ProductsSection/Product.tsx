@@ -5,17 +5,15 @@ import Image from "next/image";
 import arrowImage from "../../../public/assets/shared/desktop/icon-arrow-right.svg";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import ResponsiveImage from "../ResponsiveImage";
 
 const Product: React.FC<IPropsProducts> = ({ img, title }) => {
   return (
-    <motion.div whileHover={{ scale: 1.1 }}>
+    <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.25 }}>
       <Link
         href={`/categories/${title.toLowerCase()}`}
         className={classes.product}
       >
         <div className={classes.product__img__box}>
-          {/* <ResponsiveImage /> */}
           <Image
             src={img}
             alt={title}
