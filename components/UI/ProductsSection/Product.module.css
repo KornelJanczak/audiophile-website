@@ -56,3 +56,9 @@
   height: 1rem;
 }
 
+@media (max-width: 36em) {
+  .product {
+    width: 32.7rem;
+    max-width: 32.7rem;
+  }
+}

@@ -18,3 +18,14 @@
     max-width: 68.9rem;
   }
 }
+
+@media (max-width: 36em) {
+  .products__section {
+    padding: 9.6rem 0;
+  }
+  .products {
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+  }
+}

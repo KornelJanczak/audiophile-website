@@ -257,6 +257,80 @@
   .showcase__third__earphones {
     display: flex;
     flex-direction: column;
+    height: auto;
     gap: 2rem;
+  }
+
+  .showcase__second__speaker {
+    background-position: -8.6rem -32rem;
+  }
+
+  .showcase__third__img {
+    max-width: 56.7rem;
+    width: 100%;
+  }
+  .showcase__third__content__box {
+    padding: 3.4rem 4.2rem 3.4rem 4.2rem;
+  }
+
+  .showcase__third__content__box h3 {
+    font-size: 3.2rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 23.5em) {
+  .showcase__speaker {
+    background-position: -13.6rem -13rem;
+    gap: 2rem;
+    max-height: 60rem;
+    max-width: 32.7rem;
+    background-size: cover;
+  }
+
+  .showcase__speaker__img__box {
+    max-width: 17.2rem;
+    max-height: 20.7rem;
+  }
+
+  .speaker__img {
+    max-width: 17.2rem;
+    max-height: 20.7rem;
+  }
+
+  .showcase__speaker__content__box h2 {
+    font-size: 4.4rem;
+  }
+
+  .showcase__speaker__content__box span {
+    width: 28rem;
+  }
+  .showcase__second__speaker {
+    background-position-x: -16.6rem;
+    background-size: cover;
+    /* background-repeat: no-repeat; */
+    max-width: 32.7rem;
+    max-height: 32rem;
+  }
+
+  .showcase__second__content__box {
+    transform: none;
+    gap: 2rem;
+    padding-left: 1rem;
+  }
+
+  .showcase__second__content__box h3 {
+    width: 25rem;
+    font-size: 2.8rem;
+  }
+
+  .showcase__third__earphones {
+    max-width: 32.7rem;
+    max-height: 42.4rem;
+  }
+
+  .showcase__third__content__box h3{
+    font-size: 2.8rem;
+    width: 100%;
   }
 }
