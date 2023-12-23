@@ -7,6 +7,7 @@ import TwitterIcon from "@/public/Icons/TwitterIcon";
 import classes from "./Footer.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import LogoIcon from "@/public/Icons/LogoIcon";
 
 const Footer: React.FC = () => {
   const icons = [
@@ -19,13 +20,7 @@ const Footer: React.FC = () => {
     <footer className={classes.footer}>
       <div className={classes.footer__box}>
         <div className={classes.footer__content__box}>
-          <Image
-            src={logoImg}
-            alt="logo"
-            height={25}
-            width={143}
-            className={classes.header__logo}
-          />
+          <LogoIcon className={classes.header__logo} />
           <span>
             Audiophile is an all in one stop to fulfill your audio needs.
             We&apos;re a small team of music lovers and sound specialists who

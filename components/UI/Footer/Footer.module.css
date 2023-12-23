@@ -75,6 +75,17 @@
     width: 100%;
   }
 
+  .footer__content__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer__content__box span {
+    text-align: center;
+  }
+
   .header__logo {
     margin-bottom: 4.5rem;
   }
@@ -115,10 +126,22 @@
     align-items: center;
     justify-content: center;
     left: 50%;
+    top: 22%;
     transform: translate(-50%, -50%);
   }
 
+  .footer__content__box span {
+    padding-top: 14.4rem;
+  }
+
+  .footer__content__box p{
+    padding-bottom: 7.4rem;
+  }
+
   .footer__social__ul {
-    bottom: 10%;
+    bottom: 5%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
   }
 }

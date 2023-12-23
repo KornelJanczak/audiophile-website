@@ -14,7 +14,6 @@
   background-position: -145px -50px;
   background-repeat: no-repeat;
   max-width: 111rem;
-  height: 56rem;
   padding: 0 12.8rem;
   border-radius: 9px;
 }
@@ -26,7 +25,6 @@
 }
 
 .speaker__img {
-  max-height: 49rem;
   max-width: 41rem;
   margin: auto 0 0;
   position: relative;
@@ -70,9 +68,9 @@
 .showcase__second__speaker {
   display: flex;
   align-items: center;
+  margin: 6rem auto;
   max-width: 111rem;
   height: 32rem;
-  margin: 6rem auto;
   border-radius: 9px;
   background-size: cover;
   background-image: url(../../../public/assets/home/desktop/image-speaker-zx7.jpg);
@@ -81,8 +79,8 @@
 .showcase__second__content__box {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   padding-bottom: 2.4rem;
+  gap: 2rem;
   transform: translate(35%, 0);
 }
 
@@ -107,10 +105,10 @@
 .showcase__third__earphones {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  margin: 6rem auto;
   column-gap: 2rem;
   max-width: 111rem;
   height: 32rem;
-  margin: 6rem auto;
   border-radius: 9px;
 }
 
@@ -136,25 +134,12 @@
 }
 
 @media (max-width: 58em) {
-  .showcase__speaker {
-    max-width: 84.6rem;
-    column-gap: 12.6rem;
-  }
-
-  .showcase__second__speaker {
-    max-width: 84.6rem;
-  }
-
-  .showcase__third__earphones {
-    max-width: 84.6rem;
-  }
-
   .showcase__third__content__box {
     padding-left: 1rem;
     gap: 2rem;
   }
 
-  .showcase__third__content__box h3{
+  .showcase__third__content__box h3 {
     font-size: 2.8rem;
   }
 }
@@ -169,11 +154,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-position: -13.5rem -32rem;
-    max-width: 68.9rem;
-    width: 100%;
-    height: 72rem;
+    padding: 5.4rem 0;
+    height: auto;
     gap: 6rem;
+    background-position: -13.5rem -32rem;
   }
 
   .showcase__speaker__content__box h2 {
@@ -194,10 +178,7 @@
   }
 
   .showcase__speaker__content__box {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
     transform: none;
     padding-bottom: 2rem;
   }
@@ -213,7 +194,6 @@
   }
 
   .showcase__second__speaker {
-    max-width: 68.9rem;
     background-image: url(../../../public/assets/home/tablet/image-speaker-zx7.jpg);
   }
 
@@ -221,9 +201,6 @@
     transform: translate(25%, 0);
   }
 
-  .showcase__third__earphones {
-    max-width: 68.9rem;
-  }
 
   .showcase__third__img {
     max-width: 33.9rem;
@@ -232,9 +209,6 @@
 }
 
 @media (max-width: 41em) {
-  .showcase__third__earphones {
-    max-width: 65.9rem;
-  }
 
   .showcase__speaker {
     background-position: -14.5rem -32rem;
@@ -299,8 +273,6 @@
   .showcase__speaker {
     background-position: -13.6rem -13rem;
     gap: 2rem;
-    max-height: 60rem;
-    max-width: 32.7rem;
     background-size: cover;
   }
 
@@ -324,8 +296,6 @@
   .showcase__second__speaker {
     background-position-x: -16.6rem;
     background-size: cover;
-    max-width: 32.7rem;
-    max-height: 32rem;
   }
 
   .showcase__second__content__box {
@@ -339,10 +309,6 @@
     font-size: 2.8rem;
   }
 
-  .showcase__third__earphones {
-    max-width: 32.7rem;
-    max-height: 42.4rem;
-  }
 
   .showcase__third__content__box h3 {
     font-size: 2.8rem;

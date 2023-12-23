@@ -3,7 +3,6 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 8rem;
   max-width: 111rem;
-  max-height: 58.8rem;
   margin: 2rem auto;
   padding: 0 4rem;
 }
@@ -37,7 +36,6 @@
 
 .picture {
   max-width: 54rem;
-  max-height: 58.8rem;
   border-radius: 9px;
 }
 
@@ -54,7 +52,6 @@
 
   .picture {
     max-width: 40rem;
-    max-height: 52rem;
   }
 }
 
@@ -62,7 +59,6 @@
   .info__section {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
-    row-gap: 5rem;
     margin: 0 auto;
   }
 
@@ -85,18 +81,21 @@
 @media (max-width: 36em) {
   .info__section {
     padding: 0 2rem 0 2rem;
-    max-height: auto;
   }
 }
 
 @media (max-width: 29.75em) {
   .info__section {
-    max-height: none;
+    row-gap: 0;
   }
 }
 @media (max-width: 23.5em) {
   .info__section {
     padding: none;
+  }
+
+  .info__content__box {
+    margin-top: -3rem;
   }
 
   .info__content__box h2,
