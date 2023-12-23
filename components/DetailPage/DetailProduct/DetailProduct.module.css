@@ -47,7 +47,7 @@
   font-family: inherit;
   color: var(--lighter-black);
   font-weight: 400;
-  padding-bottom: 4rem;
+  padding: 5rem 0;
 }
 
 .back__btn:hover {
@@ -76,5 +76,3 @@
   display: flex;
   gap: 2rem;
 }
-
-

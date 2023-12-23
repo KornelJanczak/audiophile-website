@@ -72,6 +72,7 @@
   .footer__box {
     display: block;
     padding: 0 4rem 4rem 4rem;
+    width: 100%;
   }
 
   .header__logo {
@@ -80,19 +81,44 @@
 
   .footer__content__box span {
     font-size: 1.5rem;
-    width: 68.9rem;
+    max-width: 68.9rem;
     line-height: 2.5rem;
   }
 
   .ul {
     position: absolute;
     top: 17%;
-    left: 6%;
+    left: 7%;
   }
 
   .footer__social__ul {
     position: absolute;
     right: 5%;
     bottom: 11%;
+  }
+}
+
+@media (max-width: 31.25em) {
+  .ul {
+    left: 8%;
+  }
+}
+
+@media (max-width: 29.75em) {
+  .footer {
+    margin-bottom: 0;
+  }
+
+  .ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .footer__social__ul {
+    bottom: 10%;
   }
 }
