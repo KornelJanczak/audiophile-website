@@ -1,6 +1,6 @@
 .showcase__section {
   margin: 0 auto;
-  padding-bottom: 7.4rem;
+  padding: 0rem 4rem 7.4rem 4rem;
 }
 
 .showcase__speaker {
@@ -148,9 +148,22 @@
   .showcase__third__earphones {
     max-width: 84.6rem;
   }
+
+  .showcase__third__content__box {
+    padding-left: 1rem;
+    gap: 2rem;
+  }
+
+  .showcase__third__content__box h3{
+    font-size: 2.8rem;
+  }
 }
 
 @media (max-width: 50em) {
+  .showcase__section {
+    padding-bottom: 2rem;
+  }
+
   .showcase__speaker {
     display: flex;
     flex-direction: column;
@@ -250,6 +263,9 @@
 }
 
 @media (max-width: 36em) {
+  .showcase__section {
+    padding: 0 2rem 0 2rem;
+  }
   .showcase__speaker {
     background-position: -18.6rem -32rem;
   }
@@ -308,7 +324,6 @@
   .showcase__second__speaker {
     background-position-x: -16.6rem;
     background-size: cover;
-    /* background-repeat: no-repeat; */
     max-width: 32.7rem;
     max-height: 32rem;
   }
@@ -329,7 +344,7 @@
     max-height: 42.4rem;
   }
 
-  .showcase__third__content__box h3{
+  .showcase__third__content__box h3 {
     font-size: 2.8rem;
     width: 100%;
   }

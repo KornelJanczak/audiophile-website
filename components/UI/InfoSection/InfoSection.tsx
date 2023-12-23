@@ -1,6 +1,5 @@
 import classes from "./InfoSection.module.css";
-import infoImg from "../../../public/assets/shared/desktop/image-best-gear.jpg";
-import Image from "next/image";
+import ResponsiveImage from "../ResponsiveImage";
 
 const InfoSection: React.FC = () => {
   return (
@@ -18,12 +17,17 @@ const InfoSection: React.FC = () => {
           best place to buy your portable audio equipment.
         </span>
       </div>
-      <Image
-        src={infoImg}
-        alt="info"
-        className={classes.info__img}
+      <ResponsiveImage
+        images={{
+          desktop: "/assets/shared/desktop/image-best-gear.jpg",
+          tablet: "/assets/shared/tablet/image-best-gear.jpg",
+          mobile: "/assets/shared/mobile/image-best-gear.jpg",
+        }}
         width={540}
         height={588}
+        altText="Best gear logo"
+        imgClassName={classes.info__img}
+        pictureClassName={classes.picture}
       />
     </section>
   );

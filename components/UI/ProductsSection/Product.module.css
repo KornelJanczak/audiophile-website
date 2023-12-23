@@ -60,5 +60,6 @@
   .product {
     width: 32.7rem;
     max-width: 32.7rem;
+    max-height: 16.5rem;
   }
 }

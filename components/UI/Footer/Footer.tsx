@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
           <p>Copyright 2021. All Rights Reserved</p>
         </div>
         <div className={classes.footer__help__box}>
-          <NavigationUL />
+          <NavigationUL className={classes.ul} />
           <ul className={classes.footer__social__ul}>
             {icons.map((icon, i) => (
               <li key={i}>

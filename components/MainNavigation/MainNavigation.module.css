@@ -11,7 +11,7 @@
   position: fixed;
   margin: 0 auto;
   background-color: var(--lighter-black);
-  z-index: 1000000000000000000000000000000000000000000;
+  z-index: 10000000000000;
   top: 0;
   width: 100%;
 }
@@ -123,8 +123,17 @@
     z-index: 1000000000000000000000000000000000;
     background-color: var(--dark-white);
     max-height: 34rem;
-    /* max-width: 100%; */
     width: 100%;
     padding-bottom: 12.4rem;
+  }
+}
+
+@media (max-width: 36em) {
+  .responsive__nav {
+    padding: 6rem 0 5rem 0;
+    top: 10%;
+    width: 100%;
+    padding-top: 9.6rem;
+    max-height: 79rem;
   }
 }
