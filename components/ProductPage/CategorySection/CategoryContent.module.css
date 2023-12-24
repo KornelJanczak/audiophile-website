@@ -8,13 +8,20 @@
 
 .content_box span {
   color: var(--orange-hover);
-  font-size: 2.4rem;
-  letter-spacing: 8px;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1rem;
+  text-transform: uppercase;
 }
 
 .content_box h2 {
   font-size: 4rem;
-  line-height: 4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 4.4rem;
+  letter-spacing: 0.1429rem;
   text-transform: uppercase;
   color: var(--dark-black);
 }
@@ -23,6 +30,7 @@
   font-size: 1.5rem;
   font-weight: 500;
   color: #979797;
+  line-height: 2.5rem;
   max-width: 44.5rem;
 }
 
@@ -36,4 +44,19 @@
   background-color: var(--orange-light);
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+@media (max-width: 63.75em) {
+  .content_box {
+    order: 2;
+    align-items: center;
+  }
+
+  .content_box h2 {
+   max-width: 30rem;
+    text-align: center;
+  }
+  .content_box p{
+    text-align: center;
+  }
 }

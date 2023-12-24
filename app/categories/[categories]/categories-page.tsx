@@ -1,18 +1,15 @@
 "use client";
-import { IPropsProductPage, Product } from "@/models/@type-props";
+import { IPropsProductPage } from "@/models/@type-props";
 import Banner from "@/components/ProductPage/Banner/Banner";
 import CategoryItem from "@/components/ProductPage/CategorySection/CategoryItem";
-import { useParams, usePathname } from "next/navigation";
-import CategoryImage from "@/components/ProductPage/CategorySection/CategoryImage";
+import { useParams } from "next/navigation";
 import CategoryContent from "@/components/ProductPage/CategorySection/CategoryContent";
 import ProductsSection from "@/components/UI/ProductsSection/ProductsSection";
 import PageWrapper from "@/components/UI/PageWrapper";
+import ResponsiveImage from "@/components/UI/ResponsiveImage";
 
 const CategoryPage: React.FC<IPropsProductPage> = ({ categories }) => {
   const params = useParams();
-  const pathname = usePathname();
-
-  console.log(pathname, "PATH");
 
   if (!categories) {
     return <p>No data</p>;
@@ -27,7 +24,16 @@ const CategoryPage: React.FC<IPropsProductPage> = ({ categories }) => {
             <CategoryItem key={cat._id}>
               {cat.id % 2 == 0 || cat.id === 1 ? (
                 <>
-                  <CategoryImage image={cat.categoryImage} />
+                  <ResponsiveImage
+                    width={540}
+                    height={560}
+                    altText="Product image"
+                    images={{
+                      desktop: cat.image.desktop.slice(1),
+                      mobile: cat.image.mobile.slice(1),
+                      tablet: cat.image.tablet.slice(1),
+                    }}
+                  />
                   <CategoryContent
                     title={cat.name}
                     isNew={cat.new}
@@ -43,7 +49,16 @@ const CategoryPage: React.FC<IPropsProductPage> = ({ categories }) => {
                     slug={cat.slug}
                     description={cat.description}
                   />
-                  <CategoryImage image={cat.categoryImage} />
+                  <ResponsiveImage
+                    width={540}
+                    height={560}
+                    altText="Product image"
+                    images={{
+                      desktop: cat.image.desktop.slice(1),
+                      mobile: cat.image.mobile.slice(1),
+                      tablet: cat.image.tablet.slice(1),
+                    }}
+                  />
                 </>
               )}
             </CategoryItem>

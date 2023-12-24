@@ -9,8 +9,8 @@ interface Data {
   altText: string;
   width: number;
   height: number;
-  pictureClassName: any | null | undefined;
-  imgClassName: any | null | undefined;
+  pictureClassName?: any | null | undefined;
+  imgClassName?: any | null | undefined;
 }
 
 const ResponsiveImage = ({

@@ -1,10 +1,23 @@
 "use client";
-import Home from "@/components/Home/Home";
-import { useSession } from "next-auth/react";
+import HeroSection from "@/components/Home/HeroSection/HeroSection";
+import ProductsSection from "@/components/UI/ProductsSection/ProductsSection";
+import ShowcaseSection from "@/components/Home/ShowcaseSection/ShowcaseSection";
+import MainNavigation from "@/components/MainNavigation/MainNavigation";
+import InfoSection from "@/components/UI/InfoSection/InfoSection";
+import Footer from "@/components/UI/Footer/Footer";
+import PageWrapper from "@/components/UI/PageWrapper";
 
 export default function HomePage() {
-  const { data: session } = useSession();
-  console.log(session);
-
-  return <Home />;
+  return (
+    <PageWrapper>
+      <MainNavigation />
+      <main>
+        <HeroSection />
+        <ProductsSection />
+        <ShowcaseSection />
+        <InfoSection />
+      </main>
+      <Footer />
+    </PageWrapper>
+  );
 }

@@ -2,7 +2,6 @@
 import Button from "@/components/UI/Button/Button";
 import { IPropsCategory } from "@/models/@type-props";
 import classes from "./CategoryContent.module.css";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const CategoryContent: React.FC<IPropsCategory> = ({

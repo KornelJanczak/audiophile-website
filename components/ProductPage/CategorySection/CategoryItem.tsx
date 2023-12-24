@@ -1,4 +1,4 @@
-import { IPropsNode, IPropsProduct } from "@/models/@type-props";
+import { IPropsNode } from "@/models/@type-props";
 import classes from "./CategoryItem.module.css";
 
 const CategoryItem: React.FC<IPropsNode> = ({ children }) => {

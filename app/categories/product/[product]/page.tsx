@@ -12,13 +12,13 @@ export async function generateStaticParams() {
   return paths;
 }
 
-async function getPosts(params: any) {
+async function getProducts(params: any) {
   const data = await fetchData("Audiophile", "website-content");
   const [filteredData] = data.filter((item) => item.slug === params!.product);
   return filteredData;
 }
 
 export default async function ProductPage({ params }: any) {
-  const product = await getPosts(params);
+  const product = await getProducts(params);
   return <DetailPage product={product} />;
 }
