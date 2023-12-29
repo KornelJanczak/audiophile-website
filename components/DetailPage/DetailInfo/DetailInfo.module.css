@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin: 0 auto;
-  padding: 9.6rem 0;
+  padding: 9.6rem 4rem;
 }
 
 .features h3,
@@ -38,8 +38,15 @@
   color: var(--orange-hover);
 }
 
-.text{
+.text {
   font-size: 1.6rem;
   width: 50%;
   column-count: 2;
+}
+
+@media (max-width: 62.5em){
+  .ul__box{
+    align-items: flex-end;
+    padding-right: 2rem;
+  }
 }

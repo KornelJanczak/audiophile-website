@@ -50,13 +50,13 @@
   .content_box {
     order: 2;
     align-items: center;
+    text-align: center;
   }
 
   .content_box h2 {
-   max-width: 30rem;
     text-align: center;
   }
-  .content_box p{
+  .content_box p {
     text-align: center;
   }
 }

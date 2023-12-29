@@ -1,8 +1,8 @@
 import { IPropsDetailOthers } from "@/models/@type-props";
 import classes from "./DetailOthers.module.css";
-import Image from "next/image";
 import Button from "@/components/UI/Button/Button";
 import { useRouter } from "next/navigation";
+import ResponsiveImage from "@/components/UI/ResponsiveImage";
 
 const DetailOthers: React.FC<IPropsDetailOthers> = ({ others }) => {
   const router = useRouter();
@@ -10,15 +10,17 @@ const DetailOthers: React.FC<IPropsDetailOthers> = ({ others }) => {
     <div className={classes.container}>
       {others.map((other, i) => (
         <div className={classes.box} key={i}>
-          <Image
-            src={require(("../../../public/" +
-              other.image.desktop.slice(2)) as string)}
-            alt={other.name}
-            loading="lazy"
-            placeholder="blur"
+          <ResponsiveImage
             width={350}
             height={318}
-            className={classes.image}
+            altText="Other product"
+            pictureClassName={classes.picture}
+            imgClassName={classes.image}
+            images={{
+              desktop: other.image.desktop.slice(1),
+              mobile: other.image.mobile.slice(1),
+              tablet: other.image.tablet.slice(1),
+            }}
           />
           <h5>{other.name}</h5>
           <Button

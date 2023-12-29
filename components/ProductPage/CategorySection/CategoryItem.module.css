@@ -1,7 +1,7 @@
 .category__item {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 6.8rem;
+  padding: 6.8rem 0;
   column-gap: 6rem;
 }
 
@@ -21,7 +21,9 @@
   .category__item {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 2rem 0;
   }
 
   .category__item picture {
@@ -32,8 +34,9 @@
 @media (max-width: 50em) {
   .category__item picture {
     max-width: 100%;
-
+    max-width: 68rem;
     max-height: 75.2rem;
+    padding: 0 2rem;
   }
 
   .category__item img {

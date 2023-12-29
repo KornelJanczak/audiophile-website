@@ -4,7 +4,7 @@
   column-gap: 8rem;
   max-width: 111rem;
   margin: 2rem auto;
-  padding: 0 4rem;
+  padding: 0rem 4rem 7.4rem 4rem;
 }
 
 .info__content__box {
@@ -58,12 +58,13 @@
 @media (max-width: 50em) {
   .info__section {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    row-gap: 4rem;
+    padding-bottom: 2rem;
     margin: 0 auto;
   }
 
   .picture {
-    max-width: 68.9rem;
+    max-width: 100%;
     margin: 0 auto;
   }
 
@@ -80,20 +81,11 @@
 
 @media (max-width: 36em) {
   .info__section {
-    padding: 0 2rem 0 2rem;
+    padding: 0rem 2rem;
   }
 }
 
-@media (max-width: 29.75em) {
-  .info__section {
-    row-gap: 0;
-  }
-}
 @media (max-width: 23.5em) {
-  .info__section {
-    padding: none;
-  }
-
   .info__content__box {
     margin-top: -3rem;
   }
@@ -105,6 +97,8 @@
 
   .info__content__box h2 {
     font-size: 2.8rem;
+    line-height: 3rem;
+    padding-top: 2rem;
   }
 
   .info__content__box span {

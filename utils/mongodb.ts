@@ -51,7 +51,6 @@ export async function fetchData(dbName: string, dbCollection: string) {
       };
     })
     .toArray();
+  client.close();
   return data as Product[];
 }
-
-

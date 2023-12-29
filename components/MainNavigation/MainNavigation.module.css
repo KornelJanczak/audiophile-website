@@ -129,6 +129,13 @@
 }
 
 @media (max-width: 36em) {
+  .nav {
+    justify-content: space-between;
+  }
+
+  .main_logo {
+    margin: auto;
+  }
   .responsive__nav {
     padding: 6rem 0 5rem 0;
     top: 9.625rem;

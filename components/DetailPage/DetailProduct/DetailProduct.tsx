@@ -1,12 +1,12 @@
 "use client";
 import { IPropsDetailProduct } from "@/models/@type-props";
-import Image from "next/image";
 import classes from "./DetailProduct.module.css";
 import Button from "@/components/UI/Button/Button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useCart from "@/hooks/use-cart";
 import Counter from "@/components/UI/Counter/Counter";
+import ResponsiveImage from "@/components/UI/ResponsiveImage";
 
 const DetailProduct: React.FC<IPropsDetailProduct> = ({
   _id,
@@ -16,24 +16,29 @@ const DetailProduct: React.FC<IPropsDetailProduct> = ({
   isNew,
   image,
 }) => {
+  
   const [count, setCount] = useState<number>(1);
-  const img = require("../../../public/" + image.desktop.slice(2)) as string;
   const { addItem } = useCart();
   const router = useRouter();
+
   return (
     <>
       <button onClick={() => router.back()} className={classes.back__btn}>
         Go back
       </button>
       <div className={classes.detail__container}>
-        <Image
-          src={img}
-          alt={name}
+        <ResponsiveImage
           width={540}
           height={560}
-          placeholder="blur"
-          loading="lazy"
-        ></Image>
+          altText={name}
+          imgClassName={classes.img}
+          pictureClassName={classes.picture}
+          images={{
+            desktop: image.desktop.slice(1),
+            mobile: image.mobile.slice(1),
+            tablet: image.tablet.slice(1),
+          }}
+        />
         <div className={classes.detail__content}>
           {isNew && <span>NEW PRODUCT</span>}
           <h2>{name}</h2>

@@ -1,47 +1,48 @@
 import { IPropsDetailGallery } from "@/models/@type-props";
 import classes from "./DetailGallery.module.css";
-import Image from "next/image";
+import ResponsiveImage from "@/components/UI/ResponsiveImage";
 
 const DetailGallery: React.FC<IPropsDetailGallery> = ({ gallery }) => {
-  const imgFirst = require("../../../public/" +
-    gallery.first.desktop.slice(2)) as string;
-
-  const imgSecond = require("../../../public/" +
-    gallery.second.desktop.slice(2)) as string;
-
-  const imgThird = require("../../../public/" +
-    gallery.third.desktop.slice(2)) as string;
-
   return (
     <div className={classes.container}>
       <div className={classes.img__box}>
-        <Image
-          src={imgFirst}
-          alt="gallery-first"
+        <ResponsiveImage
           width={445}
           height={280}
-          placeholder="blur"
-          loading="lazy"
-          className={classes.img}
+          altText="First gallery image"
+          images={{
+            desktop: gallery.first.desktop.slice(1),
+            mobile: gallery.first.mobile.slice(1),
+            tablet: gallery.first.tablet.slice(1),
+          }}
+          pictureClassName={classes.picture}
+          imgClassName={classes.img}
         />
-        <Image
-          src={imgSecond}
-          alt="gallery-second"
+
+        <ResponsiveImage
           width={445}
           height={280}
-          placeholder="blur"
-          loading="lazy"
-          className={classes.img}
+          altText="Second gallery image"
+          images={{
+            desktop: gallery.second.desktop.slice(1),
+            mobile: gallery.second.mobile.slice(1),
+            tablet: gallery.second.tablet.slice(1),
+          }}
+          pictureClassName={classes.picture}
+          imgClassName={classes.img}
         />
       </div>
-      <Image
-        src={imgThird}
-        alt="gallery-third"
+      <ResponsiveImage
         width={635}
         height={592}
-        placeholder="blur"
-        loading="lazy"
-        className={classes.img__big}
+        altText="Third gallery image"
+        pictureClassName={classes.picture__big}
+        imgClassName={classes.img__big}
+        images={{
+          desktop: gallery.third.desktop.slice(1),
+          mobile: gallery.third.mobile.slice(1),
+          tablet: gallery.third.tablet.slice(1),
+        }}
       />
     </div>
   );

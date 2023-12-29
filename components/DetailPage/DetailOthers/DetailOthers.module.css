@@ -1,7 +1,7 @@
 .container {
   display: flex;
   gap: 4rem;
-  padding-top: 9.8rem;
+  padding: 9.8rem 4rem 0rem 4rem;
 }
 
 .box {
@@ -12,6 +12,11 @@
 }
 
 .image {
+  border-radius: 9px;
+  width: 100%;
+}
+
+.picture {
   border-radius: 9px;
   max-width: 35rem;
   max-height: 31.8rem;
