@@ -30,7 +30,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem 0 4rem 0;
+  padding: 3rem 4rem 4rem 4rem;
   border-bottom: 0.5px solid #979797;
   max-width: 111rem;
   margin: 0 auto;
@@ -85,17 +85,12 @@
   letter-spacing: 1px;
 }
 
-/* 1330px */
-
-@media (max-width: 71em) {
-  .header {
-    padding: 0 6.4rem;
-  }
-}
 
 /* 800px */
-
 @media (max-width: 50em) {
+  .nav {
+    padding: 3rem 0rem 4rem 0rem;
+  }
   .header {
     padding: 0 3.4rem;
   }

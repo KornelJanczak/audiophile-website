@@ -7,7 +7,6 @@
 
 .category__item img {
   max-width: 54rem;
-  max-height: 56rem;
   border-radius: 9px;
 }
 
@@ -33,14 +32,11 @@
 
 @media (max-width: 50em) {
   .category__item picture {
-    max-width: 100%;
-    max-width: 68rem;
     max-height: 75.2rem;
     padding: 0 2rem;
   }
 
   .category__item img {
-    max-width: 68rem;
     width: 100%;
     height: auto;
   }
