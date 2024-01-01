@@ -37,7 +37,15 @@ export default async function RootLayout({
         <AuthProvider session={session}>
           <TanstackProvider>
             {children}
-            <Toaster expand richColors position="top-center" duration={10000} />
+            <Toaster
+              expand
+              richColors
+              position="top-center"
+              duration={10000}
+              style={{
+                zIndex: "99999999999999999999999999999999999999999999999",
+              }}
+            />
           </TanstackProvider>
         </AuthProvider>
       </body>

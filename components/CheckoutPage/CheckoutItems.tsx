@@ -31,11 +31,10 @@ const CheckoutItems: React.FC = () => {
   useEffect(() => {
     if (searchParams.get("success")) {
       setModal(true);
-      // setCartData([]);
     }
 
     if (searchParams.get("canceled")) {
-      toast.error("Something went wrong.");
+      toast.error("Something went wrong!");
     }
   }, [searchParams, removeAll]);
 
@@ -69,7 +68,7 @@ const CheckoutItems: React.FC = () => {
               exit={{ opacity: 0, y: -30 }}
               key="fallback"
             >
-              <p>Your shopping cart is empty!</p>
+              <p style={{textAlign:"center"}}>Your shopping cart is empty!</p>
               <Button
                 style={classes.continue_btn}
                 onClick={() => router.push("/")}

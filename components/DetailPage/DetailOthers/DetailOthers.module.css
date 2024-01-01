@@ -70,3 +70,14 @@
     height: auto;
   }
 }
+
+@media (max-width: 29.75em){
+  .container{
+    gap: 6rem;
+  }
+  .picture, .image {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+}

@@ -25,7 +25,6 @@ const LoginForm: React.FC = () => {
   const [viewPassword, setViewPassword] = useState<boolean>(false);
   const [isPending, setIsPending] = useState<boolean>(false);
 
-  const [scope, animate] = useAnimate();
 
   //Google login
   const { mutate: googleMutate, isPending: googlePending } = useMutation({

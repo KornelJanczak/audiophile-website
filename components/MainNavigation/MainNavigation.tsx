@@ -15,6 +15,7 @@ import { AnimatePresence } from "framer-motion";
 import { useRef } from "react";
 import HamburgerIcon from "@/public/Icons/HamburgerIcon";
 import ProductsSection from "../UI/ProductsSection/ProductsSection";
+import { motion } from "framer-motion";
 
 export default function MainNavigation() {
   const [cart, setCart] = useState<boolean>(false);
@@ -22,8 +23,27 @@ export default function MainNavigation() {
   const [mobileNav, setMobileNav] = useState<boolean>(false);
   const { data: session } = useSession();
 
-  const isOverlay = cart || userPanel;
+  const isOverlay = cart || userPanel || mobileNav;
   const navRef = useRef<HTMLElement>(null);
+
+  const mobileMenuVariant = {
+    opened: {
+      y: "0%",
+      transition: {
+        delay: 0.15,
+        duration: 1.1,
+        ease: [0.74, 0, 0.19, 1.02],
+      },
+    },
+    closed: {
+      y: "-100%",
+      transition: {
+        delay: 0.35,
+        duration: 0.63,
+        ease: [0.74, 0, 0.19, 1.02],
+      },
+    },
+  };
 
   return (
     <>
@@ -91,7 +111,16 @@ export default function MainNavigation() {
             {userPanel && <UserPanel />}
             {cart && <Cart />}
             {mobileNav && (
-              <ProductsSection mobileClass={classes.responsive__nav} />
+              <motion.div
+                initial={{ opacity: 0, y: 0, x: 0 }}
+                animate={{ opacity: 1, y: 20, x: 0 }}
+                exit={{ opacity: 0, y: -100, x: 0 }}
+                transition={{ duration: 0.2 }}
+                // initial="closed"
+                // animate={mobileNav ? "opened" : "closed"}
+              >
+                <ProductsSection mobileClass={classes.responsive__nav} />
+              </motion.div>
             )}
           </AnimatePresence>
         </nav>

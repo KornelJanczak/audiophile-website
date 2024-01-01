@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import useCart from "@/hooks/use-cart";
 import Counter from "@/components/UI/Counter/Counter";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
+import { toast } from "sonner";
 
 const DetailProduct: React.FC<IPropsDetailProduct> = ({
   _id,
@@ -16,7 +17,6 @@ const DetailProduct: React.FC<IPropsDetailProduct> = ({
   isNew,
   image,
 }) => {
-  
   const [count, setCount] = useState<number>(1);
   const { addItem } = useCart();
   const router = useRouter();

@@ -66,14 +66,13 @@ const useCart = create<ICartZustand>()(
       addItem: (item) =>
         set((state) => {
           const { updatedItems, total } = updateItems(state.items, item);
-          toast.success("Product has been added to cart!", { duration: 2500 });
+          toast.success("Item has been added to cart!", { duration: 2500 });
           return { items: updatedItems, total };
         }),
       removeItem: (id) =>
         set((state) => {
           const filteredItems = state.items.filter((item) => item.id !== id);
           const total = setTotal(filteredItems);
-          toast.success("Product has been removed!", { duration: 2500 });
           return { items: filteredItems, total };
         }),
       removeAll: () =>
