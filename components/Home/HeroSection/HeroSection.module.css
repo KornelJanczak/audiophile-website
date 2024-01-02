@@ -142,7 +142,6 @@
 
 @media (max-width: 50em) {
   .hero__section {
-    /* max-height: 62.9rem; */
     position: relative;
     height: 68.9rem;
   }
@@ -158,7 +157,7 @@
     top: 60%;
     left: 50%;
     transform: translate(-50%, -55%);
-    z-index: 10;
+    z-index: 1;
     text-align: center;
   }
 

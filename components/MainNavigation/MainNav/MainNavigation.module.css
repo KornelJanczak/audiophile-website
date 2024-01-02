@@ -85,7 +85,6 @@
   letter-spacing: 1px;
 }
 
-
 /* 800px */
 @media (max-width: 50em) {
   .nav {
@@ -113,7 +112,7 @@
     align-items: center;
     margin-right: auto;
     position: fixed;
-    top: 10%;
+    top: 9.8rem;
     left: 0;
     z-index: 1000000000000000000000000000000000;
     background-color: var(--dark-white);
