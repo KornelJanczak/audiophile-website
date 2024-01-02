@@ -4,15 +4,16 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { renameProduct } from "@/helpers/algorithm";
-import Button from "../UI/Button/Button";
+import Button from "../../UI/Button/Button";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { ICartData } from "@/models/@type-props";
 import TrashIcon from "@/public/Icons/TrashIcon";
 import { toast } from "sonner";
-import CheckoutModal from "./CheckoutModal";
+import CheckoutModal from "../CheckoutModal/CheckoutModal";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
+import ResponsiveImage from "@/components/UI/ResponsiveImage";
 
 const CheckoutItems: React.FC = () => {
   const { items, total, shipping, removeItem, removeAll } = useCart();
@@ -68,7 +69,9 @@ const CheckoutItems: React.FC = () => {
               exit={{ opacity: 0, y: -30 }}
               key="fallback"
             >
-              <p style={{textAlign:"center"}}>Your shopping cart is empty!</p>
+              <p style={{ textAlign: "center" }}>
+                Your shopping cart is empty!
+              </p>
               <Button
                 style={classes.continue_btn}
                 onClick={() => router.push("/")}
@@ -114,16 +117,15 @@ const CheckoutItems: React.FC = () => {
                           transition={{ duration: 0.3 }}
                           layout
                         >
-                          <Image
-                            src={
-                              require("../../public/" +
-                                item.image.desktop.slice(2)) as string
-                            }
-                            alt={item.name}
+                          <ResponsiveImage
+                            images={{
+                              desktop: item.image.desktop.slice(1),
+                            }}
                             width={125}
                             height={125}
-                            priority={true}
-                            className={classes.item_image}
+                            altText={item.name}
+                            imgClassName={classes.item_image}
+                            pictureClassName={""}
                           />
                           <div className={classes.product__content}>
                             <h3>{itemName}</h3>

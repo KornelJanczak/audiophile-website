@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import { motion } from "framer-motion";
 import Overlay from "@/components/UI/Overlay";
+import { useRouter } from "next/navigation";
 
 const UserPanel: React.FC<{ closePanel: () => void }> = ({ closePanel }) => {
   const { data: session } = useSession() as any;
@@ -10,6 +11,8 @@ const UserPanel: React.FC<{ closePanel: () => void }> = ({ closePanel }) => {
   const username = session?.user?.firstName
     ? session.user.firstName
     : session?.user?.email;
+
+  const router = useRouter();
 
   return (
     <>
@@ -28,7 +31,7 @@ const UserPanel: React.FC<{ closePanel: () => void }> = ({ closePanel }) => {
         <h3>Hello {username}!</h3>
         <ul>
           <li>Your account</li>
-          <li>Orders</li>
+          <li onClick={() => router.push("/orders")}>Orders</li>
           <li>Return product</li>
           <li onClick={() => signOut()} className={classes.signout}>
             Sign out

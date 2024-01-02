@@ -2,8 +2,8 @@ import Image from "next/image";
 
 interface Data {
   images: {
-    mobile: string;
-    tablet: string;
+    mobile?: string;
+    tablet?: string;
     desktop: string;
   };
   altText: string;

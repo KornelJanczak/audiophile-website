@@ -1,13 +1,14 @@
 import OrderConfIcon from "@/public/Icons/OrderConfIcon";
 import classes from "./CheckoutModal.module.css";
-import Button from "../UI/Button/Button";
+import Button from "../../UI/Button/Button";
 import useCart from "@/hooks/use-cart";
-import Overlay from "../UI/Overlay";
-import Image from "next/image";
+import Overlay from "../../UI/Overlay";
+
 import { ICartData } from "@/models/@type-props";
 import { renameProduct } from "@/helpers/algorithm";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import ResponsiveImage from "@/components/UI/ResponsiveImage";
 
 const CheckoutModal: React.FC = () => {
   const { items, shipping, total, removeAll } = useCart();
@@ -44,15 +45,15 @@ const CheckoutModal: React.FC = () => {
           <div className={classes.info__container}>
             <div className={classes.items__summary}>
               <div className={classes.item}>
-                <Image
-                  alt={prodcuthWithHigherPrice.name}
-                  src={
-                    require("../../public/" +
-                      prodcuthWithHigherPrice.image.desktop.slice(2)) as string
-                  }
+                <ResponsiveImage
                   width={50}
                   height={50}
-                  className={classes.image}
+                  altText={prodcuthWithHigherPrice.name}
+                  images={{
+                    desktop: prodcuthWithHigherPrice.image.desktop.slice(1),
+                  }}
+                  imgClassName={classes.image}
+                  pictureClassName={classes.image}
                 />
                 <div className={classes.item__info}>
                   <h3>{productName}</h3>

@@ -1,5 +1,6 @@
 .footer {
   margin-top: 4rem;
+  /* margin-bottom: 0; */
   background-color: var(--lighter-black);
 }
 
@@ -134,7 +135,7 @@
     padding-top: 14.4rem;
   }
 
-  .footer__content__box p{
+  .footer__content__box p {
     padding-bottom: 7.4rem;
   }
 

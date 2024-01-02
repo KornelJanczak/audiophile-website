@@ -14,6 +14,8 @@ const CategoryPage: React.FC<IPropsProductPage> = ({ categories }) => {
   if (!categories) {
     return <p>No data</p>;
   }
+  console.log(categories);
+  
 
   if (categories)
     return (

@@ -13,24 +13,20 @@ import { AnimatePresence } from "framer-motion";
 import { useRef } from "react";
 import HamburgerIcon from "@/public/Icons/HamburgerIcon";
 import ProductsSection from "../../UI/ProductsSection/ProductsSection";
-import { motion } from "framer-motion";
 import CartIcon from "@/public/Icons/CartIcon";
 
 export default function MainNavigation() {
   const { data: session } = useSession();
-  const navRef = useRef<HTMLElement>(null);
   const [cart, setCart] = useState<boolean>(false);
   const [userPanel, setUserPanel] = useState<boolean>(false);
   const [mobileNav, setMobileNav] = useState<boolean>(false);
-  const activeMobileNav = navRef.current?.classList.contains(classes.nav__open);
-
+ 
   return (
     <header className={classes.header}>
       <nav
         className={`${classes.nav}  ${
           (cart || userPanel) && classes.nav__border
         }`}
-        ref={navRef}
       >
         <button
           className={classes.mobile__nav__btn}

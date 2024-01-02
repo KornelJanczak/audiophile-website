@@ -117,3 +117,42 @@
   transition: all 0.3s ease;
   background-color: var(--orange-light);
 }
+
+@media (max-width: 39em) {
+  .container {
+    max-height: 66rem;
+    max-width: 45rem;
+    padding: 4rem;
+  }
+  .info__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn {
+    margin-top: 0rem;
+    padding: 2rem;
+  }
+
+  .total__summary {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+  }
+  .item {
+    padding-bottom: 1.7rem;
+  }
+}
+
+@media (max-width: 33.5em) {
+  .container{
+    max-width: 40rem;
+  }
+}
+
+@media (max-width: 29.25em) {
+  .container{
+    padding: 2.4rem;
+    max-width: 32rem;
+  }
+}
