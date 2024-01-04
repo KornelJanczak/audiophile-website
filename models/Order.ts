@@ -1,27 +1,21 @@
 import mongoose, {
+  Date,
   Document,
   Schema as MongooseShema,
   ObjectId,
 } from "mongoose";
 import { ICartData } from "./@type-props";
 
-export interface IOrder extends Document {
-  _id?: ObjectId;
+export interface IOrderMongoose extends Document {
   userId: string;
   isPaid: boolean;
   address: string;
   orderItems: ICartData[];
-  __v?: number;
-  // phone: string;
-  // stripeCustomerId: string;
-  // stripePriceId: string;
-  // stripeCurrentPeriodEnd: string;
-  // stripeOrderId: string;
 }
 
 const { Schema } = mongoose;
 
-const orderSchema: MongooseShema<IOrder> = new Schema(
+const orderSchema: MongooseShema<IOrderMongoose> = new Schema(
   {
     userId: {
       type: String,
@@ -93,6 +87,6 @@ const orderSchema: MongooseShema<IOrder> = new Schema(
 );
 
 const Order =
-  mongoose.models.Order || mongoose.model<IOrder>("Order", orderSchema);
+  mongoose.models.Order || mongoose.model<IOrderMongoose>("Order", orderSchema);
 
 export default Order;

@@ -145,6 +145,17 @@ export interface ICartData {
   };
 }
 
+export interface IOrder {
+  _id?: ObjectId;
+  userId: string;
+  isPaid: boolean;
+  address: string;
+  orderItems: ICartData[];
+  __v?: number;
+  createdAt?: any;
+  updatedAt?: any;
+}
+
 // Product Type
 
 export interface Product {
@@ -254,5 +265,3 @@ export interface IOverlayProps {
   position?: { top: string | number; left: string | number };
   delay?: number;
 }
-
-

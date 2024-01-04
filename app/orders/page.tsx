@@ -2,6 +2,7 @@ import OrdersSection from "@/components/OrdersPage/OrdersSection";
 import Order from "@/models/Order";
 import connect from "@/utils/db";
 import getCurrentUser from "@/utils/utils";
+import { Suspense } from "react";
 
 async function getOrders() {
   const user = await getCurrentUser();
@@ -17,13 +18,14 @@ async function getOrders() {
   return orders;
 }
 
+
+
 export default async function OrdersPage() {
   const orders = await getOrders();
 
-  if (!orders) {
-    // Obsługa przypadku, gdy nie udało się pobrać zamówień
-    return <div>Error loading orders</div>;
-  }
-
-  if (orders) return <OrdersSection orders={orders} />;
+  return (
+    <Suspense fallback={<p>Loading</p>}>
+      <OrdersSection orders={orders} />
+    </Suspense>
+  );
 }
