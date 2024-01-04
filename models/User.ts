@@ -49,53 +49,6 @@ const userSchema: MongooseShema<IUser> = new Schema(
       type: Boolean,
       default: false,
     },
-    // orders: [
-    //   {
-    //     orderId: {
-    //       type: String,
-    //       required: true,
-    //     },
-    //     items: [
-    //       {
-    //         id: {
-    //           type: String,
-    //           required: true,
-    //         },
-    //         name: {
-    //           type: String,
-    //           required: true,
-    //         },
-    //         price: {
-    //           type: Number,
-    //           required: true,
-    //         },
-    //         totalPrice: {
-    //           type: Number,
-    //           required: true,
-    //         },
-    //         quantity: {
-    //           type: Number,
-    //           required: true,
-    //         },
-    //         image: {
-    //           desktop: {
-    //             type: String,
-    //             required: true,
-    //           },
-    //           tablet: {
-    //             type: String,
-    //             required: true,
-    //           },
-    //           mobile: {
-    //             type: String,
-    //             required: true,
-    //           },
-    //         },
-    //       },
-    //     ],
-    //   },
-    // ],
-
     forgotPasswordToken: String,
     forgotPasswordTokenExpiry: Date,
     verifyToken: String,

@@ -2,7 +2,6 @@ import useCart from "@/hooks/use-cart";
 import classes from "./CheckoutItems.module.css";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { renameProduct } from "@/helpers/algorithm";
 import Button from "../../UI/Button/Button";
 import { useRouter } from "next/navigation";
@@ -14,6 +13,7 @@ import CheckoutModal from "../CheckoutModal/CheckoutModal";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
+import BackButton from "@/components/UI/BackButton/BackButton";
 
 const CheckoutItems: React.FC = () => {
   const { items, total, shipping, removeItem, removeAll } = useCart();
@@ -57,9 +57,7 @@ const CheckoutItems: React.FC = () => {
     <>
       {modal && <CheckoutModal />}
       <section className={classes.checkout}>
-        <button onClick={() => router.push("/")} className={classes.back__btn}>
-          Go back
-        </button>
+        <BackButton />
         <AnimatePresence mode="wait">
           {cartData.length === 0 && (
             <motion.div

@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import useCart from "@/hooks/use-cart";
 import Counter from "@/components/UI/Counter/Counter";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
-import { toast } from "sonner";
+import BackButton from "@/components/UI/BackButton/BackButton";
 
 const DetailProduct: React.FC<IPropsDetailProduct> = ({
   _id,
@@ -19,13 +19,10 @@ const DetailProduct: React.FC<IPropsDetailProduct> = ({
 }) => {
   const [count, setCount] = useState<number>(1);
   const { addItem } = useCart();
-  const router = useRouter();
 
   return (
     <>
-      <button onClick={() => router.back()} className={classes.back__btn}>
-        Go back
-      </button>
+      <BackButton padding="5rem 4rem" />
       <div className={classes.detail__container}>
         <ResponsiveImage
           width={540}

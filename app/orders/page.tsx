@@ -1,4 +1,6 @@
+import OrdersSection from "@/components/OrdersPage/OrdersSection";
 import Order from "@/models/Order";
+import connect from "@/utils/db";
 import getCurrentUser from "@/utils/utils";
 
 async function getOrders() {
@@ -18,8 +20,10 @@ async function getOrders() {
 export default async function OrdersPage() {
   const orders = await getOrders();
 
-  console.log(orders);
-  
+  if (!orders) {
+    // Obsługa przypadku, gdy nie udało się pobrać zamówień
+    return <div>Error loading orders</div>;
+  }
 
-  return <div></div>;
+  if (orders) return <OrdersSection orders={orders} />;
 }

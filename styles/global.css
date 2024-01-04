@@ -24,7 +24,8 @@ html {
 }
 
 .section__category,
-.section__detail {
+.section__detail,
+.section {
   margin: 0 auto;
   max-width: 111rem;
   padding-top: 9.8rem;

@@ -1,0 +1,15 @@
+.back__btn {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: var(--lighter-black);
+  font-weight: 400;
+  padding: 18.8rem 0rem 6.4rem 0rem;
+}
+
+.back__btn:hover {
+  transition: all 0.3s ease;
+  color: var(--orange-hover);
+  cursor: pointer;
+}

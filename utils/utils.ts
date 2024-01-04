@@ -18,7 +18,6 @@ export default async function getCurrentUser() {
 
     const currentUser = await User.findOne({ email: session?.user?.email });
 
-
     if (!currentUser) return null;
 
     return {

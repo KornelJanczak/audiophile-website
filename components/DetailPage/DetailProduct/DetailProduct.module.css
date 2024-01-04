@@ -42,22 +42,6 @@
   max-width: 44.5rem;
 }
 
-.back__btn {
-  border: none;
-  background: none;
-  font-size: 1.5rem;
-  font-family: inherit;
-  color: var(--lighter-black);
-  font-weight: 400;
-  padding: 5rem 4rem;
-}
-
-.back__btn:hover {
-  transition: all 0.3s ease;
-  color: var(--orange-hover);
-  cursor: pointer;
-}
-
 .detail__content strong {
   font-size: 1.8rem;
   letter-spacing: 1px;

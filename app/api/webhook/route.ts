@@ -3,7 +3,6 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { stripe } from "@/utils/stripe";
 import Order from "@/models/Order";
-import { ICartData } from "@/models/@type-props";
 
 export async function POST(req: Request) {
   const body = await req.text();

@@ -9,7 +9,7 @@ import User from "@/models/User";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import { mongoClient } from "@/utils/mongodb";
 
-const clientPromise = mongoClient();
+
 
 export const authOptions: NextAuthOptions = {
   providers: [
