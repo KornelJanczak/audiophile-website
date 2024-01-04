@@ -152,8 +152,8 @@ export interface IOrder {
   address: string;
   orderItems: ICartData[];
   __v?: number;
-  createdAt?: any;
-  updatedAt?: any;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 // Product Type

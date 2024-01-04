@@ -31,7 +31,7 @@ const UserPanel: React.FC<{ closePanel: () => void }> = ({ closePanel }) => {
         <h3>Hello {username}!</h3>
         <ul>
           <li>Your account</li>
-          <li onClick={() => router.push("/orders")}>Orders</li>
+          <li onClick={() => router.push("/orders/last")}>Orders</li>
           <li>Return product</li>
           <li onClick={() => signOut()} className={classes.signout}>
             Sign out
