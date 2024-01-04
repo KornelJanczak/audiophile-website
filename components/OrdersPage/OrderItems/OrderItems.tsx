@@ -1,22 +1,28 @@
+// "use client"
 import { IOrder } from "@/models/@type-props";
 import classes from "./OrderItems.module.css";
 import ResponsiveImage from "../../UI/ResponsiveImage";
+import { isObjectFirstOfMonth } from "@/helpers/algorithm";
 
 const OrderItems: React.FC<{ orders: IOrder[] | null }> = ({ orders }) => {
   return (
     <ul className={classes.order__ul}>
-      {orders!.map((order) => {
+      {orders!.map((order, i) => {
         const totalCost = order.orderItems.reduce(
           (acc, order) => acc + order.totalPrice,
           0
         );
 
-        // console.log(order.updatedAt.toString().toLocaleDateString("en-US"));
-        console.log(order.updatedAt?.toLocaleDateString());
+        const date = order.updatedAt?.toLocaleDateString("en-US", {
+          month: "long",
+        });
+
+        const firstOfMonthOrder = isObjectFirstOfMonth(orders, order);
 
         return (
-          <li key={order._id!.toString()}>
-            <span>luty</span>
+          <li key={order._id!.toString()} className={classes.container}>
+            {firstOfMonthOrder && <span className={classes.month}>{date}</span>}
+
             <div className={classes.order__container}>
               <ul className={classes.ul__info}>
                 <li>
@@ -27,7 +33,7 @@ const OrderItems: React.FC<{ orders: IOrder[] | null }> = ({ orders }) => {
                 </li>
                 <li>
                   <strong className={classes.strong}>Total cost</strong>
-                  <span className={classes.text}>{totalCost}</span>
+                  <span className={classes.text}>{totalCost.toLocaleString("en")}</span>
                 </li>
                 <li>
                   <strong className={classes.strong}>Payment status</strong>

@@ -1,0 +1,29 @@
+.filter__bar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 4rem 4rem;
+}
+
+.filter__bar label {
+  font-size: 3.2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 3.4rem;
+  letter-spacing: 0.1143rem;
+}
+
+.select__filter {
+  max-width: 20rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background: none;
+  outline: none;
+  font-size: 1.6rem;
+  font-weight: 550;
+  font-family: inherit;
+}
+
+.select__filter option {
+  font-weight: 550;
+}

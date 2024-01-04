@@ -37,7 +37,6 @@ export default async function OrdersPage({
   params: { filter: string };
 }) {
   const orders = await getOrders(params.filter);
-
   return (
     <section className="section">
       <FilterBar />

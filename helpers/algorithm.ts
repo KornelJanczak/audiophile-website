@@ -11,3 +11,20 @@ export function renameProduct(productName: string): string {
 
   return productName;
 }
+
+export const isObjectFirstOfMonth = (data: any, currentObject: any) => {
+  const currentMonthKey = currentObject.createdAt.toISOString().slice(0, 7);
+
+  const isFirstOfMonth = data.every((otherObject: any) => {
+    const otherMonthKey = otherObject.createdAt.toISOString().slice(0, 7);
+
+    // Porównaj daty tylko dla tego samego miesiąca
+    if (otherMonthKey === currentMonthKey) {
+      return currentObject.createdAt <= otherObject.createdAt;
+    }
+
+    return true;
+  });
+
+  return isFirstOfMonth;
+};

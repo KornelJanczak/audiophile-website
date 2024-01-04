@@ -1,10 +1,11 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import classes from "./FilterBar.module.css";
 import { useRef } from "react";
 
 const FilterBar: React.FC = () => {
   const router = useRouter();
+  const params = useParams();
   const selectRef = useRef<HTMLSelectElement | null>(null);
 
   return (
@@ -15,6 +16,7 @@ const FilterBar: React.FC = () => {
         id="filter-bar"
         className={classes.select__filter}
         ref={selectRef}
+        value={params.filter}
         onChange={() => {
           const option = selectRef.current?.value as string;
           router.push(option);
