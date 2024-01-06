@@ -40,7 +40,8 @@ export default async function OrdersPage({
   return (
     <section className="section">
       <FilterBar />
-      <OrderItems orders={orders} />
+        <OrderItems orders={orders} />
+
     </section>
   );
 }

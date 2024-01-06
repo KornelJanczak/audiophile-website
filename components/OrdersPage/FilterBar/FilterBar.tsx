@@ -18,8 +18,7 @@ const FilterBar: React.FC = () => {
         ref={selectRef}
         value={params.filter}
         onChange={() => {
-          const option = selectRef.current?.value as string;
-          router.push(option);
+          router.push(selectRef.current?.value as string);
         }}
       >
         <option value="last">Last 6 months</option>
