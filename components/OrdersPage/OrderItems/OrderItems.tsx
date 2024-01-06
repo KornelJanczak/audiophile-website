@@ -33,7 +33,9 @@ const OrderItems: React.FC<{ orders: IOrder[] | null }> = ({ orders }) => {
                 </li>
                 <li>
                   <strong className={classes.strong}>Total cost</strong>
-                  <span className={classes.text}>$ {totalCost.toLocaleString("en-US")}</span>
+                  <span className={classes.text}>
+                    $ {totalCost.toLocaleString("en-US")}
+                  </span>
                 </li>
                 <li>
                   <strong className={classes.strong}>Payment status</strong>
@@ -57,7 +59,6 @@ const OrderItems: React.FC<{ orders: IOrder[] | null }> = ({ orders }) => {
                       />
                       <p className={classes.product__name}>{orderItem.name}</p>
                       <span className={classes.quantity}>
-
                         x{orderItem.quantity}
                       </span>
                     </li>

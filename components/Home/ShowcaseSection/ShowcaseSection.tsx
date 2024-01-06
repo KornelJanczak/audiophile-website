@@ -2,12 +2,20 @@ import Button from "@/components/UI/Button/Button";
 import classes from "./ShowcaseSection.module.css";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
 import { useRouter } from "next/navigation";
+import { scrollVariants } from "@/animations/animations";
+import { motion } from "framer-motion";
 
 const ShowcaseSection: React.FC = () => {
   const router = useRouter();
   return (
     <section className={classes.showcase__section}>
-      <div className={classes.showcase__speaker}>
+      <motion.div
+        className={classes.showcase__speaker}
+        variants={scrollVariants}
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <div className={classes.showcase__speaker__img__box}>
           <ResponsiveImage
             imgClassName={classes.speaker__img}
@@ -35,8 +43,14 @@ const ShowcaseSection: React.FC = () => {
             SEE PRODUCT
           </Button>
         </div>
-      </div>
-      <div className={classes.showcase__second__speaker}>
+      </motion.div>
+      <motion.div
+        className={classes.showcase__second__speaker}
+        variants={scrollVariants}
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <div className={classes.showcase__second__content__box}>
           <h3>ZX7 SPEAKER</h3>
           <Button
@@ -46,8 +60,14 @@ const ShowcaseSection: React.FC = () => {
             SEE PRODUCT
           </Button>
         </div>
-      </div>
-      <div className={classes.showcase__third__earphones}>
+      </motion.div>
+      <motion.div
+        className={classes.showcase__third__earphones}
+        variants={scrollVariants}
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <ResponsiveImage
           imgClassName={classes.showcase__third__img}
           pictureClassName={classes.showcase__third__img}
@@ -70,7 +90,7 @@ const ShowcaseSection: React.FC = () => {
             SEE PRODUCT
           </Button>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

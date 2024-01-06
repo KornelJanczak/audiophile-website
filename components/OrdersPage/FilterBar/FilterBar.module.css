@@ -27,3 +27,9 @@
 .select__filter option {
   font-weight: 550;
 }
+
+@media (max-width: 36.5em) {
+  .select__filter {
+    max-width: 100%;
+  }
+}
