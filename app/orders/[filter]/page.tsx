@@ -3,7 +3,6 @@ import OrderItems from "@/components/OrdersPage/OrderItems/OrderItems";
 import Order from "@/models/Order";
 import connect from "@/utils/db";
 import getCurrentUser from "@/utils/utils";
-import { Suspense } from "react";
 
 async function getOrders(params: string) {
   await connect();
@@ -41,9 +40,8 @@ export default async function OrdersPage({
   return (
     <section className="section">
       <FilterBar />
-      <Suspense fallback={<p>LOADING...</p>}>
-        <OrderItems orders={orders} />
-      </Suspense>
+
+      <OrderItems orders={orders} />
     </section>
   );
 }

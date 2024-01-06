@@ -8,9 +8,6 @@ export const scrollVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      // type: "spring",
-      // bounce: 0.4,
-      // delay: 0.2,
       duration: 0.3,
     },
   },
