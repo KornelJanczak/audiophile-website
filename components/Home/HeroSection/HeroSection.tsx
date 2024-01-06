@@ -4,13 +4,22 @@ import classes from "./HeroSection.module.css";
 import Button from "../../UI/Button/Button";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 
 const HeroSection: React.FC = () => {
   const router = useRouter();
   return (
     <section className={classes.hero__section}>
-      <div className={classes.container}>
-        <div className={classes.hero__text__box}>
+      <motion.div
+      // className={classes.container}
+      // initial={{ y: 15 }}
+      // animate={{ y: 0 }}
+      // transition={{ duration: 0.45 }}
+      >
+        <div
+          className={classes.hero__text__box}
+
+        >
           <p className={classes.hero__span}>NEW PRODUCT</p>
           <h1 className={classes.hero__h1}>XX99 MARK II HEADPHONES</h1>
           <p className={classes.hero__text}>
@@ -38,7 +47,7 @@ const HeroSection: React.FC = () => {
           pictureClassName={classes.hero__logo}
           imgClassName={classes.hero__logo}
         />
-      </div>
+      </motion.div>
     </section>
   );
 };

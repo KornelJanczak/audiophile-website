@@ -4,19 +4,10 @@ import { IPropsProducts } from "@/models/@type-props";
 import Image from "next/image";
 import arrowImage from "../../../public/assets/shared/desktop/icon-arrow-right.svg";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { fadeInAnimationVariants } from "@/animations/animations";
 
 const Product: React.FC<IPropsProducts> = ({ img, title, index }) => {
   return (
-    <motion.div
-      variants={fadeInAnimationVariants}
-      initial="initial"
-      whileInView="animate"
-      custom={index}
-      whileHover={{ scale: 1.1, transition: { duration: 0.25 } }}
-      viewport={{ once: true }}
-    >
+    <div>
       <Link
         href={`/categories/${title.toLowerCase()}`}
         className={classes.product}
@@ -45,7 +36,7 @@ const Product: React.FC<IPropsProducts> = ({ img, title, index }) => {
           </button>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 };
 

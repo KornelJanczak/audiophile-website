@@ -2,6 +2,7 @@
 import classes from "./ProductsSection.module.css";
 import Product from "./Product";
 import { motion } from "framer-motion";
+import { fadeInAnimationVariants } from "@/animations/animations";
 
 const products = [
   {
@@ -22,14 +23,6 @@ const products = [
 const ProductsSection: React.FC<{ mobileClass?: string }> = ({
   mobileClass,
 }) => {
-  const productsContainer = (
-    <div className={classes.products}>
-      {products.map((product, i) => (
-        <Product key={i} img={product.img} title={product.title} index={i} />
-      ))}
-    </div>
-  );
-
   if (mobileClass)
     return (
       <motion.section
@@ -40,14 +33,42 @@ const ProductsSection: React.FC<{ mobileClass?: string }> = ({
         transition={{ duration: 0.2 }}
         style={{ zIndex: 2 }}
       >
-        {productsContainer}
+        <div className={classes.products}>
+          {products.map((product, i) => (
+            <Product
+              key={i}
+              img={product.img}
+              title={product.title}
+              index={i}
+            />
+          ))}
+        </div>
       </motion.section>
     );
 
   if (!mobileClass)
     return (
       <section className={classes.products__section}>
-        {productsContainer}
+        <div className={classes.products}>
+          {products.map((product, i) => (
+            <motion.div
+              variants={fadeInAnimationVariants}
+              initial="initial"
+              whileInView="animate"
+              custom={i}
+              whileHover={{ scale: 1.1, transition: { duration: 0.25 } }}
+              viewport={{ once: true }}
+              key={i}
+            >
+              <Product
+                key={i}
+                img={product.img}
+                title={product.title}
+                index={i}
+              />
+            </motion.div>
+          ))}
+        </div>
       </section>
     );
 };

@@ -46,6 +46,7 @@ export default async function RootLayout({
                 zIndex: "99999999999999999999999999999999999999999999999",
               }}
             />
+            <div id="modal" />
           </TanstackProvider>
         </AuthProvider>
       </body>
