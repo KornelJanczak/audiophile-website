@@ -1,9 +1,17 @@
 import { IPropsDetailInfo } from "@/models/@type-props";
 import classes from "./DetailInfo.module.css";
+import { motion } from "framer-motion";
+import { scrollVariants } from "@/animations/animations";
 
 const DetailInfo: React.FC<IPropsDetailInfo> = ({ features, includes }) => {
   return (
-    <div className={classes.container}>
+    <motion.div
+      className={classes.container}
+      variants={scrollVariants}
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true, amount: 0.6 }}
+    >
       <div className={classes.features}>
         <h3>FEATURES</h3>
         <span className={classes.text}>{features}</span>
@@ -19,7 +27,7 @@ const DetailInfo: React.FC<IPropsDetailInfo> = ({ features, includes }) => {
           ))}
         </ul>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
