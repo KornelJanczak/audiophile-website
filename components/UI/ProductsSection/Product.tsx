@@ -5,10 +5,18 @@ import Image from "next/image";
 import arrowImage from "../../../public/assets/shared/desktop/icon-arrow-right.svg";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { fadeInAnimationVariants } from "@/animations/animations";
 
-const Product: React.FC<IPropsProducts> = ({ img, title }) => {
+const Product: React.FC<IPropsProducts> = ({ img, title, index }) => {
   return (
-    <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.25 }}>
+    <motion.div
+      variants={fadeInAnimationVariants}
+      initial="initial"
+      whileInView="animate"
+      custom={index}
+      whileHover={{ scale: 1.1, transition: { duration: 0.25 } }}
+      viewport={{ once: true }}
+    >
       <Link
         href={`/categories/${title.toLowerCase()}`}
         className={classes.product}

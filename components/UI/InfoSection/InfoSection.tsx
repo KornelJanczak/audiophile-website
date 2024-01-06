@@ -1,3 +1,4 @@
+"use client"
 import classes from "./InfoSection.module.css";
 import ResponsiveImage from "../ResponsiveImage";
 import { motion } from "framer-motion";

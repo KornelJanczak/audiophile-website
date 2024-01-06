@@ -30,6 +30,7 @@ export interface IPropsCounter {
 export interface IPropsProducts {
   img: string;
   title: string;
+  index?: number;
 }
 
 export interface IPropsProductPage {

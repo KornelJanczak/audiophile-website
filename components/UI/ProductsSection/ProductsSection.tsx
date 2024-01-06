@@ -25,7 +25,7 @@ const ProductsSection: React.FC<{ mobileClass?: string }> = ({
   const productsContainer = (
     <div className={classes.products}>
       {products.map((product, i) => (
-        <Product key={i} img={product.img} title={product.title} />
+        <Product key={i} img={product.img} title={product.title} index={i} />
       ))}
     </div>
   );
