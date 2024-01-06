@@ -8,7 +8,7 @@ export const scrollVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.3,
+      duration: 0.45,
     },
   },
 };
@@ -23,7 +23,7 @@ export const fadeInAnimationVariants: Variants = {
     y: 0,
     transition: {
       delay: 0.08 * index,
-      duration: 0.3,
+      duration: 0.45,
     },
   }),
 };

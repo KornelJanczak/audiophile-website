@@ -1,12 +1,14 @@
 "use client";
 import { IPropsProductPage } from "@/models/@type-props";
 import Banner from "@/components/ProductPage/Banner/Banner";
-import CategoryItem from "@/components/ProductPage/CategorySection/CategoryItem";
+import CategoryItem from "@/components/ProductPage/CategorySection/CategoryItem/CategoryItem";
 import { useParams } from "next/navigation";
-import CategoryContent from "@/components/ProductPage/CategorySection/CategoryContent";
+import CategoryContent from "@/components/ProductPage/CategorySection/CategoryContent/CategoryContent";
 import ProductsSection from "@/components/UI/ProductsSection/ProductsSection";
 import PageWrapper from "@/components/UI/PageWrapper";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
+import { motion } from "framer-motion";
+import { scrollVariants } from "@/animations/animations";
 
 const CategoryPage: React.FC<IPropsProductPage> = ({ categories }) => {
   const params = useParams();
