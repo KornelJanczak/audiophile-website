@@ -18,7 +18,6 @@ import FormContainer from "../UI/FormContainer/FormContainer";
 import { IFormValuesSignIn } from "@/models/@type-props";
 import EyeButton from "../UI/EyeButton";
 import { Triangle } from "react-loader-spinner";
-import { useAnimate } from "framer-motion";
 
 const LoginForm: React.FC = () => {
   const router = useRouter();

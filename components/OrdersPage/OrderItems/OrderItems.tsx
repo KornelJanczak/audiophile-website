@@ -5,9 +5,16 @@ import ResponsiveImage from "../../UI/ResponsiveImage";
 import { isObjectFirstOfMonth } from "@/helpers/algorithm";
 
 const OrderItems: React.FC<{ orders: IOrder[] | null }> = ({ orders }) => {
+  // Sorted since oldest to lastest
+  const sortedArr: IOrder[] | undefined = orders?.sort((a, b) => {
+    const dateA: any = new Date(a.createdAt!);
+    const dateB: any = new Date(b.createdAt!);
+    return dateA - dateB;
+  });
+
   return (
     <ul className={classes.order__ul}>
-      {orders!.map((order, i) => {
+      {sortedArr!.map((order: IOrder) => {
         const totalCost = order.orderItems.reduce(
           (acc, order) => acc + order.totalPrice,
           0

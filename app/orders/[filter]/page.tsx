@@ -1,5 +1,6 @@
 import FilterBar from "@/components/OrdersPage/FilterBar/FilterBar";
 import OrderItems from "@/components/OrdersPage/OrderItems/OrderItems";
+import PageWrapper from "@/components/UI/PageWrapper";
 import Order from "@/models/Order";
 import connect from "@/utils/db";
 import getCurrentUser from "@/utils/utils";
@@ -8,7 +9,9 @@ async function getOrders(params: string) {
   await connect();
   const user = await getCurrentUser();
 
-  if (!user || !user.isVerfied) return null;
+  if (!user || !user.isVerfied) {
+    throw new Error("User is not verified.");
+  }
 
   let orders;
 
@@ -26,7 +29,7 @@ async function getOrders(params: string) {
     orders = await Order.find({ userId: user.id });
   }
 
-  if (!orders) return null;
+  if (!orders) return [];
 
   return orders;
 }
@@ -38,10 +41,11 @@ export default async function OrdersPage({
 }) {
   const orders = await getOrders(params.filter);
   return (
-    <section className="section">
-      <FilterBar />
-
-      <OrderItems orders={orders} />
-    </section>
+    <PageWrapper>
+      <section className="section">
+        <FilterBar />
+        <OrderItems orders={orders} />
+      </section>
+    </PageWrapper>
   );
 }
