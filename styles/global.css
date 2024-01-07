@@ -23,6 +23,11 @@ html {
   font-size: 4rem;
 }
 
+.text__color {
+  --tw-text-opacity: 1;
+  color: rgb(125 125 125 / var(--tw-text-opacity)) !important;
+}
+
 .section__category,
 .section__detail,
 .section {

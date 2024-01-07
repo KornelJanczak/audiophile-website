@@ -46,7 +46,7 @@ const DetailProduct: React.FC<IPropsDetailProduct> = ({
         <div className={classes.detail__content}>
           {isNew && <span>NEW PRODUCT</span>}
           <h2>{name}</h2>
-          <p>{description}</p>
+          <p className="text__color ">{description}</p>
           <strong>{"$ " + price.toLocaleString("en-US")}</strong>
           <div className={classes.detail__add__to__cart}>
             <Counter

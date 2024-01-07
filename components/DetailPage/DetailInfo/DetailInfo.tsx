@@ -14,7 +14,7 @@ const DetailInfo: React.FC<IPropsDetailInfo> = ({ features, includes }) => {
     >
       <div className={classes.features}>
         <h3>FEATURES</h3>
-        <span className={classes.text}>{features}</span>
+        <span className={`${classes.text} text__color `}>{features}</span>
       </div>
       <div className={classes.ul__box}>
         <h3>IN THE BOX</h3>
@@ -22,7 +22,7 @@ const DetailInfo: React.FC<IPropsDetailInfo> = ({ features, includes }) => {
           {includes.map((include, i) => (
             <li key={i}>
               <strong>{include.quantity}x</strong>
-              <p className="text">{include.item}</p>
+              <p className="text text__color ">{include.item}</p>
             </li>
           ))}
         </ul>

@@ -4,15 +4,9 @@ import { NextResponse } from "next/server";
 import { stripe } from "@/utils/stripe";
 import Order from "@/models/Order";
 import { sendEmail } from "@/utils/mailer";
-import getCurrentUser from "@/utils/utils";
 
 export async function POST(req: Request) {
   const body = await req.text();
-  // const user = await getCurrentUser();
-
-  // console.log(user);
-
-  // if ( !body) return new NextResponse(null, { status: 401 });
 
   const signature = headers().get("Stripe-Signature") as string;
 

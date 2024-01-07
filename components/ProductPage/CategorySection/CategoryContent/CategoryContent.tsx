@@ -16,7 +16,7 @@ const CategoryContent: React.FC<IPropsCategory> = ({
     <div className={classes.content_box}>
       {isNew && <span>NEW PRODUCT</span>}
       <h2>{title}</h2>
-      <p>{description}</p>
+      <p className="text__color ">{description}</p>
 
       <Button
         style={classes.btn}
