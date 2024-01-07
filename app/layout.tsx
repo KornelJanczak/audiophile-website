@@ -9,7 +9,7 @@ import { getServerSession } from "next-auth/next";
 
 const manrope = Manrope({
   subsets: ["latin"],
-  display: "swap",
+  // display: "swap"
 });
 
 export const metadata: Metadata = {

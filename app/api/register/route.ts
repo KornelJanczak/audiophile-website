@@ -1,7 +1,7 @@
 // import { connect } from "@/utils/mongodb";
 import User from "@/models/User";
 import connect from "@/utils/db";
-import { sendEmial } from "@/utils/mailer";
+import { sendEmail } from "@/utils/mailer";
 import bcrypt from "bcrypt";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
     const savedUser = await newUser.save();
 
     // Send verification email
-    await sendEmial({
+    await sendEmail({
       firstName: firstName,
       lastName: lastName,
       email: email,

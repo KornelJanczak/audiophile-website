@@ -1,20 +1,13 @@
 import { stripe } from "@/utils/stripe";
 import { NextResponse } from "next/server";
 import Order from "@/models/Order";
-import getCurrentUser, { absoluteUrl } from "@/utils/utils";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "../auth/[...nextauth]/options";
+import getCurrentUser from "@/utils/utils";
 import User from "@/models/User";
 import connect from "@/utils/db";
-import { getSession } from "next-auth/react";
-import WebsiteProduct from "@/models/Product";
 import { ICartData } from "@/models/@type-props";
 import Stripe from "stripe";
-import ProductModel from "@/models/Product";
-import mongoose from "mongoose";
 import { fetchData } from "@/utils/mongodb";
 
-const settingUrl = absoluteUrl("/");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -22,9 +15,7 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
-const { ObjectId } = mongoose.Types;
-
-export async function POST(req: Request, res: Response) {
+export async function POST(req: Request) {
   try {
     await connect();
     const cartData: ICartData[] = await req.json();
@@ -63,7 +54,11 @@ export async function POST(req: Request, res: Response) {
       orderItems: cartData,
     });
 
-    await order.save();
+    try {
+      await order.save();
+    } catch (err) {
+      return NextResponse.json({ message: err }, { status: 404 });
+    }
 
     const session = await stripe.checkout.sessions.create({
       line_items,
@@ -76,6 +71,10 @@ export async function POST(req: Request, res: Response) {
       cancel_url: `${process.env.FRONTEND_STORE_URL}/checkout?canceled=true`,
       metadata: {
         orderId: order._id.toString(),
+        email: user.email,
+        firstname: user.firstName,
+        lastName: user.lastName,
+        userId: user.id,
       },
     });
 

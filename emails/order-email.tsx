@@ -19,7 +19,11 @@ export default function OrderEmail({
   return (
     <Html>
       <Head></Head>
-      <Body></Body>
+      <Body>
+        {order?.orderItems.map((order, i) => (
+          <Text key={i}>{order.name}</Text>
+        ))}
+      </Body>
     </Html>
   );
 }

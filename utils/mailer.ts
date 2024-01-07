@@ -8,9 +8,10 @@ import OrderEmail from "@/emails/order-email";
 // domain.com/verifytoken/  - client
 // domain.com/verifytoken?token=/ -server
 
+const TOKEN_EXPIRY_TIME = 3600000;
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const sendEmial = async ({
+export const sendEmail = async ({
   email,
   emailType,
   userId,
@@ -22,27 +23,38 @@ export const sendEmial = async ({
     const hashedToken = await bcrypt.hash(userId.toString(), 10);
     let emailTemplate: ReactElement | string = "";
 
-    if (emailType === process.env.VERIFY) {
-      await User.findByIdAndUpdate(userId, {
-        verifyToken: hashedToken,
-        verifyTokenExpiry: Date.now() + 3600000,
-      });
-      emailTemplate = VerifyEmail({ hashedToken, firstName, lastName });
+    if (
+      ![process.env.VERIFY, process.env.RESET, process.env.ORDER].includes(
+        emailType
+      )
+    ) {
+      throw new Error("Invalid emailType");
     }
 
-    if (emailType === process.env.RESET) {
-      await User.findByIdAndUpdate(userId, {
-        forgotPasswordToken: hashedToken,
-        forgotPasswordTokenExpiry: Date.now() + 3600000,
-      });
-      emailTemplate = "Reset password";
+    switch (emailType) {
+      case process.env.VERIFY:
+        await User.findByIdAndUpdate(userId, {
+          verifyToken: hashedToken,
+          verifyTokenExpiry: Date.now() + TOKEN_EXPIRY_TIME,
+        });
+        emailTemplate = VerifyEmail({ hashedToken, firstName, lastName });
+        break;
+      case process.env.RESET:
+        await User.findByIdAndUpdate(userId, {
+          forgotPasswordToken: hashedToken,
+          forgotPasswordTokenExpiry: Date.now() + TOKEN_EXPIRY_TIME,
+        });
+        emailTemplate = "Reset password";
+        break;
+      case process.env.ORDER:
+        emailTemplate = OrderEmail({ order, firstName, lastName });
+        break;
+      default:
+        break;
     }
-
-    if (emailType === process.env.ORDER)
-      emailTemplate = OrderEmail({ order, firstName, lastName });
 
     const data = await resend.emails.send({
-      from: "Verify your mail! <onboarding@resend.dev>",
+      from: "Audiophile <onboarding@resend.dev>",
       to: [email],
       subject: "Audiophile",
       react: emailTemplate,
@@ -70,5 +82,3 @@ export const sendEmial = async ({
 //   subject: "Hello world",
 //   html: `<a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">Click</a>`,
 // };
-
-// const mailResponse = await transport.sendMail(mailOptions);

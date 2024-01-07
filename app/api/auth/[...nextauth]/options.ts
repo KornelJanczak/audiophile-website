@@ -6,10 +6,6 @@ import bcrypt from "bcrypt";
 import { ObjectId } from "mongodb";
 import connect from "@/utils/db";
 import User from "@/models/User";
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import { mongoClient } from "@/utils/mongodb";
-
-
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -78,6 +74,7 @@ export const authOptions: NextAuthOptions = {
       }
     },
     async jwt({ token, user }) {
+      await connect();
       const dbUser = await User.findOne({ email: token.email });
       if (!dbUser) {
         token.id = user!.id;
@@ -109,7 +106,6 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
     async redirect({ url, baseUrl }) {
-      // return "/";
       if (url.startsWith("/")) return `${baseUrl}`;
       // Allows callback URLs on the same origin
       else if (new URL(url).origin === baseUrl) return baseUrl;

@@ -213,15 +213,6 @@ export interface Product {
 
 // SignIn/SignUp/Verify
 
-export interface IsendEmail {
-  firstName: string;
-  lastName: string;
-  email: string;
-  emailType: string;
-  order?: IOrder[] | undefined;
-  userId: ObjectId;
-}
-
 export interface IFormValuesSignIn {
   email: string;
   password: string;
@@ -241,6 +232,17 @@ export interface VerifyEmailProps {
   };
 }
 
+
+// Email Type
+export interface IsendEmail {
+  firstName: string;
+  lastName: string;
+  email: string;
+  emailType: string;
+  order?: IOrder | undefined;
+  userId: ObjectId | string;
+}
+
 export interface IVerifyEmail {
   hashedToken: string;
   firstName: string;
@@ -248,7 +250,7 @@ export interface IVerifyEmail {
 }
 
 export interface IOrderEmail {
-  order?: IOrder[];
+  order?: IOrder;
   firstName: string;
   lastName: string;
 }

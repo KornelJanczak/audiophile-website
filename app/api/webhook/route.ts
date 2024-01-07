@@ -3,12 +3,16 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { stripe } from "@/utils/stripe";
 import Order from "@/models/Order";
-import { sendEmial } from "@/utils/mailer";
+import { sendEmail } from "@/utils/mailer";
 import getCurrentUser from "@/utils/utils";
 
 export async function POST(req: Request) {
   const body = await req.text();
-  const user = await getCurrentUser();
+  // const user = await getCurrentUser();
+
+  // console.log(user);
+
+  // if ( !body) return new NextResponse(null, { status: 401 });
 
   const signature = headers().get("Stripe-Signature") as string;
 
@@ -45,13 +49,13 @@ export async function POST(req: Request) {
       address: addressString,
     });
 
-    await sendEmial({
-      email: user?.email,
+    await sendEmail({
+      email: session.metadata!.email,
       emailType: process.env.ORDER as string,
-      userId: user?.id,
-      firstName: user?.firstName,
-      lastName: user?.lastName,
-      order: order
+      userId: session.metadata!.userId,
+      firstName: session.metadata!.firstName,
+      lastName: session.metadata!.lastName,
+      order: order,
     });
   }
 
