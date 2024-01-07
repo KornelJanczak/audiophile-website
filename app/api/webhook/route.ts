@@ -3,9 +3,12 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { stripe } from "@/utils/stripe";
 import Order from "@/models/Order";
+import { sendEmial } from "@/utils/mailer";
+import getCurrentUser from "@/utils/utils";
 
 export async function POST(req: Request) {
   const body = await req.text();
+  const user = await getCurrentUser();
 
   const signature = headers().get("Stripe-Signature") as string;
 
@@ -36,20 +39,20 @@ export async function POST(req: Request) {
     .filter((address) => address !== null)
     .join(", ");
 
-    console.log(session);
-
-  console.log(session?.metadata?.orderId);
-
   if (event.type === "checkout.session.completed") {
     const order = await Order.findByIdAndUpdate(session?.metadata?.orderId, {
       isPaid: true,
       address: addressString,
     });
 
-    console.log(order);
-    // const productsIds = order.orderItems.map(
-    //   (orderItem: ICartData) => orderItem.id
-    // );
+    await sendEmial({
+      email: user?.email,
+      emailType: process.env.ORDER as string,
+      userId: user?.id,
+      firstName: user?.firstName,
+      lastName: user?.lastName,
+      order: order
+    });
   }
 
   return new NextResponse(null, { status: 200 });

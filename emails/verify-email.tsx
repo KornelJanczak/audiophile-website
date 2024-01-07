@@ -6,7 +6,6 @@ import {
   Head,
   Html,
   Img,
-  Link,
   Preview,
   Section,
   Text,
@@ -101,11 +100,6 @@ const button = {
 
 const links = {
   textAlign: "center" as const,
-};
-
-const link = {
-  color: "#0366d6",
-  fontSize: "12px",
 };
 
 const footer = {

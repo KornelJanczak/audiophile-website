@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import { IsendEmail } from "@/models/@type-props";
 import { Resend } from "resend";
 import VerifyEmail from "@/emails/verify-email";
+import { ReactElement } from "react";
+import OrderEmail from "@/emails/order-email";
 // domain.com/verifytoken/  - client
 // domain.com/verifytoken?token=/ -server
 
@@ -14,15 +16,18 @@ export const sendEmial = async ({
   userId,
   firstName,
   lastName,
+  order,
 }: IsendEmail) => {
   try {
     const hashedToken = await bcrypt.hash(userId.toString(), 10);
+    let emailTemplate: ReactElement | string = "";
 
     if (emailType === process.env.VERIFY) {
       await User.findByIdAndUpdate(userId, {
         verifyToken: hashedToken,
         verifyTokenExpiry: Date.now() + 3600000,
       });
+      emailTemplate = VerifyEmail({ hashedToken, firstName, lastName });
     }
 
     if (emailType === process.env.RESET) {
@@ -30,13 +35,11 @@ export const sendEmial = async ({
         forgotPasswordToken: hashedToken,
         forgotPasswordTokenExpiry: Date.now() + 3600000,
       });
+      emailTemplate = "Reset password";
     }
 
-    const emailTemplate = process.env.VERIFY
-      ? VerifyEmail({ hashedToken, firstName , lastName })
-      : "Reset your password";
-
-console.log(email);
+    if (emailType === process.env.ORDER)
+      emailTemplate = OrderEmail({ order, firstName, lastName });
 
     const data = await resend.emails.send({
       from: "Verify your mail! <onboarding@resend.dev>",

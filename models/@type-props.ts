@@ -218,6 +218,7 @@ export interface IsendEmail {
   lastName: string;
   email: string;
   emailType: string;
+  order?: IOrder[] | undefined;
   userId: ObjectId;
 }
 
@@ -242,6 +243,12 @@ export interface VerifyEmailProps {
 
 export interface IVerifyEmail {
   hashedToken: string;
+  firstName: string;
+  lastName: string;
+}
+
+export interface IOrderEmail {
+  order?: IOrder[];
   firstName: string;
   lastName: string;
 }

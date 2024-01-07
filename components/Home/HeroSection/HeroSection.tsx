@@ -11,7 +11,7 @@ const HeroSection: React.FC = () => {
   return (
     <section className={classes.hero__section}>
       <motion.div
-      // className={classes.container}
+      className={classes.container}
       // initial={{ y: 15 }}
       // animate={{ y: 0 }}
       // transition={{ duration: 0.45 }}

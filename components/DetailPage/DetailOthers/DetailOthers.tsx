@@ -4,10 +4,7 @@ import Button from "@/components/UI/Button/Button";
 import { useRouter } from "next/navigation";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
 import { motion } from "framer-motion";
-import {
-  fadeInAnimationVariants,
-  scrollVariants,
-} from "@/animations/animations";
+import { fadeInAnimationVariants } from "@/animations/animations";
 
 const DetailOthers: React.FC<IPropsDetailOthers> = ({ others }) => {
   const router = useRouter();
