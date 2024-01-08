@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
 import BackButton from "@/components/UI/BackButton/BackButton";
+import NoContent from "@/components/UI/NoContentCard/NoContent";
 
 const CheckoutItems: React.FC = () => {
   const { items, total, shipping, removeItem, removeAll } = useCart();
@@ -60,25 +61,12 @@ const CheckoutItems: React.FC = () => {
         <BackButton />
         <AnimatePresence mode="wait">
           {cartData.length === 0 && (
-            <motion.div
-              className={classes.empty__cart}
-              initial={{ opacity: 0, y: -30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
+            <NoContent
+              content="Your shopping cart is empty!"
+              btnContent="CONTINUE SHOPPING"
               key="fallback"
-            >
-              <p style={{ textAlign: "center" }}>
-                Your shopping cart is empty!
-              </p>
-              <Button
-                style={classes.continue_btn}
-                onClick={() => router.push("/")}
-              >
-                CONTINUE SHOPPING
-              </Button>
-            </motion.div>
+            />
           )}
-
           {cartData.length > 0 && (
             <motion.div
               className={classes.container}

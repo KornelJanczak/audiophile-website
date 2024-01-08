@@ -133,32 +133,6 @@
   background-color: var(--orange-light);
 }
 
-.empty__cart {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  margin: 0 auto;
-  padding: 8rem;
-  background-color: var(--white);
-}
-
-.empty__cart p {
-  font-size: 2.4rem;
-}
-
-.continue_btn {
-  background-color: var(--orange-hover);
-  color: var(--dark-white);
-  border: none;
-}
-
-.continue_btn:hover {
-  transition: all 0.3s ease;
-  background-color: var(--orange-light);
-}
-
 @media (max-width: 56.25rem) {
   .container {
     display: flex;
