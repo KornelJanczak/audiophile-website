@@ -1,6 +1,5 @@
 import FilterBar from "@/components/OrdersPage/FilterBar/FilterBar";
 import OrderItems from "@/components/OrdersPage/OrderItems/OrderItems";
-import PageWrapper from "@/components/UI/PageWrapper";
 import Order from "@/models/Order";
 import connect from "@/utils/db";
 import getCurrentUser from "@/utils/utils";
@@ -41,11 +40,9 @@ export default async function OrdersPage({
 }) {
   const orders = await getOrders(params.filter);
   return (
-    <PageWrapper>
       <section className="section">
         <FilterBar />
         <OrderItems orders={orders} />
       </section>
-    </PageWrapper>
   );
 }
