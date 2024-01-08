@@ -27,7 +27,11 @@ export default function OrderEmail({
         <Container style={container}>
           <Section style={section}>
             <Text style={text}>
-              Hey <strong>{username !== undefined ? username : ""}</strong>!
+              Hey
+              <strong>
+                {firstName && lastName !== undefined ? username : ""}
+              </strong>
+              !
             </Text>
             <Text style={text}>
               We hope that shopping at Audiophile has been satisfying for you!
@@ -35,19 +39,7 @@ export default function OrderEmail({
               message.
             </Text>
             <Section style={row}>
-              {/* <div style={dataDiv}>
-                <div>
-                  <strong>Order address</strong>
-                </div>
-                <div>
-                  <strong>Order date</strong>
-                  <div style={{ ...columnDiv, flexDirection: "column" }}></div>
-                </div>
-                <div>
-                  <strong>Order number</strong>
-                </div>
-              </div> */}
-              <Text style={text}>
+              <Text style={{ ...text, fontSize: "16px" }}>
                 <strong>Order date: </strong>
                 <span>
                   {order?.createdAt?.toLocaleDateString("en-US", {
@@ -60,7 +52,11 @@ export default function OrderEmail({
               </Text>
               <Text style={text}>
                 <strong>Order address: </strong>
-                <span>{address?.map(addressLine => addressLine)}</span>
+                <span>{address?.map((addressLine) => addressLine)}</span>
+              </Text>
+              <Text style={text}>
+                <strong>Order number: </strong>
+                <span>000000000000</span>
               </Text>
             </Section>
             <Section>
@@ -71,25 +67,11 @@ export default function OrderEmail({
                   flexDirection: "column",
                 }}
               >
-                {order?.orderItems.map((order) => (
-                  <div
-                    style={{ display: "flex", flexDirection: "column" }}
-                    key={order.id}
-                  >
-                    <Img
-                      src={
-                        "/assets/product-xx59-headphones/desktop/image-product.jpg"
-                      }
-                      width={125}
-                      height={125}
-                    />
-                    <span style={{ fontSize: "18px", marginRight: "auto" }}>
-                      {order.name}
-                    </span>
-                    <span style={{ fontSize: "18px", marginRight: "auto" }}>
-                      Quantity: {order.quantity}
-                    </span>
-                  </div>
+                {order?.orderItems.map((order, i) => (
+                  <Row key={i}>
+                    <Text style={text}>{order.name}</Text>
+                    <Text style={text}>Quantity: {order.quantity}</Text>
+                  </Row>
                 ))}
               </div>
             </Section>
@@ -107,14 +89,6 @@ export default function OrderEmail({
       </Body>
     </Html>
   );
-}
-
-{
-  /* <div key={order.id}>
-  <Img src={order.image.desktop.slice(1)} />
-  <span style={{ fontSize: "18px" }}>{order.name}</span>
-  <p style={{ fontSize: "18px" }}>x{order.quantity}</p>
-</div>; */
 }
 
 const columnDiv = {
@@ -158,6 +132,7 @@ const section = {
 const text = {
   margin: "0 0 10px 0",
   textAlign: "left" as const,
+  fontSize: "16px",
 };
 
 const button = {
@@ -168,6 +143,7 @@ const button = {
   borderRadius: "0.5em",
   padding: "0.75em 1.5em",
   marginTop: "30px",
+  width: "90%",
 };
 
 const links = {
