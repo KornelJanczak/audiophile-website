@@ -58,6 +58,8 @@ export default function MainNavigation() {
           <button
             className={classes.cart__btn}
             onClick={() => {
+              console.log(`a`);
+              
               setCart((cart) => !cart);
               setUserPanel(false);
               setMobileNav(false);

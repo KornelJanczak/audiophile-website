@@ -18,6 +18,7 @@ export const sendEmail = async ({
   firstName,
   lastName,
   order,
+  address,
 }: IsendEmail) => {
   try {
     const hashedToken = await bcrypt.hash(userId.toString(), 10);
@@ -47,11 +48,13 @@ export const sendEmail = async ({
         emailTemplate = "Reset password";
         break;
       case process.env.ORDER:
-        emailTemplate = OrderEmail({ order, firstName, lastName });
+        emailTemplate = OrderEmail({ order, firstName, lastName, address });
         break;
       default:
         break;
     }
+
+    console.log(emailTemplate);
 
     const data = await resend.emails.send({
       from: "Audiophile <onboarding@resend.dev>",
@@ -62,7 +65,7 @@ export const sendEmail = async ({
 
     return data;
   } catch (error) {
-    throw new Error("Send email faield");
+    throw new Error("Send email faield: " + error);
   }
 };
 

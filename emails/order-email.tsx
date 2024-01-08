@@ -6,7 +6,6 @@ import {
   Head,
   Html,
   Img,
-  Preview,
   Section,
   Text,
   Row,
@@ -17,18 +16,15 @@ export default function OrderEmail({
   firstName,
   lastName,
   order,
+  address,
 }: IOrderEmail) {
   const username = firstName + " " + lastName;
+  console.log(order?.address);
   return (
     <Html>
       <Head></Head>
       <Body style={main}>
         <Container style={container}>
-          {/* <Text style={title}>
-            <strong>@{username}</strong>, a personal access was created on your
-            account.
-          </Text> */}
-
           <Section style={section}>
             <Text style={text}>
               Hey <strong>{username !== undefined ? username : ""}</strong>!
@@ -38,24 +34,65 @@ export default function OrderEmail({
               Once your order is confirmed, we will inform you in another email
               message.
             </Text>
-            <Row style={row}>
-              <Column style={{ textAlign: "left" }}>
-                <strong>Address</strong>
-                <ul>
-                  <li>chuj</li>
-                  <li>chuj</li>
-                  <li>chuj</li>
-                </ul>
-              </Column>
-              <Column>
-                <strong>Order data</strong>
-                <p>chuj</p>
-              </Column>
-              <Column style={{ textAlign: "right" }}>
-                <strong>Number of order</strong>
-                <p>chuj</p>
-              </Column>
-            </Row>
+            <Section style={row}>
+              {/* <div style={dataDiv}>
+                <div>
+                  <strong>Order address</strong>
+                </div>
+                <div>
+                  <strong>Order date</strong>
+                  <div style={{ ...columnDiv, flexDirection: "column" }}></div>
+                </div>
+                <div>
+                  <strong>Order number</strong>
+                </div>
+              </div> */}
+              <Text style={text}>
+                <strong>Order date: </strong>
+                <span>
+                  {order?.createdAt?.toLocaleDateString("en-US", {
+                    weekday: "short",
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </span>
+              </Text>
+              <Text style={text}>
+                <strong>Order address: </strong>
+                <span>{address?.map(addressLine => addressLine)}</span>
+              </Text>
+            </Section>
+            <Section>
+              <h3 style={{ textAlign: "left" }}>Oder Items</h3>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                {order?.orderItems.map((order) => (
+                  <div
+                    style={{ display: "flex", flexDirection: "column" }}
+                    key={order.id}
+                  >
+                    <Img
+                      src={
+                        "/assets/product-xx59-headphones/desktop/image-product.jpg"
+                      }
+                      width={125}
+                      height={125}
+                    />
+                    <span style={{ fontSize: "18px", marginRight: "auto" }}>
+                      {order.name}
+                    </span>
+                    <span style={{ fontSize: "18px", marginRight: "auto" }}>
+                      Quantity: {order.quantity}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </Section>
             <Button href={`${process.env.DOMAIN}/orders/last`} style={button}>
               Show your orders
             </Button>
@@ -72,11 +109,29 @@ export default function OrderEmail({
   );
 }
 
+{
+  /* <div key={order.id}>
+  <Img src={order.image.desktop.slice(1)} />
+  <span style={{ fontSize: "18px" }}>{order.name}</span>
+  <p style={{ fontSize: "18px" }}>x{order.quantity}</p>
+</div>; */
+}
+
+const columnDiv = {
+  display: "flex",
+  alignItems: "flex-start",
+};
+
+const dataDiv = {
+  display: "flex",
+  justifyContent: "space-between",
+};
+
 const row = {
   width: "100%",
-  paddingBottom: "40px",
+  paddingBottom: "30px",
   paddingTop: "20px",
-  height: "auto",
+  borderBottom: "solid 1px #dedede",
 };
 
 //
@@ -91,11 +146,6 @@ const container = {
   width: "480px",
   margin: "0 auto",
   padding: "20px 0 48px",
-};
-
-const title = {
-  fontSize: "24px",
-  lineHeight: 1.25,
 };
 
 const section = {
@@ -117,6 +167,7 @@ const button = {
   lineHeight: 1.5,
   borderRadius: "0.5em",
   padding: "0.75em 1.5em",
+  marginTop: "30px",
 };
 
 const links = {

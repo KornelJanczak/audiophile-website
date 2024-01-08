@@ -43,12 +43,12 @@ const Cart: React.FC<{ closeCart: () => void }> = ({ closeCart }) => {
               key="list"
             >
               <AnimatePresence>
-                {items.map((item) => {
+                {items.map((item,i) => {
                   const itemName = renameProduct(item.name);
                   return (
                     <motion.li
                       className={classes.product}
-                      key={item.id}
+                      key={i}
                       variants={{
                         hidden: { opacity: 0, y: -20 },
                         visible: { opacity: 1, y: 0 },

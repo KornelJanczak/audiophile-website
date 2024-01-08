@@ -232,7 +232,6 @@ export interface VerifyEmailProps {
   };
 }
 
-
 // Email Type
 export interface IsendEmail {
   firstName: string;
@@ -241,6 +240,7 @@ export interface IsendEmail {
   emailType: string;
   order?: IOrder | undefined;
   userId: ObjectId | string;
+  address?: string[];
 }
 
 export interface IVerifyEmail {
@@ -253,6 +253,7 @@ export interface IOrderEmail {
   order?: IOrder;
   firstName: string;
   lastName: string;
+  address?: string[];
 }
 
 // Store

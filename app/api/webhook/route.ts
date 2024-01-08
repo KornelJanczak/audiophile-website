@@ -50,6 +50,7 @@ export async function POST(req: Request) {
       firstName: session.metadata!.firstName,
       lastName: session.metadata!.lastName,
       order: order,
+      address: addresComponents as string[],
     });
   }
 
