@@ -33,3 +33,9 @@
     max-width: 100%;
   }
 }
+
+@media (max-width: 26.9375em) {
+  .filter__bar {
+    padding: 4rem 2rem;
+  }
+}

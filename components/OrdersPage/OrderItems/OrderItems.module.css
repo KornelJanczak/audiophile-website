@@ -4,7 +4,7 @@
 }
 
 .no__content__container {
-  padding: 5.4rem;
+  padding: 4rem;
 }
 
 .month {
@@ -60,6 +60,7 @@
 .img {
   max-width: 20rem;
   height: auto;
+  border-radius: 9px;
 }
 
 @media (max-width: 49em) {
@@ -80,6 +81,9 @@
 }
 
 @media (max-width: 27em) {
+  .no__content__container {
+    padding: 2rem;
+  }
   .order__ul {
     padding: 0rem 2rem;
   }
@@ -93,7 +97,6 @@
     font-size: 1.6rem;
   }
   .ul__info {
-    /* max-width: 20rem; */
     gap: 1rem;
   }
 }

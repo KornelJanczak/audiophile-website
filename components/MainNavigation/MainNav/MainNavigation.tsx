@@ -58,8 +58,6 @@ export default function MainNavigation() {
           <button
             className={classes.cart__btn}
             onClick={() => {
-              console.log(`a`);
-              
               setCart((cart) => !cart);
               setUserPanel(false);
               setMobileNav(false);
@@ -69,7 +67,6 @@ export default function MainNavigation() {
           </button>
         </div>
         <AnimatePresence>
-          {cart && <Cart closeCart={() => setCart(false)} />}
           {userPanel && <UserPanel closePanel={() => setUserPanel(false)} />}
           {cart && <Cart closeCart={() => setCart(false)} />}
           {mobileNav && (
