@@ -17,18 +17,21 @@ const Footer: React.FC = () => {
   return (
     <footer className={classes.footer}>
       <div className={classes.footer__box}>
+        <div className={classes.line} />
         <div className={classes.footer__content__box}>
           <LogoIcon className={classes.header__logo} />
-          <span>
-            Audiophile is an all in one stop to fulfill your audio needs.
-            We&apos;re a small team of music lovers and sound specialists who
-            are devoted to helping you get the most out of personal audio. Come
-            and visit our demo facility - we&apos;re open 7 days a week.
-          </span>
-          <p>Copyright 2021. All Rights Reserved</p>
+          <NavigationUL className={classes.ul} />
         </div>
         <div className={classes.footer__help__box}>
-          <NavigationUL className={classes.ul} />
+          <div className={classes.text__box}>
+            <span className="text__color">
+              Audiophile is an all in one stop to fulfill your audio needs.
+              We&apos;re a small team of music lovers and sound specialists who
+              are devoted to helping you get the most out of personal audio.
+              Come and visit our demo facility - we&apos;re open 7 days a week.
+            </span>
+            <p className="text__color">Copyright 2021. All Rights Reserved</p>
+          </div>
           <ul className={classes.footer__social__ul}>
             {icons.map((icon, i) => (
               <li key={icon.icon.type.name + i}>
