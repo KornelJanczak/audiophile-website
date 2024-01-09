@@ -74,6 +74,7 @@
 @media (max-width: 50em) {
   .footer__box {
     padding-bottom: 3rem;
+    padding: 0rem 2rem 5.6rem 2rem;
   }
   .footer__content__box {
     flex-direction: column;
@@ -97,6 +98,7 @@
 
   .footer__box {
     align-items: center;
+    padding: 0rem 4rem 5.6rem 4rem;
   }
 
   .ul {
