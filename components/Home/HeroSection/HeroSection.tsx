@@ -6,19 +6,24 @@ import ResponsiveImage from "@/components/UI/ResponsiveImage";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
+// initial={{ y: -170 , x: -165}}
 const HeroSection: React.FC = () => {
   const router = useRouter();
   return (
     <section className={classes.hero__section}>
       <motion.div
-      className={classes.container}
-      // initial={{ y: 15 }}
-      // animate={{ y: 0 }}
-      // transition={{ duration: 0.45 }}
+        className={classes.container}
+        // initial={{ y: -215 }}
+        // animate={{ y: 0 }}
+        // transition={{ duration: 0.45 }}
       >
-        <div
+        <motion.div
           className={classes.hero__text__box}
-
+          // initial={{ y: 20}}
+          // initial={{ y: -120, x: -165 }}
+          // animate={{ y: -170, x: -165 }}
+          // animate={{ y: 0 }}
+          // transition={{ duration: 0.45 }}
         >
           <p className={classes.hero__span}>NEW PRODUCT</p>
           <h1 className={classes.hero__h1}>XX99 MARK II HEADPHONES</h1>
@@ -34,7 +39,7 @@ const HeroSection: React.FC = () => {
           >
             SEE PRODUCT
           </Button>
-        </div>
+        </motion.div>
         <ResponsiveImage
           images={{
             desktop: "/assets/home/desktop/Bitmap.png",

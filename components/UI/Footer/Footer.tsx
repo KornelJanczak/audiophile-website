@@ -1,21 +1,19 @@
 "use client";
 import NavigationUL from "../NavigationUL/NavigationUL";
-import logoImg from "../../../public/assets/shared/desktop/logo.svg";
 import FbIcon from "@/public/Icons/FbIcon";
 import IgIcon from "@/public/Icons/IgIcon";
 import TwitterIcon from "@/public/Icons/TwitterIcon";
 import classes from "./Footer.module.css";
-import Image from "next/image";
 import Link from "next/link";
 import LogoIcon from "@/public/Icons/LogoIcon";
 
-const Footer: React.FC = () => {
-  const icons = [
-    { icon: <FbIcon /> },
-    { icon: <TwitterIcon /> },
-    { icon: <IgIcon /> },
-  ];
+const icons = [
+  { icon: <FbIcon /> },
+  { icon: <TwitterIcon /> },
+  { icon: <IgIcon /> },
+];
 
+const Footer: React.FC = () => {
   return (
     <footer className={classes.footer}>
       <div className={classes.footer__box}>
@@ -33,7 +31,7 @@ const Footer: React.FC = () => {
           <NavigationUL className={classes.ul} />
           <ul className={classes.footer__social__ul}>
             {icons.map((icon, i) => (
-              <li key={i}>
+              <li key={icon.icon.type.name + i}>
                 <Link href={"/"}>{icon.icon}</Link>
               </li>
             ))}
