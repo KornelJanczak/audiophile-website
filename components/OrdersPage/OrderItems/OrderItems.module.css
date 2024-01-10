@@ -3,9 +3,9 @@
   list-style: none;
 }
 
-.no__content__container {
+/* .no__content__container {
   padding: 4rem;
-}
+} */
 
 .month {
   display: block;
@@ -81,9 +81,9 @@
 }
 
 @media (max-width: 27em) {
-  .no__content__container {
+  /* .no__content__container {
     padding: 2rem;
-  }
+  } */
   .order__ul {
     padding: 0rem 2rem;
   }

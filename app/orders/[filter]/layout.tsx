@@ -1,5 +1,6 @@
 import MainNavigation from "@/components/MainNavigation/MainNav/MainNavigation";
 import Footer from "@/components/UI/Footer/Footer";
+import FilterBar from "@/components/OrdersPage/FilterBar/FilterBar";
 
 export default function CheckoutLayout({
   children,
@@ -9,7 +10,12 @@ export default function CheckoutLayout({
   return (
     <>
       <MainNavigation />
-      <main>{children}</main>
+      <main>
+        <section className="section">
+          <FilterBar />
+          {children}
+        </section>
+      </main>
       <Footer />
     </>
   );

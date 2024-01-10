@@ -3,6 +3,7 @@ import OrderItems from "@/components/OrdersPage/OrderItems/OrderItems";
 import SkeletonCard from "@/components/UI/Skeleton/Skeleton";
 import Order from "@/models/Order";
 import connect from "@/utils/db";
+import NoContent from "@/components/UI/NoContentCard/NoContent";
 import getCurrentUser from "@/utils/utils";
 import { Suspense } from "react";
 
@@ -25,7 +26,6 @@ async function getOrders(params: string) {
       createdAt: { $gte: startOfYear, $lte: endOfYear },
       updatedAt: { $gte: startOfYear, $lt: endOfYear },
     });
-    console.log(orders);
   } else {
     orders = await Order.find({ userId: user.id });
   }
@@ -41,12 +41,22 @@ export default async function OrdersPage({
   params: { filter: string };
 }) {
   const orders = await getOrders(params.filter);
-  return (
-    <section className="section">
-      <FilterBar />
+
+  if (orders.length === 0)
+    return (
+      <div className="p-4">
+        <NoContent
+          content="At the moment, there are no orders placed!"
+          btnContent="CONTINUE SHOPPING"
+          key=""
+        />
+      </div>
+    );
+
+  if (orders.length > 0)
+    return (
       <Suspense fallback={<SkeletonCard length={orders.length} />}>
         <OrderItems orders={orders} />
       </Suspense>
-    </section>
-  );
+    );
 }
