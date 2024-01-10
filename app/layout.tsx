@@ -6,6 +6,7 @@ import "../styles/global.css";
 import AuthProvider from "@/Providers/AuthProvider";
 import { authOptions } from "./api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default async function RootLayout({
         <AuthProvider session={session}>
           <TanstackProvider>
             {children}
+
             <Toaster
               expand
               richColors
@@ -46,6 +48,7 @@ export default async function RootLayout({
                 zIndex: "99999999999999999999999999999999999999999999999",
               }}
             />
+            <SkeletonTheme baseColor="#202020" highlightColor="#444" />
             <div id="modal" />
           </TanstackProvider>
         </AuthProvider>

@@ -1,8 +1,10 @@
 import FilterBar from "@/components/OrdersPage/FilterBar/FilterBar";
 import OrderItems from "@/components/OrdersPage/OrderItems/OrderItems";
+import SkeletonCard from "@/components/UI/Skeleton/Skeleton";
 import Order from "@/models/Order";
 import connect from "@/utils/db";
 import getCurrentUser from "@/utils/utils";
+import { Suspense } from "react";
 
 async function getOrders(params: string) {
   await connect();
@@ -40,9 +42,11 @@ export default async function OrdersPage({
 }) {
   const orders = await getOrders(params.filter);
   return (
-      <section className="section">
-        <FilterBar />
+    <section className="section">
+      <FilterBar />
+      <Suspense fallback={<SkeletonCard length={orders.length} />}>
         <OrderItems orders={orders} />
-      </section>
+      </Suspense>
+    </section>
   );
 }
