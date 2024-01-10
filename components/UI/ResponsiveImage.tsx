@@ -32,6 +32,7 @@ const ResponsiveImage = ({
         width={width}
         height={height}
         className={imgClassName}
+        loading="lazy"
       />
     </picture>
   );

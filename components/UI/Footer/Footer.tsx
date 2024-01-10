@@ -18,19 +18,25 @@ const icons = [
 const Footer: React.FC = () => {
   return (
     <footer className={classes.footer}>
-      <motion.div
-        className={classes.footer__box}
-        variants={scrollVariants}
-        initial={{ y: 25, opacity: 0 }}
-        whileInView="onscreen"
-        viewport={{ once: true, amount: 0.3 }}
-      >
+      <div className={classes.footer__box}>
         <div className={classes.line} />
-        <div className={classes.footer__content__box}>
+        <motion.div
+          className={classes.footer__content__box}
+          variants={scrollVariants}
+          initial={{ y: 25, opacity: 0 }}
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <LogoIcon className={classes.header__logo} />
           <NavigationUL className={classes.ul} />
-        </div>
-        <div className={classes.footer__help__box}>
+        </motion.div>
+        <motion.div
+          className={classes.footer__help__box}
+          variants={scrollVariants}
+          initial={{ y: 25, opacity: 0 }}
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <div className={classes.text__box}>
             <span className="text__color">
               Audiophile is an all in one stop to fulfill your audio needs.
@@ -47,8 +53,8 @@ const Footer: React.FC = () => {
               </li>
             ))}
           </ul>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </footer>
   );
 };

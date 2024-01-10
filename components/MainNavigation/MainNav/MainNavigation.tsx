@@ -3,7 +3,7 @@ import Link from "next/link";
 import classes from "./MainNavigation.module.css";
 import NavigationUL from "../../UI/NavigationUL/NavigationUL";
 import UserIcon from "@/public/Icons/UserIcon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Cart from "../Cart/Cart";
 import Overlay from "@/components/UI/Overlay";
 import { useSession } from "next-auth/react";
@@ -13,15 +13,28 @@ import { AnimatePresence } from "framer-motion";
 import HamburgerIcon from "@/public/Icons/HamburgerIcon";
 import ProductsSection from "../../UI/ProductsSection/ProductsSection";
 import CartIcon from "@/public/Icons/CartIcon";
+import { motion, useAnimationControls } from "framer-motion";
 
 export default function MainNavigation() {
   const { data: session } = useSession();
   const [cart, setCart] = useState<boolean>(false);
   const [userPanel, setUserPanel] = useState<boolean>(false);
   const [mobileNav, setMobileNav] = useState<boolean>(false);
+  const controls = useAnimationControls();
+  const [a, b] = useState(true);
+
+  useEffect(() => {
+    controls.start({ scale: 1, origin: 0.5 });
+    b(false)
+  }, [controls]);
 
   return (
-    <header className={classes.header}>
+    <motion.header
+      className={classes.header}
+      initial={{ scale: 0, origin: 0.5 }} // Początkowe ustawienia animacji (skalowanie w osi X od zera, originX ustawione na 0.5 oznacza środek elementu)
+      animate={ controls} //
+      transition={{ duration: 0.6 }}
+    >
       <nav
         className={`${classes.nav}  ${
           (cart || userPanel) && classes.nav__border
@@ -83,6 +96,6 @@ export default function MainNavigation() {
           )}
         </AnimatePresence>
       </nav>
-    </header>
+    </motion.header>
   );
 }
