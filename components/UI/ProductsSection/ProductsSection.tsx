@@ -2,7 +2,7 @@
 import classes from "./ProductsSection.module.css";
 import Product from "./Product";
 import { motion } from "framer-motion";
-import { fadeInAnimationVariants } from "@/animations/animations";
+import FadeInWrapper from "@/animations/FadeInWrapper";
 
 const products = [
   {
@@ -51,22 +51,9 @@ const ProductsSection: React.FC<{ mobileClass?: string }> = ({
       <section className={classes.products__section}>
         <div className={classes.products}>
           {products.map((product, i) => (
-            <motion.div
-              variants={fadeInAnimationVariants}
-              initial="initial"
-              whileInView="animate"
-              custom={i}
-              whileHover={{ scale: 1.1, transition: { duration: 0.25 } }}
-              viewport={{ once: true }}
-              key={i}
-            >
-              <Product
-                key={i}
-                img={product.img}
-                title={product.title}
-                index={i}
-              />
-            </motion.div>
+            <FadeInWrapper index={i} key={i}>
+              <Product img={product.img} title={product.title} index={i} />
+            </FadeInWrapper>
           ))}
         </div>
       </section>

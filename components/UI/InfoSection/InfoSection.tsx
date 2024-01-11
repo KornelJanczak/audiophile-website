@@ -1,18 +1,11 @@
-"use client"
+"use client";
 import classes from "./InfoSection.module.css";
 import ResponsiveImage from "../ResponsiveImage";
-import { motion } from "framer-motion";
-import { scrollVariants } from "@/animations/animations";
+import ScrollWrapper from "@/animations/ScrollWrapper";
 
 const InfoSection: React.FC = () => {
   return (
-    <motion.section
-      className={classes.info__section}
-      variants={scrollVariants}
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.3 }}
-    >
+    <ScrollWrapper className={classes.info__section}>
       <div className={classes.info__content__box}>
         <h2>
           BRINGING YOU THE <strong>BEST</strong> AUDIO GEAR
@@ -38,7 +31,7 @@ const InfoSection: React.FC = () => {
         imgClassName={classes.info__img}
         pictureClassName={classes.picture}
       />
-    </motion.section>
+    </ScrollWrapper>
   );
 };
 

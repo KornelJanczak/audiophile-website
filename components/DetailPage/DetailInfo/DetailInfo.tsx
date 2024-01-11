@@ -1,3 +1,4 @@
+"use client"
 import { IPropsDetailInfo } from "@/models/@type-props";
 import classes from "./DetailInfo.module.css";
 import { motion } from "framer-motion";

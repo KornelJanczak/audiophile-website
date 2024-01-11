@@ -1,3 +1,4 @@
+"use client"
 import { IPropsDetailGallery } from "@/models/@type-props";
 import classes from "./DetailGallery.module.css";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";

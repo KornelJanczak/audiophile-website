@@ -1,3 +1,4 @@
+"use client"
 import { IPropsDetailOthers } from "@/models/@type-props";
 import classes from "./DetailOthers.module.css";
 import Button from "@/components/UI/Button/Button";

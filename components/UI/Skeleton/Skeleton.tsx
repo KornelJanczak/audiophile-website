@@ -1,10 +1,17 @@
 import classes from "./Skeleton.module.css";
 
-const SkeletonCard: React.FC<{ length: number }> = ({ length }) => {
+const SkeletonCard: React.FC<{
+  length: number;
+  classNameUL?: string;
+  classNameLI?: string;
+}> = ({ length, classNameUL, classNameLI }) => {
   return (
-    <ul className={classes.order__ul}>
+    <ul className={`${classes.ul} ${classNameUL}`}>
       {[...new Array(length)].map((_, i) => (
-        <li className={`${classes.container} ${classes.skeleton}`} key={i} />
+        <li
+          className={`${classes.container} ${classes.skeleton} ${classNameLI}`}
+          key={i}
+        />
       ))}
     </ul>
   );

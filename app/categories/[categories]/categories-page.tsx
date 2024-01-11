@@ -5,10 +5,7 @@ import CategoryItem from "@/components/ProductPage/CategorySection/CategoryItem/
 import { useParams } from "next/navigation";
 import CategoryContent from "@/components/ProductPage/CategorySection/CategoryContent/CategoryContent";
 import ProductsSection from "@/components/UI/ProductsSection/ProductsSection";
-import PageWrapper from "@/components/UI/PageWrapper";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
-import { motion } from "framer-motion";
-import { scrollVariants } from "@/animations/animations";
 
 const CategoryPage: React.FC<IPropsProductPage> = ({ categories }) => {
   const params = useParams();
@@ -19,7 +16,7 @@ const CategoryPage: React.FC<IPropsProductPage> = ({ categories }) => {
 
   if (categories)
     return (
-      <PageWrapper>
+      <>
         <Banner categoryName={params.categories as string} />
         <section className="section__category">
           {categories.map((cat) => (
@@ -67,7 +64,7 @@ const CategoryPage: React.FC<IPropsProductPage> = ({ categories }) => {
           ))}
         </section>
         <ProductsSection />
-      </PageWrapper>
+      </>
     );
 };
 

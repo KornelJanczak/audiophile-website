@@ -1,4 +1,3 @@
-import FilterBar from "@/components/OrdersPage/FilterBar/FilterBar";
 import OrderItems from "@/components/OrdersPage/OrderItems/OrderItems";
 import SkeletonCard from "@/components/UI/Skeleton/Skeleton";
 import Order from "@/models/Order";
@@ -6,6 +5,7 @@ import connect from "@/utils/db";
 import NoContent from "@/components/UI/NoContentCard/NoContent";
 import getCurrentUser from "@/utils/utils";
 import { Suspense } from "react";
+import OrderSection from "@/components/OrdersPage/OrderItems/OrderSection";
 
 async function getOrders(params: string) {
   await connect();
@@ -25,12 +25,12 @@ async function getOrders(params: string) {
       userId: user.id,
       createdAt: { $gte: startOfYear, $lte: endOfYear },
       updatedAt: { $gte: startOfYear, $lt: endOfYear },
-    });
+    })
   } else {
     orders = await Order.find({ userId: user.id });
   }
 
-  if (!orders) return [];
+  if (!orders || orders.length === 0) return [];
 
   return orders;
 }

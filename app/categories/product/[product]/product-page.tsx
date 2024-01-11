@@ -5,9 +5,10 @@ import DetailGallery from "@/components/DetailPage/DetailGallery/DetailGallery";
 import { IPropsDetailPage } from "@/models/@type-props";
 import DetailOthers from "@/components/DetailPage/DetailOthers/DetailOthers";
 import ProductsSection from "@/components/UI/ProductsSection/ProductsSection";
-import PageWrapper from "@/components/UI/PageWrapper";
+import PageWrapper from "@/animations/PageWrapper";
 
 const DetailPage: React.FC<IPropsDetailPage> = ({ product }) => {
+
   return (
     <PageWrapper>
       <section className="section__detail">

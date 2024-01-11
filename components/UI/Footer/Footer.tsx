@@ -8,6 +8,7 @@ import Link from "next/link";
 import LogoIcon from "@/public/Icons/LogoIcon";
 import { motion } from "framer-motion";
 import { scrollVariants } from "@/animations/animations";
+import ScrollWrapper from "@/animations/ScrollWrapper";
 
 const icons = [
   { icon: <FbIcon /> },
@@ -20,23 +21,11 @@ const Footer: React.FC = () => {
     <footer className={classes.footer}>
       <div className={classes.footer__box}>
         <div className={classes.line} />
-        <motion.div
-          className={classes.footer__content__box}
-          variants={scrollVariants}
-          initial={{ y: 25, opacity: 0 }}
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.3 }}
-        >
+        <ScrollWrapper className={classes.footer__content__box}>
           <LogoIcon className={classes.header__logo} />
           <NavigationUL className={classes.ul} />
-        </motion.div>
-        <motion.div
-          className={classes.footer__help__box}
-          variants={scrollVariants}
-          initial={{ y: 25, opacity: 0 }}
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.3 }}
-        >
+        </ScrollWrapper>
+        <ScrollWrapper className={classes.footer__help__box}>
           <div className={classes.text__box}>
             <span className="text__color">
               Audiophile is an all in one stop to fulfill your audio needs.
@@ -53,7 +42,7 @@ const Footer: React.FC = () => {
               </li>
             ))}
           </ul>
-        </motion.div>
+        </ScrollWrapper>
       </div>
     </footer>
   );

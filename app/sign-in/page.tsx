@@ -1,5 +1,5 @@
 import LoginForm from "@/components/SignInPage/LoginForm";
-import PageWrapper from "@/components/UI/PageWrapper";
+import PageWrapper from "@/animations/PageWrapper";
 
 const LoginPage: React.FC = () => {
   return (
