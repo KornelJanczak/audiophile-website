@@ -1,5 +1,7 @@
 import { fetchData } from "@/utils/mongodb";
 import DetailPage from "./product-page";
+import { Suspense } from "react";
+import SkeletonCard from "@/components/UI/Skeleton/Skeleton";
 
 export async function generateStaticParams() {
   const data = await fetchData("audiohile-db", "audiophile-content");
@@ -20,5 +22,6 @@ async function getProducts(params: any) {
 
 export default async function ProductPage({ params }: any) {
   const product = await getProducts(params);
+
   return <DetailPage product={product} />;
 }

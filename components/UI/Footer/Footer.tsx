@@ -6,8 +6,6 @@ import TwitterIcon from "@/public/Icons/TwitterIcon";
 import classes from "./Footer.module.css";
 import Link from "next/link";
 import LogoIcon from "@/public/Icons/LogoIcon";
-import { motion } from "framer-motion";
-import { scrollVariants } from "@/animations/animations";
 import ScrollWrapper from "@/animations/ScrollWrapper";
 
 const icons = [

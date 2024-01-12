@@ -41,6 +41,12 @@ html {
   padding: 4rem;
 }
 
+.mg-9 {
+  margin-top: 9rem;
+  height: 70rem;
+}
+
+
 @media (max-width: 27em) {
   .p-4 {
     padding: 2rem;
