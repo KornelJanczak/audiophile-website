@@ -2,7 +2,8 @@ import type { NextAuthOptions } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import GooglePovider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcrypt";
+// import bcrypt from "bcrypt";
+import * as argon2 from "argon2";
 import { ObjectId } from "mongodb";
 import connect from "@/utils/db";
 import User from "@/models/User";
@@ -32,7 +33,7 @@ export const authOptions: NextAuthOptions = {
 
           if (!user || !user.isVerfied) return null;
 
-          const passwordMatch = await bcrypt.compare(password, user.password);
+          const passwordMatch = await argon2.verify(password, user.password);
 
           if (!passwordMatch) return null;
 

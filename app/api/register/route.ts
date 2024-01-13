@@ -2,7 +2,8 @@
 import User from "@/models/User";
 import connect from "@/utils/db";
 import { sendEmail } from "@/utils/mailer";
-import bcrypt from "bcrypt";
+// import bcrypt from "bcrypt";
+import * as argon2 from "argon2";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -37,7 +38,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Created new user with hashed password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await argon2.hash(password);
     const newUser = new User({
       firstName: firstName,
       lastName: lastName,
