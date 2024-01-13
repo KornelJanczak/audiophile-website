@@ -54,7 +54,7 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async signIn({ user, account }) {
-      if (account?.provider === "credentials") return true;
+      if (account?.provider === "credentials") return user
       if (account?.provider === "github" || account?.provider === "google") {
         await connect();
         try {
@@ -107,11 +107,12 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
-    async redirect({ url, baseUrl }) {
-      if (url.startsWith("/")) return `${baseUrl}`;
-      // Allows callback URLs on the same origin
-      else if (new URL(url).origin === baseUrl) return baseUrl;
-      return baseUrl;
-    },
+    // async redirect({ url, baseUrl }) {
+
+    //   if (url.startsWith("/")) return `${baseUrl}`;
+    //   // Allows callback URLs on the same origin
+    //   else if (new URL(url).origin === baseUrl) return baseUrl;
+    //   return baseUrl;
+    // },
   },
 };
