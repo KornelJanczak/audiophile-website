@@ -1,9 +1,10 @@
-import { fetchData } from "@/utils/mongodb";
+import { connect, fetchData } from "@/utils/mongodb";
 import DetailPage from "./product-page";
 import { Suspense } from "react";
 import SkeletonCard from "@/components/UI/Skeleton/Skeleton";
 
 export async function generateStaticParams() {
+  await connect();
   const data = await fetchData("audiohile-db", "audiophile-content");
   const paths = data.map((categories) => {
     return {
@@ -15,6 +16,7 @@ export async function generateStaticParams() {
 }
 
 async function getProducts(params: any) {
+  await connect();
   const data = await fetchData("Audiophile", "website-content");
   const [filteredData] = data.filter((item) => item.slug === params!.product);
   return filteredData;
