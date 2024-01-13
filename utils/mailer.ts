@@ -1,5 +1,5 @@
 import User from "@/models/User";
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
 import { IsendEmail } from "@/models/@type-props";
 import { Resend } from "resend";
 import VerifyEmail from "@/emails/verify-email";
@@ -21,7 +21,7 @@ export const sendEmail = async ({
   address,
 }: IsendEmail) => {
   try {
-    const hashedToken = await bcrypt.hash(userId.toString(), 10);
+    const hashedToken = await bcryptjs.hash(userId.toString(), 10);
     let emailTemplate: ReactElement | string = "";
 
     if (
