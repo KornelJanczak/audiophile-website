@@ -13,21 +13,21 @@ const PageWrapper: React.FC<{
     setIsMobile(window.innerWidth <= 768);
   }, []);
 
-  if (!isMobile)
-    return (
-      <motion.section
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: 20 }}
-        className={className}
-      >
-        {children}
-      </motion.section>
-    );
+  // if (!isMobile)
+  return (
+    <motion.section
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 20 }}
+      className={className}
+    >
+      {children}
+    </motion.section>
+  );
 
-  if (isMobile) {
-    return <>{children}</>;
-  }
+  // if (isMobile) {
+  //   return <>{children}</>;
+  // }
 };
 
 export default PageWrapper;
