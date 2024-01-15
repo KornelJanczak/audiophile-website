@@ -5,7 +5,6 @@ import connect from "@/utils/db";
 import NoContent from "@/components/UI/NoContentCard/NoContent";
 import getCurrentUser from "@/utils/utils";
 import { Suspense } from "react";
-import OrderSection from "@/components/OrdersPage/OrderItems/OrderSection";
 
 async function getOrders(params: string) {
   await connect();
