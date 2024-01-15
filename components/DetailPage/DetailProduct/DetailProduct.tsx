@@ -7,8 +7,7 @@ import useCart from "@/hooks/use-cart";
 import Counter from "@/components/UI/Counter/Counter";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
 import BackButton from "@/components/UI/BackButton/BackButton";
-import { motion } from "framer-motion";
-import { scrollVariants } from "@/animations/animations";
+
 
 const DetailProduct: React.FC<IPropsDetailProduct> = ({
   _id,
@@ -22,13 +21,7 @@ const DetailProduct: React.FC<IPropsDetailProduct> = ({
   const { addItem } = useCart();
 
   return (
-    <motion.div
-      className={classes.category__item}
-      variants={scrollVariants}
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.6 }}
-    >
+    <div className={classes.category__item}>
       <BackButton padding="5rem 4rem" />
       <div className={classes.detail__container}>
         <ResponsiveImage
@@ -73,7 +66,7 @@ const DetailProduct: React.FC<IPropsDetailProduct> = ({
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

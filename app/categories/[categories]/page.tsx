@@ -1,7 +1,6 @@
 import { fetchData } from "@/utils/mongodb";
 import CategoryPage from "./categories-page";
-import { Suspense } from "react";
-import SkeletonCard from "@/components/UI/Skeleton/Skeleton";
+
 export async function generateStaticParams() {
   const data = await fetchData("audiohile-db", "audiophile-content");
   const ids = data.map((category) => category.category);

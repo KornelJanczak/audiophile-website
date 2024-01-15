@@ -3,13 +3,23 @@ import GitHubProvider from "next-auth/providers/github";
 import GooglePovider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcryptjs from "bcryptjs";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
 
 // import * as argon2 from "argon2";
 import { ObjectId } from "mongodb";
 import connect from "@/utils/db";
 import User from "@/models/User";
+import { mongoClient } from "@/utils/mongodb";
+import { cookies } from "next/headers";
+
+const clientPromise = mongoClient();
 
 export const authOptions: NextAuthOptions = {
+  //@ts-ignore
+  // adapter: MongoDBAdapter(clientPromise),
+  session: {
+    strategy: "jwt",
+  },
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID as string,
@@ -45,16 +55,22 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  session: {
-    strategy: "jwt",
-  },
+
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/sign-in",
   },
   callbacks: {
     async signIn({ user, account }) {
-      if (account?.provider === "credentials") return user
+      if (account?.provider === "credentials") {
+        cookies().set({
+          name: "user",
+          value: user.id,
+          httpOnly: true,
+          path: "/",
+        });
+        return user;
+      }
       if (account?.provider === "github" || account?.provider === "google") {
         await connect();
         try {
@@ -75,6 +91,7 @@ export const authOptions: NextAuthOptions = {
         }
       }
     },
+
     async jwt({ token, user }) {
       await connect();
       const dbUser = await User.findOne({ email: token.email });
@@ -107,12 +124,19 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
-    // async redirect({ url, baseUrl }) {
+    async redirect({ url, baseUrl }) {
+      // console.log();
+      // console.log(url, "URL");
+      // console.log(baseUrl, "BASEURL");
+      console.log(url, "URL");
+      console.log(baseUrl);
+      if (url.startsWith("/")) return `${baseUrl}`;
 
-    //   if (url.startsWith("/")) return `${baseUrl}`;
-    //   // Allows callback URLs on the same origin
-    //   else if (new URL(url).origin === baseUrl) return baseUrl;
-    //   return baseUrl;
-    // },
+      if (url.startsWith("/checkout")) return `/checkout`;
+      // Allows callback URLs on the same origin
+      else if (new URL(url).origin === baseUrl) return baseUrl;
+      return baseUrl;
+      // return "/";
+    },
   },
 };

@@ -2,8 +2,6 @@ import Button from "@/components/UI/Button/Button";
 import classes from "./ShowcaseSection.module.css";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
 import { useRouter } from "next/navigation";
-import { scrollVariants } from "@/animations/animations";
-import { motion } from "framer-motion";
 import ScrollWrapper from "@/animations/ScrollWrapper";
 
 const ShowcaseSection: React.FC = () => {

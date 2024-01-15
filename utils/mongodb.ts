@@ -1,4 +1,4 @@
-import { ICartData, INewCartData, Product } from "@/models/@type-props";
+import { Product } from "@/models/@type-props";
 import { MongoClient } from "mongodb";
 
 export async function connect(): Promise<MongoClient> {
@@ -8,7 +8,7 @@ export async function connect(): Promise<MongoClient> {
   return client;
 }
 
-export async function mongoClient() {
+export function mongoClient() {
   if (!process.env.MONGO_URL)
     throw new Error("Invalind enviroment variable: MONGODB_URL");
 

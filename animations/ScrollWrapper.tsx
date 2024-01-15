@@ -1,19 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { scrollVariants } from "@/animations/animations";
 
 const ScrollWrapper: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ children, className }) => {
-  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    setIsMobile(window.innerWidth <= 768);
-  }, []);
-
-  // if (!isMobile)
     return (
       <motion.div
         variants={scrollVariants}
@@ -26,7 +20,7 @@ const ScrollWrapper: React.FC<{
       </motion.div>
     );
 
-  if (isMobile) return <div className={className}>{children}</div>;
+
 };
 
 export default ScrollWrapper;

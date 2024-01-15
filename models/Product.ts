@@ -146,14 +146,12 @@ const productSchema = new Schema<Product>(
       },
     ],
   },
-  { timestamps: true },
-
+  { timestamps: true }
 );
 
-// Tworzymy model Mongoose na podstawie schematu
 const ProductModel = mongoose.model<Product>(
-  "website-content",
-  productSchema
+  "info",
+  productSchema,
 );
 
 export default ProductModel;

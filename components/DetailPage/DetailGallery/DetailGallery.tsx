@@ -1,19 +1,12 @@
-"use client"
+"use client";
 import { IPropsDetailGallery } from "@/models/@type-props";
 import classes from "./DetailGallery.module.css";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
-import { motion } from "framer-motion";
-import { scrollVariants } from "@/animations/animations";
+import ScrollWrapper from "@/animations/ScrollWrapper";
 
 const DetailGallery: React.FC<IPropsDetailGallery> = ({ gallery }) => {
   return (
-    <motion.div
-      className={classes.container}
-      variants={scrollVariants}
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.6 }}
-    >
+    <ScrollWrapper className={classes.container}>
       <div className={classes.img__box}>
         <ResponsiveImage
           width={445}
@@ -53,7 +46,7 @@ const DetailGallery: React.FC<IPropsDetailGallery> = ({ gallery }) => {
           tablet: gallery.third.tablet.slice(1),
         }}
       />
-    </motion.div>
+    </ScrollWrapper>
   );
 };
 

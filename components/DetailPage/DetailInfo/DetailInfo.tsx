@@ -1,18 +1,11 @@
-"use client"
+"use client";
 import { IPropsDetailInfo } from "@/models/@type-props";
 import classes from "./DetailInfo.module.css";
-import { motion } from "framer-motion";
-import { scrollVariants } from "@/animations/animations";
+import ScrollWrapper from "@/animations/ScrollWrapper";
 
 const DetailInfo: React.FC<IPropsDetailInfo> = ({ features, includes }) => {
   return (
-    <motion.div
-      className={classes.container}
-      variants={scrollVariants}
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.6 }}
-    >
+    <ScrollWrapper className={classes.container}>
       <div className={classes.features}>
         <h3>FEATURES</h3>
         <span className={`${classes.text} text__color `}>{features}</span>
@@ -28,7 +21,7 @@ const DetailInfo: React.FC<IPropsDetailInfo> = ({ features, includes }) => {
           ))}
         </ul>
       </div>
-    </motion.div>
+    </ScrollWrapper>
   );
 };
 
