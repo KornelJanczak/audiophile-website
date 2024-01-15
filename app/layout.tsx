@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: "Welcome to Next.js",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function RootLayout({
   children,
 }: {
@@ -47,7 +49,7 @@ export default async function RootLayout({
                 zIndex: "99999999999999999999999999999999999999999999999",
               }}
             />
-    
+
             <div id="modal" />
           </TanstackProvider>
         </AuthProvider>
