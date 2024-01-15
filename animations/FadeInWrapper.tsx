@@ -13,7 +13,7 @@ const FadeInWrapper: React.FC<{
     setIsMobile(window.innerWidth <= 768);
   }, []);
 
-  if (!isMobile)
+  // if (!isMobile)
     return (
       <motion.div
         variants={fadeInAnimationVariants}
