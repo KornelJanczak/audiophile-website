@@ -142,7 +142,7 @@
 
 @media (max-width: 30rem) {
   .responsive__nav {
-    padding: 0rem 0 2rem 0;
+    padding: 2rem 0 2rem 0;
   }
   .productClass img {
     max-width: 12rem;
