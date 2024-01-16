@@ -3,6 +3,7 @@
   border: none;
   background: none;
 }
+
 .responsive__nav {
   display: none;
 }
@@ -139,17 +140,12 @@
   }
 }
 
-@media (max-width: 36rem) {
-  .productClass img {
-    max-height: 10rem;
-    max-width: 10rem;
-  }
-
+@media (max-width: 30rem) {
   .responsive__nav {
-
+    padding: 0rem 0 2rem 0;
   }
-
-  .productClass {
-    gap: 2rem;
+  .productClass img {
+    max-width: 12rem;
+    max-height: 12rem;
   }
 }

@@ -34,7 +34,7 @@ const ProductsSection: React.FC<{
         transition={{ duration: 0.2 }}
         style={{ zIndex: 2 }}
       >
-        <div className={classes.products}>
+        <div className={`${classes.products} ${classes.product__mobile}`}>
           {products.map((product, i) => (
             <Product
               key={i}
@@ -50,10 +50,8 @@ const ProductsSection: React.FC<{
 
   if (!mobileClass)
     return (
-      <section
-        className={`${classes.products__section} ${classes.product__mobile}`}
-      >
-        <div className={classes.products}>
+      <section className={`${classes.products__section}`}>
+        <div className={`${classes.products} `}>
           {products.map((product, i) => (
             <FadeInWrapper index={i} key={i}>
               <Product img={product.img} title={product.title} index={i} />

@@ -50,4 +50,8 @@ html {
   .p-4 {
     padding: 2rem;
   }
+
+  .g-5 {
+    gap: 5rem;
+  }
 }
