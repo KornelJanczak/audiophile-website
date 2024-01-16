@@ -3,10 +3,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: var(--white);
   gap: 2.4rem;
   margin: 0 auto;
+  margin-bottom: 4rem;
   padding: 12.8rem;
-  background-color: var(--white);
 }
 
 .empty__cart p {

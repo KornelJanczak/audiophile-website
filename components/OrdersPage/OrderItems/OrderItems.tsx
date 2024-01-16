@@ -2,7 +2,6 @@ import { IOrder } from "@/models/@type-props";
 import classes from "./OrderItems.module.css";
 import ResponsiveImage from "../../UI/ResponsiveImage";
 import { isObjectFirstOfMonth } from "@/helpers/algorithm";
-import getCurrentUser, { getSession } from "@/utils/utils";
 
 const OrderItems: React.FC<{ orders: IOrder[] | null }> = async ({
   orders,

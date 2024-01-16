@@ -5,15 +5,12 @@ import Image from "next/image";
 import arrowImage from "../../../public/assets/shared/desktop/icon-arrow-right.svg";
 import Link from "next/link";
 
-const Product: React.FC<IPropsProducts> = ({ img, title }) => {
-
-  
-  
+const Product: React.FC<IPropsProducts> = ({ img, title, className }) => {
   return (
     <>
       <Link
         href={`/categories/${title.toLowerCase()}`}
-        className={classes.product}
+        className={`${classes.product} ${className} `}
       >
         <div className={classes.product__img__box}>
           <Image

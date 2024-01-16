@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import classes from "./MainNavigation.module.css";
 import NavigationUL from "../../UI/NavigationUL/NavigationUL";
 import UserIcon from "@/public/Icons/UserIcon";
@@ -13,23 +12,17 @@ import { AnimatePresence } from "framer-motion";
 import HamburgerIcon from "@/public/Icons/HamburgerIcon";
 import ProductsSection from "../../UI/ProductsSection/ProductsSection";
 import CartIcon from "@/public/Icons/CartIcon";
-import { motion, useAnimationControls } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function MainNavigation() {
   const { data: session } = useSession();
   const [cart, setCart] = useState<boolean>(false);
   const [userPanel, setUserPanel] = useState<boolean>(false);
   const [mobileNav, setMobileNav] = useState<boolean>(false);
-  const controls = useAnimationControls();
-
+  const router = useRouter();
 
   return (
-    <motion.header
-      className={classes.header}
-      // initial={ { scale: 0, origin: 0.5 }} // Początkowe ustawienia animacji (skalowanie w osi X od zera, originX ustawione na 0.5 oznacza środek elementu)
-      // animate={{ scale: 1, origin: 0.5 }} //
-      // transition={{ duration: 0.6 }}
-    >
+    <header className={classes.header}>
       <nav
         className={`${classes.nav}  ${
           (cart || userPanel) && classes.nav__border
@@ -59,9 +52,9 @@ export default function MainNavigation() {
               <UserIcon />
             </button>
           ) : (
-            <Link href={"/sign-in"}>
+            <button onClick={() => router.push("/sign-in")}>
               <UserIcon />
-            </Link>
+            </button>
           )}
           <button
             className={classes.cart__btn}
@@ -86,11 +79,14 @@ export default function MainNavigation() {
                 }}
               />
 
-              <ProductsSection mobileClass={classes.responsive__nav} />
+              <ProductsSection
+                mobileClass={classes.responsive__nav}
+                productClass={classes.productClass}
+              />
             </>
           )}
         </AnimatePresence>
       </nav>
-    </motion.header>
+    </header>
   );
 }

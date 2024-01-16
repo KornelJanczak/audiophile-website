@@ -46,7 +46,6 @@ html {
   height: 70rem;
 }
 
-
 @media (max-width: 27em) {
   .p-4 {
     padding: 2rem;

@@ -20,9 +20,10 @@ const products = [
   },
 ];
 
-const ProductsSection: React.FC<{ mobileClass?: string }> = ({
-  mobileClass,
-}) => {
+const ProductsSection: React.FC<{
+  mobileClass?: string;
+  productClass?: string;
+}> = ({ mobileClass, productClass }) => {
   if (mobileClass)
     return (
       <motion.section
@@ -40,6 +41,7 @@ const ProductsSection: React.FC<{ mobileClass?: string }> = ({
               img={product.img}
               title={product.title}
               index={i}
+              className={productClass}
             />
           ))}
         </div>
@@ -48,7 +50,9 @@ const ProductsSection: React.FC<{ mobileClass?: string }> = ({
 
   if (!mobileClass)
     return (
-      <section className={classes.products__section}>
+      <section
+        className={`${classes.products__section} ${classes.product__mobile}`}
+      >
         <div className={classes.products}>
           {products.map((product, i) => (
             <FadeInWrapper index={i} key={i}>

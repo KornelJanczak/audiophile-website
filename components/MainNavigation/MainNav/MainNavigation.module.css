@@ -116,7 +116,7 @@
     left: 0;
     z-index: 1000000000000000000000000000000000;
     background-color: var(--dark-white);
-    max-height: 34rem;
+    max-height: 30rem;
     width: 100%;
     padding-bottom: 12.4rem;
   }
@@ -136,5 +136,20 @@
     width: 100%;
     padding-top: 9.6rem;
     max-height: 79rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .productClass img {
+    max-height: 10rem;
+    max-width: 10rem;
+  }
+
+  .responsive__nav {
+
+  }
+
+  .productClass {
+    gap: 2rem;
   }
 }

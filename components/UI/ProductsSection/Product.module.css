@@ -63,3 +63,11 @@
     max-height: 16.5rem;
   }
 }
+
+
+@media (max-width: 30em){
+
+  .product {
+    max-width: 30rem;
+  }
+}

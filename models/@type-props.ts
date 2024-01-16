@@ -31,6 +31,7 @@ export interface IPropsProducts {
   img: string;
   title: string;
   index?: number;
+  className?: string;
 }
 
 export interface IPropsProductPage {

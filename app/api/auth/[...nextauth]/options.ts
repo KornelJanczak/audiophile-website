@@ -125,14 +125,8 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
     async redirect({ url, baseUrl }) {
-      // console.log();
-      // console.log(url, "URL");
-      // console.log(baseUrl, "BASEURL");
-      console.log(url, "URL");
-      console.log(baseUrl);
       if (url.startsWith("/")) return `${baseUrl}`;
-
-      if (url.startsWith("/checkout")) return `/checkout`;
+      // if (url.startsWith("/checkout")) return `/checkout`;
       // Allows callback URLs on the same origin
       else if (new URL(url).origin === baseUrl) return baseUrl;
       return baseUrl;
