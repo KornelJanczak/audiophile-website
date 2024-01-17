@@ -7,6 +7,8 @@ import EyeButton from "../UI/EyeButton";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import Button from "../UI/Button/Button";
+import PageWrapper from "@/animations/PageWrapper";
+import WhiteHeader from "../UI/WhiteHeader";
 
 const PasswordReset: React.FC = () => {
   const [viewConfirmPass, setViewConfirmPass] = useState(false);
@@ -33,52 +35,59 @@ const PasswordReset: React.FC = () => {
     formik.touched.confirmPassword && formik.errors.confirmPassword;
 
   return (
-    <FormContainer
-      route="/sign-in"
-      routeTitle="Login"
-      title="Reset Password"
-      style={{ paddingTop: "6rem" }}
-    >
-      <Input
-        inputValidate={passwordValidate as FormikErrors<FormikValues>}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.password}
-        errorMsg={formik.errors.password as FormikErrors<FormikValues>}
-        type={viewPassword ? "text" : "password"}
-        name="password"
-        id="password"
-        placeholder="Password"
-        labelText="Password"
-        inputButton={
-          <EyeButton
-            onClick={() => setViewPassword((viewPassword) => !viewPassword)}
-            viewText={viewPassword}
-          />
-        }
-      />
-      <Input
-        inputValidate={confirmPasswordValidate as FormikErrors<FormikValues>}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.confirmPassword}
-        errorMsg={confirmPasswordValidate as FormikErrors<FormikValues>}
-        type={viewConfirmPass ? "text" : "password"}
-        name="confirmPassword"
-        id="confirmPassword"
-        placeholder="Confirm password"
-        labelText="Confirm password"
-        inputButton={
-          <EyeButton
-            onClick={() =>
-              setViewConfirmPass((viewConfirmPass) => !viewConfirmPass)
+    <PageWrapper>
+      <WhiteHeader />
+      <FormContainer
+        route="/sign-in"
+        routeTitle="Login"
+        title="Reset Password"
+        style={{ paddingTop: "6rem" }}
+      >
+        <form className=" w-100">
+          <Input
+            inputValidate={passwordValidate as FormikErrors<FormikValues>}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+            errorMsg={formik.errors.password as FormikErrors<FormikValues>}
+            type={viewPassword ? "text" : "password"}
+            name="password"
+            id="password"
+            placeholder="Password"
+            labelText="Password"
+            inputButton={
+              <EyeButton
+                onClick={() => setViewPassword((viewPassword) => !viewPassword)}
+                viewText={viewPassword}
+              />
             }
-            viewText={viewConfirmPass}
           />
-        }
-      />
-      <Button style="mg-3 btn">CHANGE PASSWORD</Button>
-    </FormContainer>
+          <Input
+            inputValidate={
+              confirmPasswordValidate as FormikErrors<FormikValues>
+            }
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.confirmPassword}
+            errorMsg={confirmPasswordValidate as FormikErrors<FormikValues>}
+            type={viewConfirmPass ? "text" : "password"}
+            name="confirmPassword"
+            id="confirmPassword"
+            placeholder="Confirm password"
+            labelText="Confirm password"
+            inputButton={
+              <EyeButton
+                onClick={() =>
+                  setViewConfirmPass((viewConfirmPass) => !viewConfirmPass)
+                }
+                viewText={viewConfirmPass}
+              />
+            }
+          />
+          <Button style="mg-3 btn">CHANGE PASSWORD</Button>
+        </form>
+      </FormContainer>
+    </PageWrapper>
   );
 };
 

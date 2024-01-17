@@ -140,6 +140,8 @@ const LoginForm: React.FC = () => {
           id="email"
           placeholder="Email address"
           labelText="Email address"
+          forgotPassword={forgotForm! && "Back to login form"}
+          forgotRoute={forgotForm! && "/sign-in"}
         />
         {!forgotForm && (
           <Input
