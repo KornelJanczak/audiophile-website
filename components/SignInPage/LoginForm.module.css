@@ -5,6 +5,13 @@
   width: 100%;
 }
 
+.forgot__p {
+  padding-top: 1.7rem;
+  font-size: 1.55rem;
+  max-width: 40rem;
+  margin-right: auto;
+}
+
 .github__btn,
 .google__btn {
   width: 100% !important;

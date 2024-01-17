@@ -72,7 +72,18 @@ const LoginForm: React.FC = () => {
   const forgotForm = searchparams.get("forgot");
 
   return (
-    <FormContainer route="/register" routeTitle="Register" title="Sign In">
+    <FormContainer
+      route="/register"
+      routeTitle="Register"
+      title={!forgotForm ? "Sign In" : "Forgot password?"}
+      style={!forgotForm ? {} : { transform: "translate(0%, 10%)" }}
+    >
+      {forgotForm && (
+        <p className={classes.forgot__p}>
+          Please provide your email address associated with your audiophile
+          account, and we will send you a link to reset your password.
+        </p>
+      )}
       {!forgotForm && (
         <div className={classes.container__login__providers}>
           <Button
@@ -130,37 +141,49 @@ const LoginForm: React.FC = () => {
           placeholder="Email address"
           labelText="Email address"
         />
-        <Input
-          inputValidate={passwordValidate as FormikErrors<FormikValues>}
-          inputIcon={<LockIcon />}
-          inputButton={
-            <EyeButton
-              onClick={() => setViewPassword((viewPassword) => !viewPassword)}
-              viewText={viewPassword}
-            />
-          }
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.password}
-          errorMsg={formik.errors.password as FormikErrors<FormikValues>}
-          type={viewPassword ? "text" : "password"}
-          name="password"
-          id="password"
-          placeholder="Password"
-          labelText="Password"
-          forgotPassword={
-            !forgotForm ? "Forgot your password?" : "Back to login form"
-          }
-          forgotRoute={!forgotForm ? "sign-in?forgot=true" : "sign-in"}
-        />
-        <Button
-          style={classes.btn}
-          type="submit"
-          disabled={isPending}
-          isPending={isPending}
-        >
-          Login
-        </Button>
+        {!forgotForm && (
+          <Input
+            inputValidate={passwordValidate as FormikErrors<FormikValues>}
+            inputIcon={<LockIcon />}
+            inputButton={
+              <EyeButton
+                onClick={() => setViewPassword((viewPassword) => !viewPassword)}
+                viewText={viewPassword}
+              />
+            }
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+            errorMsg={formik.errors.password as FormikErrors<FormikValues>}
+            type={viewPassword ? "text" : "password"}
+            name="password"
+            id="password"
+            placeholder="Password"
+            labelText="Password"
+            forgotPassword="Forgot your password?"
+            forgotRoute="sign-in?forgot=true"
+          />
+        )}
+        {!forgotForm && (
+          <Button
+            style={classes.btn}
+            type="submit"
+            disabled={isPending}
+            isPending={isPending}
+          >
+            Login
+          </Button>
+        )}
+        {forgotForm && (
+          <Button
+            style={classes.btn}
+            type="submit"
+            disabled={isPending}
+            isPending={isPending}
+          >
+            SEND EMAIl
+          </Button>
+        )}
       </form>
     </FormContainer>
   );
