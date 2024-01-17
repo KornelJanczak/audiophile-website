@@ -31,10 +31,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem 4rem 4rem 4rem;
+  padding: 3rem 0rem 4rem 0rem;
   border-bottom: 0.5px solid #979797;
   max-width: 111rem;
-  margin: 0 auto;
+  margin: 0 4rem;
 }
 
 .nav__border {

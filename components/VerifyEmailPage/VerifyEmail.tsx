@@ -2,6 +2,7 @@ import { VerifyEmailProps } from "@/models/@type-props";
 import classes from "./VerifyEmail.module.css";
 import Verification from "./Verification";
 import Logo from "../UI/Logo/Logo";
+import WhiteHeader from "../UI/WhiteHeader";
 
 const VerifyEmailComponent: React.FC<VerifyEmailProps> = ({ searchParams }) => {
   const token = searchParams.token;
@@ -9,9 +10,7 @@ const VerifyEmailComponent: React.FC<VerifyEmailProps> = ({ searchParams }) => {
 
   return (
     <>
-      <div className={classes.section}>
-        <Logo />
-      </div>
+      <WhiteHeader />
       <div className={classes.container}>
         <div>
           {token && typeof token === "string" ? (

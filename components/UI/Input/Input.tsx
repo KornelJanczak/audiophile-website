@@ -1,7 +1,7 @@
 import { FormikErrors, FormikValues } from "formik";
 import classes from "./Input.module.css";
 import { ChangeEvent, FocusEvent } from "react";
-import { AnimatePresence, animate, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 interface Iinput {
