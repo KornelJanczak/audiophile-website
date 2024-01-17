@@ -2,7 +2,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useFormik, FormikValues, FormikErrors } from "formik";
 import { signIn } from "next-auth/react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import classes from "./LoginForm.module.css";
 import Button from "../UI/Button/Button";
 import { SigninShema } from "@/models/SignInSchema";
@@ -21,9 +21,9 @@ import { Triangle } from "react-loader-spinner";
 
 const LoginForm: React.FC = () => {
   const router = useRouter();
+  const searchparams = useSearchParams();
   const [viewPassword, setViewPassword] = useState<boolean>(false);
   const [isPending, setIsPending] = useState<boolean>(false);
-
 
   //Google login
   const { mutate: googleMutate, isPending: googlePending } = useMutation({
@@ -69,49 +69,53 @@ const LoginForm: React.FC = () => {
   const emailValidate = formik.touched.email && formik.errors.email;
   const passwordValidate = formik.touched.password && formik.errors.password;
 
+  const forgotForm = searchparams.get("forgot");
+
   return (
     <FormContainer route="/register" routeTitle="Register" title="Sign In">
-      <div className={classes.container__login__providers}>
-        <Button
-          style={classes.github__btn}
-          onClick={() => githubMutate("github")}
-        >
-          {githubPending ? (
-            <Triangle color="#101010" width={35} height={35} />
-          ) : (
-            <>
-              <Image
-                src={githubLogo}
-                width={20}
-                height={20}
-                alt="Github Logo"
-                className={classes.btn__img}
-              />
-              Continue with Github
-            </>
-          )}
-        </Button>
-        <Button
-          style={classes.google__btn}
-          onClick={() => googleMutate("google")}
-        >
-          {googlePending ? (
-            <Triangle color="#101010" width={35} height={35} />
-          ) : (
-            <>
-              <Image
-                src={googleLogo}
-                width={20}
-                height={20}
-                alt="Google Logo"
-                className={classes.btn__img}
-              />
-              Continue with Google
-            </>
-          )}
-        </Button>
-      </div>
-      <label className={classes.line}>OR</label>
+      {!forgotForm && (
+        <div className={classes.container__login__providers}>
+          <Button
+            style={classes.github__btn}
+            onClick={() => githubMutate("github")}
+          >
+            {githubPending ? (
+              <Triangle color="#101010" width={35} height={35} />
+            ) : (
+              <>
+                <Image
+                  src={githubLogo}
+                  width={20}
+                  height={20}
+                  alt="Github Logo"
+                  className={classes.btn__img}
+                />
+                Continue with Github
+              </>
+            )}
+          </Button>
+          <Button
+            style={classes.google__btn}
+            onClick={() => googleMutate("google")}
+          >
+            {googlePending ? (
+              <Triangle color="#101010" width={35} height={35} />
+            ) : (
+              <>
+                <Image
+                  src={googleLogo}
+                  width={20}
+                  height={20}
+                  alt="Google Logo"
+                  className={classes.btn__img}
+                />
+                Continue with Google
+              </>
+            )}
+          </Button>
+        </div>
+      )}
+      {!forgotForm && <label className={classes.line}>OR</label>}
       <form onSubmit={formik.handleSubmit} className={classes.form}>
         <Input
           inputValidate={emailValidate as FormikErrors<FormikValues>}
@@ -144,6 +148,10 @@ const LoginForm: React.FC = () => {
           id="password"
           placeholder="Password"
           labelText="Password"
+          forgotPassword={
+            !forgotForm ? "Forgot your password?" : "Back to login form"
+          }
+          forgotRoute={!forgotForm ? "sign-in?forgot=true" : "sign-in"}
         />
         <Button
           style={classes.btn}

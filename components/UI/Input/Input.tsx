@@ -2,6 +2,7 @@ import { FormikErrors, FormikValues } from "formik";
 import classes from "./Input.module.css";
 import { ChangeEvent, FocusEvent } from "react";
 import { AnimatePresence, animate, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 interface Iinput {
   inputValidate: FormikErrors<FormikValues> | boolean;
@@ -17,6 +18,8 @@ interface Iinput {
   placeholder: string;
   labelText: string;
   className?: string;
+  forgotPassword?: string;
+  forgotRoute?: string;
 }
 
 const Input: React.FC<Iinput> = ({
@@ -33,12 +36,29 @@ const Input: React.FC<Iinput> = ({
   placeholder,
   labelText,
   className,
+  forgotPassword,
+  forgotRoute,
 }) => {
+  const router = useRouter();
+
   return (
     <div className={`${classes.container} ${className}`}>
-      <label htmlFor="email" style={{ color: inputValidate ? "#cc0000" : "" }}>
-        {labelText}
-      </label>
+      <div className={classes.label__container}>
+        <label
+          htmlFor="email"
+          style={{ color: inputValidate ? "#cc0000" : "" }}
+        >
+          {labelText}
+        </label>
+        {forgotPassword && (
+          <p
+            className={classes.forgot}
+            onClick={() => router.push(forgotRoute as string)}
+          >
+            {forgotPassword}
+          </p>
+        )}
+      </div>
       <div
         className={`${classes.input__container} ${
           inputValidate ? classes.input__error : null

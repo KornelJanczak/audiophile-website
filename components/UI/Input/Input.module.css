@@ -7,11 +7,31 @@
   padding-top: 3rem;
 }
 
-.container label {
+.label__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.forgot {
+  margin-left: auto;
+  color: #6328e0;
+  font-weight: 800;
+  border-bottom: 0.2px solid var(--light-white);
+}
+
+.forgot:hover {
+  border-bottom: 0.2px solid #6328e0;
+  cursor: pointer;
+}
+
+.label__container label {
   font-size: 2rem;
   font-weight: 600;
   margin-right: auto;
   padding-bottom: 0.5rem;
+  justify-content: flex-start;
 }
 
 .input__container {
