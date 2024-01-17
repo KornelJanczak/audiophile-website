@@ -46,6 +46,22 @@ html {
   height: 70rem;
 }
 
+.mg-3 {
+  margin-top: 4rem;
+}
+
+.btn {
+  width: 100% !important;
+  background-color: var(--orange-hover);
+  color: var(--light-white);
+  border: none;
+}
+
+.btn:hover {
+  transition: all 0.3s;
+  background-color: var(--orange-light);
+}
+
 @media (max-width: 27em) {
   .p-4 {
     padding: 2rem;

@@ -1,7 +1,6 @@
 import { connect, fetchData } from "@/utils/mongodb";
 import DetailPage from "./product-page";
-import { Suspense } from "react";
-import SkeletonCard from "@/components/UI/Skeleton/Skeleton";
+
 
 export async function generateStaticParams() {
   await connect();

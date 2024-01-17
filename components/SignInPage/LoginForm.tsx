@@ -70,7 +70,7 @@ const LoginForm: React.FC = () => {
   const passwordValidate = formik.touched.password && formik.errors.password;
 
   return (
-    <FormContainer>
+    <FormContainer route="/register" routeTitle="Register" title="Sign In">
       <div className={classes.container__login__providers}>
         <Button
           style={classes.github__btn}

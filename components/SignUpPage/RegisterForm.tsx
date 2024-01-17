@@ -12,7 +12,6 @@ import Button from "../UI/Button/Button";
 import { IFormValuesSignUp } from "@/models/@type-props";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { Triangle } from "react-loader-spinner";
 
 const RegisterForm: React.FC = () => {
   const router = useRouter();
@@ -87,7 +86,7 @@ const RegisterForm: React.FC = () => {
     formik.values.confrimPassword !== "";
 
   return (
-    <FormContainer>
+    <FormContainer title="Sign Up" route="/sign-in" routeTitle="Login">
       <form onSubmit={formik.handleSubmit} className={classes.form}>
         <Input
           inputValidate={firstNameValidate as FormikErrors<FormikValues>}

@@ -1,6 +1,7 @@
 import { FormikErrors, FormikValues } from "formik";
 import classes from "./Input.module.css";
-import { ChangeEvent, FocusEventHandler, FocusEvent } from "react";
+import { ChangeEvent, FocusEvent } from "react";
+import { AnimatePresence, animate, motion } from "framer-motion";
 
 interface Iinput {
   inputValidate: FormikErrors<FormikValues> | boolean;
@@ -56,11 +57,20 @@ const Input: React.FC<Iinput> = ({
         />
         {inputButton}
       </div>
-      {inputValidate ? (
-        <div className={classes.error__input}>{errorMsg as any}</div>
-      ) : null}
+      <AnimatePresence>
+        {inputValidate ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className={classes.error__input}
+          >
+            {errorMsg as any}
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 };
 export default Input;
-

@@ -1,9 +1,12 @@
 import { ObjectId } from "mongoose";
-import { StaticImageData } from "next/image";
 import { LegacyRef } from "react";
 
 export interface IPropsNode {
   children: React.ReactNode;
+  route: string;
+  title?: string;
+  routeTitle?: string;
+  style?: {} | undefined;
 }
 
 export interface IPropsRef {
