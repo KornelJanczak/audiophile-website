@@ -23,70 +23,72 @@ export default function MainNavigation() {
 
   return (
     <header className={classes.header}>
-      <nav
-        className={`${classes.nav}  ${
-          (cart || userPanel) && classes.nav__border
-        }`}
-      >
-        <button
-          className={classes.mobile__nav__btn}
-          onClick={() => {
-            setMobileNav((mobileNav) => !mobileNav);
-            setCart(false);
-            setUserPanel(false);
-          }}
+      <div className="p-0-4">
+        <nav
+          className={`${classes.nav}  ${
+            (cart || userPanel) && classes.nav__border
+          }`}
         >
-          <HamburgerIcon />
-        </button>
-        <Logo className={classes.main_logo} />
-        <NavigationUL className={classes.nav__ul} />
-        <div className={classes.icons}>
-          {session ? (
+          <button
+            className={classes.mobile__nav__btn}
+            onClick={() => {
+              setMobileNav((mobileNav) => !mobileNav);
+              setCart(false);
+              setUserPanel(false);
+            }}
+          >
+            <HamburgerIcon />
+          </button>
+          <Logo className={classes.main_logo} />
+          <NavigationUL className={classes.nav__ul} />
+          <div className={classes.icons}>
+            {session ? (
+              <button
+                onClick={() => {
+                  setUserPanel((panel) => !panel);
+                  setCart(false);
+                  setMobileNav(false);
+                }}
+              >
+                <UserIcon />
+              </button>
+            ) : (
+              <button onClick={() => router.push("/sign-in")}>
+                <UserIcon />
+              </button>
+            )}
             <button
+              className={classes.cart__btn}
               onClick={() => {
-                setUserPanel((panel) => !panel);
-                setCart(false);
+                setCart((cart) => !cart);
+                setUserPanel(false);
                 setMobileNav(false);
               }}
             >
-              <UserIcon />
+              <CartIcon />
             </button>
-          ) : (
-            <button onClick={() => router.push("/sign-in")}>
-              <UserIcon />
-            </button>
-          )}
-          <button
-            className={classes.cart__btn}
-            onClick={() => {
-              setCart((cart) => !cart);
-              setUserPanel(false);
-              setMobileNav(false);
-            }}
-          >
-            <CartIcon />
-          </button>
-        </div>
-        <AnimatePresence>
-          {userPanel && <UserPanel closePanel={() => setUserPanel(false)} />}
-          {cart && <Cart closeCart={() => setCart(false)} />}
-          {mobileNav && (
-            <>
-              <Overlay
-                position={{ top: "9.8rem", left: 0 }}
-                onOverlay={() => {
-                  setMobileNav(false);
-                }}
-              />
+          </div>
+          <AnimatePresence>
+            {userPanel && <UserPanel closePanel={() => setUserPanel(false)} />}
+            {cart && <Cart closeCart={() => setCart(false)} />}
+            {mobileNav && (
+              <>
+                <Overlay
+                  position={{ top: "9.8rem", left: 0 }}
+                  onOverlay={() => {
+                    setMobileNav(false);
+                  }}
+                />
 
-              <ProductsSection
-                mobileClass={classes.responsive__nav}
-                productClass={classes.productClass}
-              />
-            </>
-          )}
-        </AnimatePresence>
-      </nav>
+                <ProductsSection
+                  mobileClass={classes.responsive__nav}
+                  productClass={classes.productClass}
+                />
+              </>
+            )}
+          </AnimatePresence>
+        </nav>
+      </div>
     </header>
   );
 }

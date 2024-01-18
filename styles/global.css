@@ -54,6 +54,10 @@ html {
   margin-top: 4rem;
 }
 
+.p-0-4{
+  padding: 0 4rem;
+}
+
 .btn {
   width: 100% !important;
   background-color: var(--orange-hover);

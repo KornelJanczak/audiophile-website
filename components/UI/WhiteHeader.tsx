@@ -4,7 +4,11 @@ import Logo from "./Logo/Logo";
 const WhiteHeader: React.FC = () => {
   return (
     <div style={style}>
-      <Logo />
+      <div
+        style={{ borderBottom: "0.5px solid #d0d1d3", paddingBottom: "3rem" }}
+      >
+        <Logo />
+      </div>
     </div>
   );
 };
@@ -13,7 +17,6 @@ export default WhiteHeader;
 
 const style = {
   maxWidth: "111rem",
-  margin: "0 4rem",
-  padding: "3rem 0rem 3rem 0rem",
-  borderBottom: "0.5px solid #d0d1d3",
+  margin: "0 auto",
+  padding: "3rem 4rem 3rem 4rem",
 };
