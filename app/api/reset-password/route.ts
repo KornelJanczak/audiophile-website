@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import bcryptjs from "bcryptjs";
 
-export async function UPDATE(request: NextRequest) {
+export async function PUT(request: NextRequest) {
   try {
     await connect();
     const { token, password, confirmPassword } = await request.json();
