@@ -1,8 +1,9 @@
 "use client";
-import { IPropsNode } from "@/models/@type-props";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
-const TanstackProvider: React.FC<IPropsNode> = ({ children }) => {
+const TanstackProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const queryClient = new QueryClient();
 
   return (
