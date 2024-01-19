@@ -22,6 +22,10 @@ const PasswordReset: React.FC = () => {
   const searchParam = useSearchParams();
   const token = searchParam.get("token");
 
+  useEffect(() => {
+    
+  }, []);
+
   const { mutate, isPending } = useMutation({
     mutationFn: async (userData: FormikValues) =>
       await axios.put("/api/reset-password", {

@@ -26,6 +26,10 @@ export default function VerifyEmail({
       </Preview>
       <Body style={main}>
         <Container style={container}>
+          <Img
+            src={`${process.env.DOMAIN}/public/assets/shared/logo.png`}
+            width={200}
+          ></Img>
           <Text style={title}>
             <strong>@{username}</strong>, a personal access was created on your
             account.

@@ -53,6 +53,7 @@ const userSchema: MongooseShema<IUser> = new Schema(
     forgotPasswordTokenExpiry: Date,
     verifyToken: String,
     verifyTokenExpiry: Date,
+
   },
   { timestamps: true }
 );

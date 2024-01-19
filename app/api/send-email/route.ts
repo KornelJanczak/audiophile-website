@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
         { message: "Missing required data" },
         { status: 500 }
       );
-    sendEmail({ email, emailType: process.env.RESET as string });
+    await sendEmail({ email, emailType: process.env.RESET as string });
 
     return NextResponse.json({ message: "Success!" }, { status: 200 });
   } catch (err) {
