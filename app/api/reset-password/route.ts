@@ -33,7 +33,10 @@ export async function PUT(request: NextRequest) {
       const checkPass = await bcryptjs.compare(oldPassword, user.password);
 
       if (!checkPass)
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json(
+          { error: "Incorrect password! Please provide correct password." },
+          { status: 401 }
+        );
 
       user.password = await bcryptjs.hash(password, 10);
       await user.save();

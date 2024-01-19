@@ -22,10 +22,6 @@ const PasswordReset: React.FC = () => {
   const searchParam = useSearchParams();
   const token = searchParam.get("token");
 
-  // useEffect(() => {
-  //   console.log(searchParam.get("token"));
-  // }, []);
-
   const { mutate, isPending } = useMutation({
     mutationFn: async (userData: FormikValues) =>
       await axios.put("/api/reset-password", {
@@ -33,23 +29,22 @@ const PasswordReset: React.FC = () => {
         password: userData.password,
         confirmPassword: userData.confirmPassword,
       }),
-    onSuccess: (a) => {
+    onSuccess: () => {
       toast.success("Your password has been reset!");
-      signOut();
+      signOut({ redirect: false });
       route.push("/sign-in");
     },
     onError: (err) => {
       if (err instanceof AxiosError) {
-        if (err.response?.status == 409) {
-          return toast.error(`This email is already in use. Sign In instead?`);
+        if (err.response?.status == 400) {
+          return toast.error(`${err.response.statusText}`);
         }
-        if (err.response?.status == 500) {
-          return toast.error("Error! Try again later.");
+        if (err.response?.status == 401) {
+          return toast.error(
+            `Something went wrong! Error: ${err.response.statusText}`
+          );
         }
-        if (err.response?.status == 422) {
-          return toast.error("Invalid data!");
-        }
-        return toast.error("Something went wrong. Please try again");
+        return toast.error("Something went wrong. Please try again.");
       }
     },
   });
@@ -90,7 +85,7 @@ const PasswordReset: React.FC = () => {
               onBlur={formik.handleBlur}
               value={formik.values.oldPassword}
               errorMsg={formik.errors.oldPassword as FormikErrors<FormikValues>}
-              type={viewPassword ? "text" : "password"}
+              type={viewOldPass ? "text" : "password"}
               name="oldPassword"
               id="oldPassword"
               placeholder="Old Password"

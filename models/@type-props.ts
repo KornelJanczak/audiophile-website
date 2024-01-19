@@ -238,25 +238,25 @@ export interface VerifyEmailProps {
 
 // Email Type
 export interface IsendEmail {
-  firstName: string;
-  lastName: string;
-  email: string;
-  emailType: string;
+  firstName?: string | undefined;
+  lastName?: string;
+  email: string | null;
+  emailType: string | null;
   order?: IOrder | undefined;
-  userId: ObjectId | string;
+  userId?: ObjectId | string;
   address?: string[];
 }
 
 export interface IVerifyEmail {
   hashedToken: string;
-  firstName: string;
-  lastName: string;
+  firstName: string | undefined;
+  lastName: string | undefined;
 }
 
 export interface IOrderEmail {
   order?: IOrder;
-  firstName: string;
-  lastName: string;
+  firstName: string | undefined;
+  lastName: string | undefined;
   address?: string[];
 }
 

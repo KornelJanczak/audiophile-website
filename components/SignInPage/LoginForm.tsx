@@ -19,6 +19,7 @@ import { IFormValuesSignIn } from "@/models/@type-props";
 import EyeButton from "../UI/EyeButton";
 import { Triangle } from "react-loader-spinner";
 
+
 const LoginForm: React.FC = () => {
   const router = useRouter();
   const searchparams = useSearchParams();
@@ -70,6 +71,7 @@ const LoginForm: React.FC = () => {
   const passwordValidate = formik.touched.password && formik.errors.password;
 
   const forgotForm = searchparams.get("forgot");
+
 
   return (
     <FormContainer
@@ -131,7 +133,11 @@ const LoginForm: React.FC = () => {
         </div>
       )}
       {!forgotForm && <label className={classes.line}>OR</label>}
-      <form onSubmit={formik.handleSubmit} className={classes.form}>
+      <form
+        onSubmit={formik.handleSubmit}
+        className={classes.form}
+        // action={forgotForm && sendResetEmail}
+      >
         <Input
           inputValidate={emailValidate as FormikErrors<FormikValues>}
           inputIcon={<EmailIcon />}

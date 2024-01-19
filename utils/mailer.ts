@@ -21,9 +21,10 @@ export const sendEmail = async ({
   address,
 }: IsendEmail) => {
   try {
-    const hashedToken = await bcryptjs.hash(userId.toString(), 10);
+    const hashedToken = await bcryptjs.hash(userId!.toString(), 10);
     let emailTemplate: ReactElement | string = "";
 
+    if (!email || !emailType) return;
     if (
       ![process.env.VERIFY, process.env.RESET, process.env.ORDER].includes(
         emailType
@@ -54,8 +55,6 @@ export const sendEmail = async ({
         break;
     }
 
-    console.log(emailTemplate);
-
     const data = await resend.emails.send({
       from: "Audiophile <onboarding@resend.dev>",
       to: [email],
@@ -68,20 +67,3 @@ export const sendEmail = async ({
     throw new Error("Send email faield: " + error);
   }
 };
-
-// const transport = nodemailer.createTransport({
-//   host: "smtp.resend.com",
-//   secure: true,
-//   port: 465,
-//   auth: {
-//     user: "resend",
-//     pass: process.env.RESEND_API_KEY,
-//   },
-// });
-
-// const mailOptions = {
-//   from: "korneljanczak11@gmail.com",
-//   to: email,
-//   subject: "Hello world",
-//   html: `<a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">Click</a>`,
-// };
