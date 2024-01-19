@@ -88,3 +88,19 @@
   left: 0%;
   transition: all 0.3s;
 }
+
+@media (max-width: 30em) {
+  .label__container label {
+    font-size: 1.8rem;
+  }
+  .container {
+    padding-top: 2.4rem;
+  }
+  .error__input {
+    font-size: 1.2rem;
+  }
+
+  .forgot {
+    font-size: 1.4rem;
+  }
+}

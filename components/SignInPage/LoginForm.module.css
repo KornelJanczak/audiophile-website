@@ -83,3 +83,10 @@
   transition: all 0.3s ease;
   background-color: var(--orange-light);
 }
+
+
+@media (max-width: 42rem){
+  .line {
+    padding: 2.4rem 0 1rem 0;
+  }
+}

@@ -66,9 +66,9 @@ const PasswordReset: React.FC = () => {
         route="/sign-in"
         routeTitle="Login"
         title="Reset Password"
-        style={{ paddingTop: "6rem" }}
+        style={{ paddingTop: "2rem" }}
       >
-        <form className=" w-100">
+        <form className="w-100">
           {!token && (
             <Input
               inputValidate={oldPasswordValidate as FormikErrors<FormikValues>}

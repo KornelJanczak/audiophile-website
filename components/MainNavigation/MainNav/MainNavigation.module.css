@@ -92,7 +92,7 @@
     padding: 3rem 0rem 4rem 0rem;
   }
   .header {
-    padding: 0 3.4rem;
+    padding: 0 2rem;
   }
   .nav__ul {
     display: none;
@@ -124,6 +124,9 @@
 }
 
 @media (max-width: 36em) {
+  .header {
+    padding: 0 0rem;
+  }
   .nav {
     justify-content: space-between;
   }

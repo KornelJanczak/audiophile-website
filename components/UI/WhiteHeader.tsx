@@ -18,5 +18,5 @@ export default WhiteHeader;
 const style = {
   maxWidth: "111rem",
   margin: "0 auto",
-  padding: "3rem 4rem 3rem 4rem",
+  padding: "3rem 4rem 0rem 4rem",
 };

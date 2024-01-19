@@ -76,7 +76,11 @@ const LoginForm: React.FC = () => {
       route="/register"
       routeTitle="Register"
       title={!forgotForm ? "Sign In" : "Forgot password?"}
-      style={!forgotForm ? {} : { transform: "translate(0%, 10%)" }}
+      style={
+        !forgotForm
+          ? { paddingTop: "2.8rem" }
+          : { transform: "translate(0%, 10%)" }
+      }
     >
       {forgotForm && (
         <p className={classes.forgot__p}>
