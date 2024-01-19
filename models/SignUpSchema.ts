@@ -1,19 +1,18 @@
 import * as Yup from "yup";
 
-const passwordSchema = {
-  password: Yup.string()
-    .required("Password is required!")
-    .min(7, "Password should be at least 7 characters long!")
-    .matches(/[a-zA-Z]/, "Password must have a letter!")
-    .matches(/\d/, "Password must have a figure!")
-    .matches(
-      /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/,
-      "Password must have at least one special character"
-    ),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), undefined], "Passwords are not the same!")
-    .required("Repeat password!"),
-};
+const password = Yup.string()
+  .required("Password is required!")
+  .min(7, "Password should be at least 7 characters long!")
+  .matches(/[a-zA-Z]/, "Password must have a letter!")
+  .matches(/\d/, "Password must have a figure!")
+  .matches(
+    /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/,
+    "Password must have at least one special character"
+  );
+
+const confirmPassword = Yup.string()
+  .oneOf([Yup.ref("password"), undefined], "Passwords are not the same!")
+  .required("Repeat password!");
 
 export const SignupShema = Yup.object().shape({
   firstName: Yup.string()
@@ -27,7 +26,12 @@ export const SignupShema = Yup.object().shape({
   email: Yup.string()
     .email("Email must have  @!")
     .required("Email is required!"),
-  ...passwordSchema,
+  password: password,
+  confirmPassword: confirmPassword,
 });
 
-export const ResetPasswordSchema = Yup.object().shape({ ...passwordSchema });
+export const ResetPasswordSchema = Yup.object().shape({
+  oldPassword: password,
+  password: password,
+  confirmPassword: confirmPassword,
+});

@@ -4,22 +4,45 @@ import Input from "../UI/Input/Input";
 import { useFormik, FormikValues, FormikErrors } from "formik";
 import { ResetPasswordSchema } from "@/models/SignUpSchema";
 import EyeButton from "../UI/EyeButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import Button from "../UI/Button/Button";
 import PageWrapper from "@/animations/PageWrapper";
 import WhiteHeader from "../UI/WhiteHeader";
+import axios from "axios";
+import { toast } from "sonner";
+import { useRouter, useSearchParams } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 const PasswordReset: React.FC = () => {
   const [viewConfirmPass, setViewConfirmPass] = useState(false);
+  const [viewOldPass, setViewOldPass] = useState(false);
   const [viewPassword, setViewPassword] = useState(false);
+  const route = useRouter();
+  const searchParam = useSearchParams();
+  const token = searchParam.get("token");
 
-  const { mutate } = useMutation({
-    mutationFn: async (userData: FormikValues) => {},
+  // useEffect(() => {
+  //   console.log(searchParam.get("token"));
+  // }, []);
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (userData: FormikValues) =>
+      await axios.put("api/reset-password", {
+        oldPassword: userData.oldPassword,
+        password: userData.password,
+        confirmPassword: userData.confirmPassword,
+      }),
+    onSuccess: () => {
+      toast.success("Your password has been reset!");
+      signOut();
+      route.push("/sign-in");
+    },
   });
 
   const initialValues = {
     password: "",
+    oldPassword: "",
     confirmPassword: "",
   };
 
@@ -31,6 +54,8 @@ const PasswordReset: React.FC = () => {
   });
 
   const passwordValidate = formik.touched.password && formik.errors.password;
+  const oldPasswordValidate =
+    formik.touched.oldPassword && formik.errors.oldPassword;
   const confirmPasswordValidate =
     formik.touched.confirmPassword && formik.errors.confirmPassword;
 
@@ -44,6 +69,28 @@ const PasswordReset: React.FC = () => {
         style={{ paddingTop: "6rem" }}
       >
         <form className=" w-100">
+          {!token && (
+            <Input
+              inputValidate={oldPasswordValidate as FormikErrors<FormikValues>}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.oldPassword}
+              errorMsg={formik.errors.oldPassword as FormikErrors<FormikValues>}
+              type={viewPassword ? "text" : "password"}
+              name="oldPassword"
+              id="oldPassword"
+              placeholder="Old Password"
+              labelText="Old password"
+              inputButton={
+                <EyeButton
+                  onClick={() =>
+                    setViewOldPass((viewPassword) => !viewPassword)
+                  }
+                  viewText={viewOldPass}
+                />
+              }
+            />
+          )}
           <Input
             inputValidate={passwordValidate as FormikErrors<FormikValues>}
             onChange={formik.handleChange}
@@ -53,8 +100,8 @@ const PasswordReset: React.FC = () => {
             type={viewPassword ? "text" : "password"}
             name="password"
             id="password"
-            placeholder="Password"
-            labelText="Password"
+            placeholder="New password"
+            labelText="New password"
             inputButton={
               <EyeButton
                 onClick={() => setViewPassword((viewPassword) => !viewPassword)}
@@ -84,7 +131,9 @@ const PasswordReset: React.FC = () => {
               />
             }
           />
-          <Button style="mg-3 btn">CHANGE PASSWORD</Button>
+          <Button style="mg-3 btn" isPending={isPending} disabled={isPending}>
+            CHANGE PASSWORD
+          </Button>
         </form>
       </FormContainer>
     </PageWrapper>
