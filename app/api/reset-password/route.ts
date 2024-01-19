@@ -8,40 +8,55 @@ import bcryptjs from "bcryptjs";
 
 export async function PUT(request: NextRequest) {
   try {
+    const { token, oldPassword, password, confirmPassword } =
+      await request.json();
+
+    if (password !== confirmPassword || !oldPassword)
+      return NextResponse.json(
+        { error: "Missing required data" },
+        { status: 400 }
+      );
+
+    //  Connecto to DB
     await connect();
-    const { token, password, confirmPassword } = await request.json();
-    const loggedUser = await getCurrentUser();
 
-    if (password !== confirmPassword || !loggedUser)
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    // If token no exist
+    if (!token) {
+      const loggedUser = await getCurrentUser();
+      // Check if usser is loggef if token not exist
+      if (!loggedUser)
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    const userId = new ObjectId(loggedUser!.id);
-    const newPassword = bcryptjs.hash(password, 10);
+      const userId = new ObjectId(loggedUser!.id);
+      const user = await User.findById(userId);
 
-    if (token) {
+      const checkPass = await bcryptjs.compare(oldPassword, user.password);
+
+      if (!checkPass)
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+      user.password = await bcryptjs.hash(password, 10);
+      await user.save();
     }
 
-    const user = await User.findOneAndUpdate(
-      {
-        _id: userId,
-      },
-      {
-        password: newPassword,
-      },
-      {
-        new: true,
-      }
-    );
+    // If token exist
+    const userWithToken = await User.findOne({
+      resetToken: token,
+    });
 
-    if (!user.password)
+    if (!userWithToken)
       return NextResponse.json(
-        {
-          error:
-            "User doesn't has account with password! Try login by Google or Github",
-        },
-        { status: 403 }
+        { error: "Wrong reset token. Try again!" },
+        { status: 400 }
       );
-      
+
+    userWithToken.password = await bcryptjs.hash(password, 10);
+    await userWithToken.save();
+
+    return NextResponse.json(
+      { message: "Password has been changed", succes: true },
+      { status: 201 }
+    );
   } catch (err) {
     return NextResponse.json({ error: err }, { status: 500 });
   }

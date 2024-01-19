@@ -9,7 +9,7 @@ import { useMutation } from "@tanstack/react-query";
 import Button from "../UI/Button/Button";
 import PageWrapper from "@/animations/PageWrapper";
 import WhiteHeader from "../UI/WhiteHeader";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { toast } from "sonner";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signOut } from "next-auth/react";
@@ -28,15 +28,29 @@ const PasswordReset: React.FC = () => {
 
   const { mutate, isPending } = useMutation({
     mutationFn: async (userData: FormikValues) =>
-      await axios.put("api/reset-password", {
+      await axios.put("/api/reset-password", {
         oldPassword: userData.oldPassword,
         password: userData.password,
         confirmPassword: userData.confirmPassword,
       }),
-    onSuccess: () => {
+    onSuccess: (a) => {
       toast.success("Your password has been reset!");
       signOut();
       route.push("/sign-in");
+    },
+    onError: (err) => {
+      if (err instanceof AxiosError) {
+        if (err.response?.status == 409) {
+          return toast.error(`This email is already in use. Sign In instead?`);
+        }
+        if (err.response?.status == 500) {
+          return toast.error("Error! Try again later.");
+        }
+        if (err.response?.status == 422) {
+          return toast.error("Invalid data!");
+        }
+        return toast.error("Something went wrong. Please try again");
+      }
     },
   });
 
@@ -68,7 +82,7 @@ const PasswordReset: React.FC = () => {
         title="Reset Password"
         style={{ paddingTop: "2rem" }}
       >
-        <form className="w-100">
+        <form className="w-100" onSubmit={formik.handleSubmit}>
           {!token && (
             <Input
               inputValidate={oldPasswordValidate as FormikErrors<FormikValues>}
@@ -131,7 +145,12 @@ const PasswordReset: React.FC = () => {
               />
             }
           />
-          <Button style="mg-3 btn" isPending={isPending} disabled={isPending}>
+          <Button
+            style="mg-3 btn"
+            isPending={isPending}
+            disabled={isPending}
+            type="submit"
+          >
             CHANGE PASSWORD
           </Button>
         </form>
