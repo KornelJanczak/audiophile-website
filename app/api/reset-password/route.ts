@@ -10,7 +10,7 @@ export async function PUT(request: NextRequest) {
     const { token, oldPassword, password, confirmPassword } =
       await request.json();
 
-    if (password !== confirmPassword || !oldPassword)
+    if (password !== confirmPassword)
       return NextResponse.json(
         { error: "Missing required data" },
         { status: 400 }
@@ -19,17 +19,19 @@ export async function PUT(request: NextRequest) {
     //  Connecto to DB
     await connect();
 
+    const hashPass = await bcryptjs.hash(password, 10);
     // If token no exist
     if (!token) {
       const loggedUser = await getCurrentUser();
       // Check if usser is loggef if token not exist
-      if (!loggedUser)
+      if (!loggedUser || !oldPassword)
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
       const userId = new ObjectId(loggedUser!.id);
       const user = await User.findById(userId);
 
       const checkPass = await bcryptjs.compare(oldPassword, user.password);
+      console.log(checkPass);
 
       if (!checkPass)
         return NextResponse.json(
@@ -37,13 +39,18 @@ export async function PUT(request: NextRequest) {
           { status: 401 }
         );
 
-      user.password = await bcryptjs.hash(password, 10);
+      user.password = hashPass;
       await user.save();
+      return NextResponse.json(
+        { message: "Password has been changed", succes: true },
+        { status: 201 }
+      );
     }
 
     // If token exist
     const userWithToken = await User.findOne({
-      resetToken: token,
+      forgotPasswordToken: token,
+      forgotPasswordTokenExpiry: { $gt: Date.now() },
     });
 
     if (!userWithToken)
@@ -52,7 +59,9 @@ export async function PUT(request: NextRequest) {
         { status: 400 }
       );
 
-    userWithToken.password = await bcryptjs.hash(password, 10);
+    userWithToken.password = hashPass;
+    userWithToken.forgotPasswordToken = undefined;
+    userWithToken.forgotPasswordTokenExpiry = undefined;
     await userWithToken.save();
 
     return NextResponse.json(

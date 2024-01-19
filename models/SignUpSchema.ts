@@ -37,3 +37,8 @@ export const ResetPasswordSchema = Yup.object().shape({
   password: password,
   confirmPassword: confirmPassword,
 });
+
+export const ResetWithTokenSchema = Yup.object().shape({
+  password: password,
+  confirmPassword: confirmPassword,
+});

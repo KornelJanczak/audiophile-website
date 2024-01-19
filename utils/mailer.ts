@@ -5,6 +5,8 @@ import { Resend } from "resend";
 import VerifyEmail from "@/emails/verify-email";
 import { ReactElement } from "react";
 import OrderEmail from "@/emails/order-email";
+import ResetPassword from "@/emails/password-email";
+import * as randomString from "uuid";
 // domain.com/verifytoken/  - client
 // domain.com/verifytoken?token=/ -server
 
@@ -21,9 +23,9 @@ export const sendEmail = async ({
   address,
 }: IsendEmail) => {
   try {
-    const hashedToken = userId
-      ? await bcryptjs.hash(userId!.toString(), 10)
-      : "";
+    const randomId = randomString.v4() + randomString.v4();
+    const hashedToken = await bcryptjs.hash(randomId, 10);
+
     let emailTemplate: ReactElement | string = "";
 
     if (!email || !emailType) return;
@@ -44,11 +46,14 @@ export const sendEmail = async ({
         emailTemplate = VerifyEmail({ hashedToken, firstName, lastName });
         break;
       case process.env.RESET:
-        await User.findByIdAndUpdate(userId, {
-          forgotPasswordToken: hashedToken,
-          forgotPasswordTokenExpiry: Date.now() + TOKEN_EXPIRY_TIME,
-        });
-        emailTemplate = "Reset password";
+        await User.findOneAndUpdate(
+          { email: email },
+          {
+            forgotPasswordToken: hashedToken,
+            forgotPasswordTokenExpiry: Date.now() + TOKEN_EXPIRY_TIME,
+          }
+        );
+        emailTemplate = ResetPassword({ hashedToken });
         break;
       case process.env.ORDER:
         emailTemplate = OrderEmail({ order, firstName, lastName, address });

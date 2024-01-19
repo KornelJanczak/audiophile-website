@@ -2,7 +2,10 @@
 import FormContainer from "../UI/FormContainer/FormContainer";
 import Input from "../UI/Input/Input";
 import { useFormik, FormikValues, FormikErrors } from "formik";
-import { ResetPasswordSchema } from "@/models/SignUpSchema";
+import {
+  ResetPasswordSchema,
+  ResetWithTokenSchema,
+} from "@/models/SignUpSchema";
 import EyeButton from "../UI/EyeButton";
 import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
@@ -22,16 +25,13 @@ const PasswordReset: React.FC = () => {
   const searchParam = useSearchParams();
   const token = searchParam.get("token");
 
-  useEffect(() => {
-    
-  }, []);
-
   const { mutate, isPending } = useMutation({
     mutationFn: async (userData: FormikValues) =>
       await axios.put("/api/reset-password", {
         oldPassword: userData.oldPassword,
         password: userData.password,
         confirmPassword: userData.confirmPassword,
+        token: token,
       }),
     onSuccess: () => {
       toast.success("Your password has been reset!");
@@ -59,10 +59,15 @@ const PasswordReset: React.FC = () => {
     confirmPassword: "",
   };
 
+  const chuj = {
+    oldPassword: "",
+    confirmPassword: "",
+  };
+
   // Input schema
   const formik = useFormik({
-    initialValues: initialValues,
-    validationSchema: ResetPasswordSchema,
+    initialValues: !token ? initialValues : chuj,
+    validationSchema: !token ? ResetPasswordSchema : ResetWithTokenSchema,
     onSubmit: (values: FormikValues) => mutate(values),
   });
 
