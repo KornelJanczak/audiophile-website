@@ -1,6 +1,6 @@
 "use client";
 import { useMutation } from "@tanstack/react-query";
-import { useFormik, FormikValues, FormikErrors } from "formik";
+import { useFormik, FormikValues, FormikErrors, FormikConfig } from "formik";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import classes from "./LoginForm.module.css";
@@ -18,7 +18,8 @@ import FormContainer from "../UI/FormContainer/FormContainer";
 import { IFormValuesSignIn } from "@/models/@type-props";
 import EyeButton from "../UI/EyeButton";
 import { Triangle } from "react-loader-spinner";
-
+import axios from "axios";
+import { emailSchema } from "@/models/SignUpSchema";
 
 const LoginForm: React.FC = () => {
   const router = useRouter();
@@ -36,9 +37,7 @@ const LoginForm: React.FC = () => {
   // Github login
   const { mutate: githubMutate, isPending: githubPending } = useMutation({
     mutationFn: async (signInType: string) => await signIn(signInType),
-    onError: () => {
-      toast.error("Github authorization went wrong! ");
-    },
+    onError: () => toast.error("Github authorization went wrong! "),
     onSuccess: () => toast.success("You are logged!"),
   });
 
@@ -72,6 +71,25 @@ const LoginForm: React.FC = () => {
 
   const forgotForm = searchparams.get("forgot");
 
+  // Email sending
+  const { mutate: emailMutate, isPending: emailPending } = useMutation({
+    mutationFn: async () =>
+      await axios.post("/api/send-email", { email: formik.values.email }),
+    onError: () => toast.error("Something went wrong!!"),
+    onSuccess: () => toast.success("Email has been sended!"),
+  });
+
+  // Reset email formik state
+  const initialEmailValues: { email: string } = {
+    email: "",
+  };
+
+  // Reset email formik handling
+  const emailFormik = useFormik({
+    initialValues: initialEmailValues,
+    validationSchema: emailSchema,
+    onSubmit: async (values: FormikValues) => emailMutate(values.email),
+  });
 
   return (
     <FormContainer
@@ -134,9 +152,8 @@ const LoginForm: React.FC = () => {
       )}
       {!forgotForm && <label className={classes.line}>OR</label>}
       <form
-        onSubmit={formik.handleSubmit}
+        onSubmit={!forgotForm ? formik.handleSubmit : emailFormik.handleSubmit}
         className={classes.form}
-        // action={forgotForm && sendResetEmail}
       >
         <Input
           inputValidate={emailValidate as FormikErrors<FormikValues>}
@@ -190,8 +207,8 @@ const LoginForm: React.FC = () => {
           <Button
             style={classes.btn}
             type="submit"
-            disabled={isPending}
-            isPending={isPending}
+            disabled={emailPending}
+            isPending={emailPending}
           >
             SEND EMAIl
           </Button>

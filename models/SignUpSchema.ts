@@ -14,6 +14,10 @@ const confirmPassword = Yup.string()
   .oneOf([Yup.ref("password"), undefined], "Passwords are not the same!")
   .required("Repeat password!");
 
+export const emailSchema = Yup.string()
+  .email("Email must have  @!")
+  .required("Email is required!");
+
 export const SignupShema = Yup.object().shape({
   firstName: Yup.string()
     .min(2, "First name must include at least 2 letters!")
@@ -23,9 +27,7 @@ export const SignupShema = Yup.object().shape({
     .min(2, "Last name must include at least 2 letters!")
     .max(50, "Last name must include max 50 letters!")
     .required("Last name is required!"),
-  email: Yup.string()
-    .email("Email must have  @!")
-    .required("Email is required!"),
+  email: emailSchema,
   password: password,
   confirmPassword: confirmPassword,
 });

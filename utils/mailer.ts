@@ -21,7 +21,9 @@ export const sendEmail = async ({
   address,
 }: IsendEmail) => {
   try {
-    const hashedToken = await bcryptjs.hash(userId!.toString(), 10);
+    const hashedToken = userId
+      ? await bcryptjs.hash(userId!.toString(), 10)
+      : "";
     let emailTemplate: ReactElement | string = "";
 
     if (!email || !emailType) return;

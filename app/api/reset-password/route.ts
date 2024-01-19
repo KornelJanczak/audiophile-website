@@ -2,7 +2,6 @@ import User from "@/models/User";
 import connect from "@/utils/db";
 import getCurrentUser from "@/utils/utils";
 import { NextRequest, NextResponse } from "next/server";
-// import { ObjectId } from "mongoose";
 import { ObjectId } from "mongodb";
 import bcryptjs from "bcryptjs";
 
