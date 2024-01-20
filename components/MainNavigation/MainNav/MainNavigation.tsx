@@ -45,9 +45,9 @@ export default function MainNavigation() {
             {session ? (
               <button
                 onClick={() => {
-                  setUserPanel((panel) => !panel);
                   setCart(false);
                   setMobileNav(false);
+                  setUserPanel((panel) => !panel);
                 }}
               >
                 <UserIcon />
@@ -60,9 +60,9 @@ export default function MainNavigation() {
             <button
               className={classes.cart__btn}
               onClick={() => {
-                setCart((cart) => !cart);
                 setUserPanel(false);
                 setMobileNav(false);
+                setCart((cart) => !cart);
               }}
             >
               <CartIcon />
@@ -70,14 +70,16 @@ export default function MainNavigation() {
           </div>
           <AnimatePresence>
             {userPanel && <UserPanel closePanel={() => setUserPanel(false)} />}
+          </AnimatePresence>
+          <AnimatePresence>
             {cart && <Cart closeCart={() => setCart(false)} />}
+          </AnimatePresence>
+          <AnimatePresence>
             {mobileNav && (
               <>
                 <Overlay
                   position={{ top: "9.8rem", left: 0 }}
-                  onOverlay={() => {
-                    setMobileNav(false);
-                  }}
+                  onOverlay={() => setMobileNav(false)}
                 />
 
                 <ProductsSection

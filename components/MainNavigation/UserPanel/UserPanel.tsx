@@ -21,7 +21,7 @@ const UserPanel: React.FC<{ closePanel: () => void }> = ({ closePanel }) => {
         className={classes.container}
         transition={{ duration: 0.2 }}
         variants={{
-          hidden: { opacity: 0, y: -50 },
+          hidden: { opacity: 0, y: -35 },
           visible: { opacity: 1, y: -10 },
         }}
         initial="hidden"

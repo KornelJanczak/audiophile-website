@@ -7,7 +7,7 @@ import {
   ResetWithTokenSchema,
 } from "@/models/SignUpSchema";
 import EyeButton from "../UI/EyeButton";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import Button from "../UI/Button/Button";
 import PageWrapper from "@/animations/PageWrapper";
@@ -59,14 +59,14 @@ const PasswordReset: React.FC = () => {
     confirmPassword: "",
   };
 
-  const chuj = {
+  const initialStateWithToken = {
     oldPassword: "",
     confirmPassword: "",
   };
 
   // Input schema
   const formik = useFormik({
-    initialValues: !token ? initialValues : chuj,
+    initialValues: !token ? initialValues : initialStateWithToken,
     validationSchema: !token ? ResetPasswordSchema : ResetWithTokenSchema,
     onSubmit: (values: FormikValues) => mutate(values),
   });

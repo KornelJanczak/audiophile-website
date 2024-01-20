@@ -20,7 +20,7 @@ const Cart: React.FC<{ closeCart: () => void }> = ({ closeCart }) => {
         className={classes.container}
         transition={{ duration: 0.25 }}
         variants={{
-          hidden: { opacity: 0, y: -50 },
+          hidden: { opacity: 0, y: -35 },
           visible: { opacity: 1, y: -10 },
         }}
         initial="hidden"
@@ -33,7 +33,7 @@ const Cart: React.FC<{ closeCart: () => void }> = ({ closeCart }) => {
         </div>
 
         <AnimatePresence mode="wait">
-          {items.length > 0 && (
+          {items.length && (
             <motion.ul
               className={classes.item__container}
               variants={{
@@ -43,17 +43,17 @@ const Cart: React.FC<{ closeCart: () => void }> = ({ closeCart }) => {
               key="list"
             >
               <AnimatePresence>
-                {items.map((item,i) => {
+                {items.map((item) => {
                   const itemName = renameProduct(item.name);
                   return (
                     <motion.li
                       className={classes.product}
-                      key={i}
+                      key={item.id}
                       variants={{
-                        hidden: { opacity: 0, y: -20 },
+                        hidden: { opacity: 0, y: -10 },
                         visible: { opacity: 1, y: 0 },
                       }}
-                      exit={{ opacity: 0, y: -20 }}
+                      exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
                       layout
                     >
@@ -85,7 +85,7 @@ const Cart: React.FC<{ closeCart: () => void }> = ({ closeCart }) => {
             </motion.ul>
           )}
 
-          {items.length === 0 && (
+          {!items.length && (
             <motion.p
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
