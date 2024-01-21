@@ -3,21 +3,14 @@ import GitHubProvider from "next-auth/providers/github";
 import GooglePovider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcryptjs from "bcryptjs";
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
-
-// import * as argon2 from "argon2";
 import { ObjectId } from "mongodb";
 import connect from "@/utils/db";
 import User from "@/models/User";
 import { mongoClient } from "@/utils/mongodb";
-import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
 
 const clientPromise = mongoClient();
 
 export const authOptions: NextAuthOptions = {
-  //@ts-ignore
-  // adapter: MongoDBAdapter(clientPromise),
   session: {
     strategy: "jwt",
   },

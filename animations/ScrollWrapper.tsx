@@ -7,20 +7,17 @@ const ScrollWrapper: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ children, className }) => {
-
-    return (
-      <motion.div
-        variants={scrollVariants}
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ once: true, amount: 0.3 }}
-        className={className}
-      >
-        {children}
-      </motion.div>
-    );
-
-
+  return (
+    <motion.div
+      variants={scrollVariants}
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true, amount: 0.3 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
 };
 
 export default ScrollWrapper;

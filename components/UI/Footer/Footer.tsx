@@ -16,14 +16,14 @@ const icons = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className={classes.footer}>
-      <div className={classes.footer__box}>
+    <div className={classes.footer}>
+      <ScrollWrapper className={classes.footer__box}>
         <div className={classes.line} />
-        <ScrollWrapper className={classes.footer__content__box}>
+        <div className={classes.footer__content__box}>
           <LogoIcon className={classes.header__logo} />
           <NavigationUL className={classes.ul} />
-        </ScrollWrapper>
-        <ScrollWrapper className={classes.footer__help__box}>
+        </div>
+        <div className={classes.footer__help__box}>
           <div className={classes.text__box}>
             <span className="text__color">
               Audiophile is an all in one stop to fulfill your audio needs.
@@ -33,6 +33,7 @@ const Footer: React.FC = () => {
             </span>
             <p className="text__color">Copyright 2021. All Rights Reserved</p>
           </div>
+
           <ul className={classes.footer__social__ul}>
             {icons.map((icon, i) => (
               <li key={icon.icon.type.name + i}>
@@ -40,9 +41,9 @@ const Footer: React.FC = () => {
               </li>
             ))}
           </ul>
-        </ScrollWrapper>
-      </div>
-    </footer>
+        </div>
+      </ScrollWrapper>
+    </div>
   );
 };
 

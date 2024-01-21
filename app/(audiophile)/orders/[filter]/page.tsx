@@ -5,14 +5,13 @@ import connect from "@/utils/db";
 import NoContent from "@/components/UI/NoContentCard/NoContent";
 import getCurrentUser from "@/utils/utils";
 import { Suspense } from "react";
+import { redirect } from "next/navigation";
 
 async function getOrders(params: string) {
   await connect();
   const user = await getCurrentUser();
 
-  if (!user || !user.isVerfied) {
-    throw new Error("User is not verified.");
-  }
+  if (!user || !user.isVerfied) redirect("/sign-in")
 
   let orders;
 

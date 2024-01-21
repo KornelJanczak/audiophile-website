@@ -1,3 +1,4 @@
+"use client";
 import Button from "@/components/UI/Button/Button";
 import classes from "./ShowcaseSection.module.css";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";

@@ -1,3 +1,4 @@
+"use client";
 import useCart from "@/hooks/use-cart";
 import classes from "./CheckoutItems.module.css";
 import { useSearchParams } from "next/navigation";
