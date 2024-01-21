@@ -5,25 +5,27 @@ import Button from "../../UI/Button/Button";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { HeroMobileVariants, HeroVariants } from "@/animations/animations";
 
 // initial={{ y: -170 , x: -165}}
 const HeroSection: React.FC = () => {
   const router = useRouter();
+  const mobile = window.innerWidth < 800;
+  console.log(mobile && "initial");
+
   return (
     <section className={classes.hero__section}>
       <motion.div
         className={classes.container}
-        // initial={{ y: -215 }}
-        // animate={{ y: 0 }}
-        // transition={{ duration: 0.45 }}
+        variants={HeroVariants}
+        initial={!mobile && "initial"}
+        animate={!mobile && "animate"}
       >
         <motion.div
           className={classes.hero__text__box}
-          // initial={{ y: 20}}
-          // initial={{ y: -120, x: -165 }}
-          // animate={{ y: -170, x: -165 }}
-          // animate={{ y: 0 }}
-          // transition={{ duration: 0.45 }}
+          variants={mobile ? HeroMobileVariants : {}}
+          initial={mobile && "initial"}
+          animate={mobile && "animate"}
         >
           <p className={classes.hero__span}>NEW PRODUCT</p>
           <h1 className={classes.hero__h1}>XX99 MARK II HEADPHONES</h1>
@@ -40,18 +42,24 @@ const HeroSection: React.FC = () => {
             SEE PRODUCT
           </Button>
         </motion.div>
-        <ResponsiveImage
-          images={{
-            desktop: "/assets/home/desktop/Bitmap.png",
-            tablet: "/assets/home/tablet/Bitmap.png",
-            mobile: "/assets/home/mobile/Bitmap.png",
-          }}
-          altText="Hero Logo"
-          width={546}
-          height={598}
-          pictureClassName={classes.hero__logo}
-          imgClassName={classes.hero__logo}
-        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3, delay: 0.2 }}
+        >
+          <ResponsiveImage
+            images={{
+              desktop: "/assets/home/desktop/Bitmap.png",
+              tablet: "/assets/home/tablet/Bitmap.png",
+              mobile: "/assets/home/mobile/Bitmap.png",
+            }}
+            altText="Hero Logo"
+            width={546}
+            height={598}
+            pictureClassName={classes.hero__logo}
+            imgClassName={classes.hero__logo}
+          />
+        </motion.div>
       </motion.div>
     </section>
   );

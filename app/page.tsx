@@ -5,6 +5,7 @@ import MainNavigation from "@/components/MainNavigation/MainNav/MainNavigation";
 import InfoSection from "@/components/UI/InfoSection/InfoSection";
 import Footer from "@/components/UI/Footer/Footer";
 import PageWrapper from "@/animations/PageWrapper";
+import ScrollWrapper from "@/animations/ScrollWrapper";
 
 export default function HomePage() {
   return (

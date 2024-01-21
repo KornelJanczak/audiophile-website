@@ -27,3 +27,35 @@ export const fadeInAnimationVariants: Variants = {
     },
   }),
 };
+
+export const HeroMobileVariants: Variants = {
+  initial: {
+    y: -100,
+    x: "-50%",
+    opacity: 0,
+  },
+  animate: {
+    y: -150,
+    x: "-50%",
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      delay: 0.3,
+    },
+  },
+};
+
+export const HeroVariants: Variants = {
+  initial: {
+    y: 130,
+    opacity: 0,
+  },
+  animate: {
+    y: 30,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      delay: 0.35,
+    },
+  },
+};
