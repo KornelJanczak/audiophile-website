@@ -7,7 +7,7 @@ const CheckoutPage: React.FC = async () => {
 
   if (!user) redirect("sign-in");
 
-  return <CheckoutItems />;
+  if (user) return <CheckoutItems />;
 };
 
 export default CheckoutPage;

@@ -2,7 +2,6 @@ import { stripe } from "@/utils/stripe";
 import { NextResponse } from "next/server";
 import Order from "@/models/Order";
 import getCurrentUser from "@/utils/utils";
-import User from "@/models/User";
 import connect from "@/utils/db";
 import { ICartData } from "@/models/@type-props";
 import Stripe from "stripe";
