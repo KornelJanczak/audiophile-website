@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 const NoContent: React.FC<{
   content: string;
   btnContent: string;
-  key: string;
+  key?: string;
   className?: string;
 }> = ({ content, btnContent, key, className }) => {
   const router = useRouter();
@@ -18,7 +18,7 @@ const NoContent: React.FC<{
       initial={{ opacity: 0, y: -30 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -30 }}
-      key={key}
+      key={"fallback"}
     >
       <p style={{ textAlign: "center" }}>{content}</p>
       <Button style={classes.continue_btn} onClick={() => router.push("/")}>

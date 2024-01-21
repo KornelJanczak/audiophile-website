@@ -1,9 +1,27 @@
-// import { withAuth } from "next-auth/middleware";
-// import { NextRequest, NextResponse } from "next/server";
+import { withAuth, NextRequestWithAuth } from "next-auth/middleware";
+import { NextRequest, NextResponse } from "next/server";
 // import { getSession } from "next-auth/react";
 // import getCurrentUser from "./utils/utils";
 
-export { default } from "next-auth/middleware";
+export default withAuth(
+  function middleware(req: NextRequestWithAuth) {
+    // return NextResponse
+    if (req.nextUrl.pathname.startsWith("/checkout")) {
+      return NextResponse.rewrite(new URL("/checkout", req.url));
+    }
+  },
+  {
+    callbacks: {
+      authorized({ token }) {
+        console.log(token);
+        if (!token) return false;
+        return true;
+      },
+    },
+  }
+);
+
+// export { default } from "next-auth/middleware";
 // let loged: any;
 // async function name() {
 //   loged = await getCurrentUser();

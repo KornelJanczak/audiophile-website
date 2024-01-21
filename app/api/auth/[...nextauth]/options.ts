@@ -11,6 +11,7 @@ import connect from "@/utils/db";
 import User from "@/models/User";
 import { mongoClient } from "@/utils/mongodb";
 import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
 
 const clientPromise = mongoClient();
 
@@ -62,15 +63,8 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async signIn({ user, account }) {
-      if (account?.provider === "credentials") {
-        cookies().set({
-          name: "user",
-          value: user.id,
-          httpOnly: true,
-          path: "/",
-        });
-        return user;
-      }
+      if (account?.provider === "credentials") return user;
+
       if (account?.provider === "github" || account?.provider === "google") {
         await connect();
         try {
@@ -94,6 +88,7 @@ export const authOptions: NextAuthOptions = {
 
     async jwt({ token, user }) {
       await connect();
+      if (!token) return {};
       const dbUser = await User.findOne({ email: token.email });
       if (!dbUser) {
         token.id = user!.id;
@@ -125,6 +120,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
     async redirect({ url, baseUrl }) {
+      // return "/";
       if (url.startsWith("/")) return `${baseUrl}`;
       // if (url.startsWith("/checkout")) return `/checkout`;
       // Allows callback URLs on the same origin

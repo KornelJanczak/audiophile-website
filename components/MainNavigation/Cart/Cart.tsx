@@ -1,3 +1,4 @@
+"use client";
 import useCart from "@/hooks/use-cart";
 import Button from "../../UI/Button/Button";
 import classes from "./Cart.module.css";
@@ -8,10 +9,12 @@ import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
 import Overlay from "@/components/UI/Overlay";
+import { useSession } from "next-auth/react";
 
 const Cart: React.FC<{ closeCart: () => void }> = ({ closeCart }) => {
   const { items, total, removeAll, decIitem, incItem } = useCart();
   const router = useRouter();
+  const session = useSession();
 
   return (
     <>
@@ -103,7 +106,10 @@ const Cart: React.FC<{ closeCart: () => void }> = ({ closeCart }) => {
           <span>TOTAL</span>
           <strong>$ {total.toLocaleString("en-US")}</strong>
         </div>
-        <Button style={classes.btn} onClick={() => router.push("/checkout")}>
+        <Button
+          style={classes.btn}
+          onClick={() => router.push(`${session ? "/checkout" : "/sign-in"}`)}
+        >
           CHECKOUT
         </Button>
       </motion.div>

@@ -75,6 +75,7 @@ const CheckoutItems: React.FC = () => {
               }}
               initial="hidden"
               animate="visible"
+              exit="hidden"
             >
               <div className={classes.cart__container}>
                 <h2>CHECKOUT</h2>
@@ -97,8 +98,10 @@ const CheckoutItems: React.FC = () => {
                             hidden: { opacity: 0, y: -20 },
                             visible: { opacity: 1, y: 0 },
                           }}
+                          initial="hidden"
+                          animate="visible"
                           exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                          transition={{ duration: 0.2 }}
                           layout
                         >
                           <ResponsiveImage
