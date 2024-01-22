@@ -47,15 +47,15 @@ export const HeroMobileVariants: Variants = {
 
 export const HeroVariants: Variants = {
   initial: {
-    y: 130,
+    y: 140,
     opacity: 0,
   },
   animate: {
     y: 30,
     opacity: 1,
     transition: {
-      duration: 0.5,
-      delay: 0.35,
+      duration: 0.3,
+      delay: 0.2,
     },
   },
 };

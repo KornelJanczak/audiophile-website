@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./HeroSection.module.css";
 import Button from "../../UI/Button/Button";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
@@ -7,11 +7,9 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { HeroMobileVariants, HeroVariants } from "@/animations/animations";
 
-// initial={{ y: -170 , x: -165}}
 const HeroSection: React.FC = () => {
   const router = useRouter();
   const mobile = window.innerWidth < 800;
-  console.log(mobile && "initial");
 
   return (
     <section className={classes.hero__section}>
