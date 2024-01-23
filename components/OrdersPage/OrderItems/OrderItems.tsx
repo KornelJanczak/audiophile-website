@@ -6,11 +6,6 @@ import { isObjectFirstOfMonth } from "@/helpers/algorithm";
 const OrderItems: React.FC<{ orders: IOrder[] | null }> = async ({
   orders,
 }) => {
-  // await new Promise((resolve, reject) => {
-  //   setTimeout(() => {
-  //     resolve("Obietnica rozwiązana po jednej sekundzie");
-  //   }, 10000);
-  // });
   // Sorted since oldest to lastest
   const sortedArr: IOrder[] | undefined = orders?.sort((a, b) => {
     const dateA: any = a.createdAt!.getTime();

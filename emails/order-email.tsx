@@ -18,8 +18,12 @@ export default function OrderEmail({
   order,
   address,
 }: IOrderEmail) {
-  const username = firstName + " " + lastName;
   console.log(order?.address);
+  const totalCost = order?.orderItems.reduce(
+    (acc, order) => acc + order.totalPrice,
+    0
+  );
+
   return (
     <Html>
       <Head></Head>
@@ -29,7 +33,8 @@ export default function OrderEmail({
             <Text style={text}>
               Hey
               <strong>
-                {firstName && lastName !== undefined ? username : ""}
+                {/* {firstName !== undefined ? firstName : ""}
+                {lastName !== undefined ? lastName : ""} */}
               </strong>
               !
             </Text>
@@ -38,8 +43,8 @@ export default function OrderEmail({
               Once your order is confirmed, we will inform you in another email
               message.
             </Text>
-            <Section style={row}>
-              <Text style={{ ...text, fontSize: "16px" }}>
+            <Section style={global.defaultPadding}>
+              {/* <Text style={{ ...text, fontSize: "16px" }}>
                 <strong>Order date: </strong>
                 <span>
                   {order?.createdAt?.toLocaleDateString("en-US", {
@@ -58,6 +63,20 @@ export default function OrderEmail({
                 <strong>Order number: </strong>
                 <span>{order?.orderNumber}</span>
               </Text>
+              <Text style={text}>
+                <strong>Total cost: </strong>
+                <span>{totalCost}</span>
+              </Text> */}
+              <Row style={{ display: "inline-flex", marginBottom: 40 }}>
+                <Column style={{ width: "170px" }}>
+                  <Text style={global.paragraphWithBold}>Order Number</Text>
+                  <Text style={track.number}>C0106373851</Text>
+                </Column>
+                <Column>
+                  <Text style={global.paragraphWithBold}>Order Date</Text>
+                  <Text style={track.number}>Sep 22, 2022</Text>
+                </Column>
+              </Row>
             </Section>
             <Section>
               <h3 style={{ textAlign: "left" }}>Oder Items</h3>
@@ -91,15 +110,66 @@ export default function OrderEmail({
   );
 }
 
-const columnDiv = {
-  display: "flex",
-  alignItems: "flex-start",
+{
+  /* <Row style={{ display: "inline-flex", marginBottom: 40 }}>
+<Column style={{ width: "170px" }}>
+  <Text style={global.paragraphWithBold}>Order Number</Text>
+  <Text style={track.number}>C0106373851</Text>
+</Column>
+<Column>
+  <Text style={global.paragraphWithBold}>Order Date</Text>
+  <Text style={track.number}>Sep 22, 2022</Text>
+</Column>
+</Row> */
+}
+
+const paddingX = {
+  paddingLeft: "40px",
+  paddingRight: "40px",
 };
 
-const dataDiv = {
-  display: "flex",
-  justifyContent: "space-between",
+const paddingY = {
+  paddingTop: "22px",
+  paddingBottom: "22px",
 };
+
+const paragraph = {
+  margin: "0",
+  lineHeight: "2",
+};
+
+const global = {
+  paddingX,
+  paddingY,
+  defaultPadding: {
+    ...paddingX,
+    ...paddingY,
+  },
+  paragraphWithBold: { ...paragraph, fontWeight: "bold" },
+};
+
+const track = {
+  container: {
+    padding: "22px 40px",
+    backgroundColor: "#F7F7F7",
+  },
+  number: {
+    margin: "12px 0 0 0",
+    fontWeight: 500,
+    lineHeight: "1.4",
+    color: "#6F6F6F",
+  },
+};
+
+// const columnDiv = {
+//   display: "flex",
+//   alignItems: "flex-start",
+// };
+
+// const dataDiv = {
+//   display: "flex",
+//   justifyContent: "space-between",
+// };
 
 const row = {
   width: "100%",
