@@ -43,6 +43,7 @@ export async function POST(req: Request) {
       address: addressString,
     });
 
+    console.log("WEBHOOK");
     await sendEmail({
       email: session.metadata!.email,
       emailType: process.env.ORDER as string,
@@ -56,5 +57,3 @@ export async function POST(req: Request) {
 
   return new NextResponse(null, { status: 200 });
 }
-
-// whsec_1d5bebdbe174424fe98e1afe407d276ac790c6bd0b659ed08a6e93b689cdd080

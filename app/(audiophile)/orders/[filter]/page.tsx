@@ -11,7 +11,7 @@ async function getOrders(params: string) {
   await connect();
   const user = await getCurrentUser();
 
-  if (!user || !user.isVerfied) redirect("/sign-in")
+  if (!user || !user.isVerfied) redirect("/sign-in");
 
   let orders;
 
@@ -23,7 +23,7 @@ async function getOrders(params: string) {
       userId: user.id,
       createdAt: { $gte: startOfYear, $lte: endOfYear },
       updatedAt: { $gte: startOfYear, $lt: endOfYear },
-    })
+    });
   } else {
     orders = await Order.find({ userId: user.id });
   }
@@ -46,7 +46,6 @@ export default async function OrdersPage({
         <NoContent
           content="At the moment, there are no orders placed!"
           btnContent="CONTINUE SHOPPING"
-          key=""
         />
       </div>
     );

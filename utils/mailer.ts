@@ -7,8 +7,6 @@ import { ReactElement } from "react";
 import OrderEmail from "@/emails/order-email";
 import ResetPassword from "@/emails/password-email";
 import * as randomString from "uuid";
-// domain.com/verifytoken/  - client
-// domain.com/verifytoken?token=/ -server
 
 const TOKEN_EXPIRY_TIME = 3600000;
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -56,14 +54,16 @@ export const sendEmail = async ({
         emailTemplate = ResetPassword({ hashedToken });
         break;
       case process.env.ORDER:
+        console.log("ORDER");
         emailTemplate = OrderEmail({ order, firstName, lastName, address });
         break;
       default:
         break;
     }
 
+
     const data = await resend.emails.send({
-      from: "Audiophile <onboarding@resend.dev>",
+      from: "audiophile <onboarding@resend.dev>",
       to: [email],
       subject: "Audiophile",
       react: emailTemplate,

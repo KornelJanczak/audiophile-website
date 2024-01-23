@@ -63,7 +63,6 @@ const CheckoutItems: React.FC = () => {
             <NoContent
               content="Your shopping cart is empty!"
               btnContent="CONTINUE SHOPPING"
-              key="fallback"
             />
           )}
           {cartData.length > 0 && (

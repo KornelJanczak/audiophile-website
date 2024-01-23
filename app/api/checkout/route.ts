@@ -46,9 +46,11 @@ export async function POST(req: Request) {
       });
     });
 
-    const orderNumber: string = Array.from({ length: 11 }, () =>
+    const orderNumber: any = Array.from({ length: 11 }, () =>
       Math.floor(Math.random() * 100)
-    ).join(", ");
+    ).join("");
+
+    console.log(orderNumber);
 
     const order = new Order({
       userId: user.id,
@@ -60,6 +62,7 @@ export async function POST(req: Request) {
     try {
       await order.save();
     } catch (err) {
+      // console.log(err);
       return NextResponse.json({ message: err }, { status: 404 });
     }
 
