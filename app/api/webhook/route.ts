@@ -43,7 +43,7 @@ export async function POST(req: Request) {
       address: addressString,
     });
 
-    console.log("WEBHOOK");
+
     await sendEmail({
       email: session.metadata!.email,
       emailType: process.env.ORDER as string,

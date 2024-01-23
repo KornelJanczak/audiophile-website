@@ -184,9 +184,9 @@
   }
 
   .showcase__speaker__content__box span {
-    max-width: 34.9rem;
+    max-width: 32rem;
     text-align: center;
-    padding: 2rem 0;
+    padding: 2rem;
   }
 
   .showcase__btn {

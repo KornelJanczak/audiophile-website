@@ -30,7 +30,6 @@ const UserPanel: React.FC<{ closePanel: () => void }> = ({ closePanel }) => {
       >
         <h3>Hello {username}!</h3>
         <ul>
-          <li>Your account</li>
           <li onClick={() => router.push("/password-reset")}>Reset Password</li>
           <li onClick={() => router.push("/orders/last")}>Orders</li>
           <li onClick={() => signOut()} className={classes.signout}>

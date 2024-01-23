@@ -62,7 +62,6 @@ export async function POST(req: Request) {
     try {
       await order.save();
     } catch (err) {
-      // console.log(err);
       return NextResponse.json({ message: err }, { status: 404 });
     }
 

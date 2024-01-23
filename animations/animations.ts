@@ -35,7 +35,7 @@ export const HeroMobileVariants: Variants = {
     opacity: 0,
   },
   animate: {
-    y: -150,
+    y: -120,
     x: "-50%",
     opacity: 1,
     transition: {
