@@ -22,22 +22,6 @@ const orderSchema: MongooseShema<IOrderMongoose> = new Schema(
       type: String,
       required: true,
     },
-    // stripeCustomerId: {
-    //   type: String,
-    //   required: true,
-    // },
-    // stripeOrderId: {
-    //   type: String,
-    //   required: true,
-    // },
-    // stripePriceId: {
-    //   type: String,
-    //   required: true,
-    // },
-    // stripeCurrentPeriodEnd: {
-    //   type: String,
-    //   requierd: true,
-    // },
     isPaid: {
       type: Boolean,
       required: true,

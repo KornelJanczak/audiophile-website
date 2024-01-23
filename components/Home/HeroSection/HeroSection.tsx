@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import classes from "./HeroSection.module.css";
 import Button from "../../UI/Button/Button";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";

@@ -2,14 +2,13 @@ import TanstackProvider from "@/Providers/TanstackProvider";
 import { Manrope } from "next/font/google";
 import { Metadata } from "next";
 import { Toaster } from "sonner";
-import "../styles/global.css";
+import './global.css'
 import AuthProvider from "@/Providers/AuthProvider";
 import { authOptions } from "./api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 
 const manrope = Manrope({
   subsets: ["latin"],
-  // display: "swap"
 });
 
 export const metadata: Metadata = {

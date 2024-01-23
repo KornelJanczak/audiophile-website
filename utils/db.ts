@@ -1,5 +1,4 @@
-import mongoose, { ConnectOptions } from "mongoose";
-import { MongoClient } from "mongodb";
+import mongoose from "mongoose";
 
 const connect = async (): Promise<void> => {
   if (mongoose.connection.readyState === 1) return;

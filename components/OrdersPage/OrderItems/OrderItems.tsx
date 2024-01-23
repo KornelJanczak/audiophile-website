@@ -34,6 +34,10 @@ const OrderItems: React.FC<{ orders: IOrder[] | null }> = async ({
             <div className={classes.order__container}>
               <ul className={classes.ul__info}>
                 <li>
+                  <strong className={classes.strong}>Order number</strong>
+                  <span className={classes.text}>{order.orderNumber}</span>
+                </li>
+                <li>
                   <strong className={classes.strong}>Order date</strong>
                   <span className={classes.text}>
                     {order.updatedAt?.toLocaleDateString()}

@@ -15,7 +15,7 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-const baseUrl = "https://audiophile-website-azure.vercel.app";
+const baseUrl = process.env.DOMAIN;
 
 export default function OrderEmail({
   firstName,
