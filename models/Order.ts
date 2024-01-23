@@ -10,6 +10,7 @@ export interface IOrderMongoose extends Document {
   userId: string;
   isPaid: boolean;
   address: string;
+  orderNumber: number;
   orderItems: ICartData[];
 }
 
@@ -39,6 +40,10 @@ const orderSchema: MongooseShema<IOrderMongoose> = new Schema(
     // },
     isPaid: {
       type: Boolean,
+      required: true,
+    },
+    orderNumber: {
+      type: Number,
       required: true,
     },
     address: {

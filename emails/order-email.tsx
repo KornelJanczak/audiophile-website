@@ -56,7 +56,7 @@ export default function OrderEmail({
               </Text>
               <Text style={text}>
                 <strong>Order number: </strong>
-                <span>000000000000</span>
+                <span>{order?.orderNumber}</span>
               </Text>
             </Section>
             <Section>

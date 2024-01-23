@@ -6,7 +6,7 @@ import Footer from "@/components/UI/Footer/Footer";
 import PageWrapper from "@/animations/PageWrapper";
 import dynamic from "next/dynamic";
 
-const DynamiHero = dynamic(
+const DynamicHero = dynamic(
   () => import("@/components/Home/HeroSection/HeroSection"),
   {
     ssr: false,
@@ -18,7 +18,7 @@ export default function HomePage() {
     <PageWrapper>
       <MainNavigation />
       <main>
-        <DynamiHero />
+        <DynamicHero />
         <ProductsSection />
         <ShowcaseSection />
         <InfoSection />

@@ -7,9 +7,10 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { HeroMobileVariants, HeroVariants } from "@/animations/animations";
 
+const mobile = window.innerWidth < 800;
+
 const HeroSection: React.FC = () => {
   const router = useRouter();
-  const mobile = window.innerWidth < 800;
 
   return (
     <section className={classes.hero__section}>

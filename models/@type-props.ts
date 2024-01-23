@@ -152,6 +152,7 @@ export interface ICartData {
 
 export interface IOrder {
   _id?: ObjectId;
+  orderNumber: string;
   userId: string;
   isPaid: boolean;
   address: string;

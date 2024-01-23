@@ -7,7 +7,6 @@ import { ICartData } from "@/models/@type-props";
 import Stripe from "stripe";
 import { fetchData } from "@/utils/mongodb";
 
-
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
@@ -47,10 +46,15 @@ export async function POST(req: Request) {
       });
     });
 
+    const orderNumber: string = Array.from({ length: 11 }, () =>
+      Math.floor(Math.random() * 100)
+    ).join(", ");
+
     const order = new Order({
       userId: user.id,
       isPaid: false,
       orderItems: cartData,
+      orderNumber: orderNumber,
     });
 
     try {
@@ -70,6 +74,7 @@ export async function POST(req: Request) {
       cancel_url: `${process.env.FRONTEND_STORE_URL}/checkout?canceled=true`,
       metadata: {
         orderId: order._id.toString(),
+        orderNumber: order.orderNumber,
         email: user.email,
         firstname: user.firstName,
         lastName: user.lastName,
