@@ -6,6 +6,7 @@ import ResponsiveImage from "@/components/UI/ResponsiveImage";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { HeroMobileVariants, HeroVariants } from "@/animations/animations";
+import HeroWrapper from "@/animations/HeroWrapper";
 
 const mobile = window.innerWidth < 800;
 

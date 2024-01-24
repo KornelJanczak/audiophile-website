@@ -30,12 +30,12 @@ export const fadeInAnimationVariants: Variants = {
 
 export const HeroMobileVariants: Variants = {
   initial: {
-    y: -100,
+    y: -150,
     x: "-50%",
     opacity: 0,
   },
   animate: {
-    y: -120,
+    y: -140,
     x: "-50%",
     opacity: 1,
     transition: {
@@ -47,7 +47,7 @@ export const HeroMobileVariants: Variants = {
 
 export const HeroVariants: Variants = {
   initial: {
-    y: 140,
+    y: 0,
     opacity: 0,
   },
   animate: {

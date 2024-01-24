@@ -6,9 +6,6 @@ import bcryptjs from "bcryptjs";
 import { ObjectId } from "mongodb";
 import connect from "@/utils/db";
 import User from "@/models/User";
-import { mongoClient } from "@/utils/mongodb";
-
-const clientPromise = mongoClient();
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -116,13 +113,10 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
     async redirect({ url, baseUrl }) {
-      // return "/";
       if (url.startsWith("/")) return `${baseUrl}`;
-      // if (url.startsWith("/checkout")) return `/checkout`;
       // Allows callback URLs on the same origin
       else if (new URL(url).origin === baseUrl) return baseUrl;
       return baseUrl;
-      // return "/";
     },
   },
 };

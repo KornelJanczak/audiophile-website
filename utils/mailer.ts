@@ -61,7 +61,6 @@ export const sendEmail = async ({
         break;
     }
 
-
     const data = await resend.emails.send({
       from: "audiophile <onboarding@resend.dev>",
       to: [email],

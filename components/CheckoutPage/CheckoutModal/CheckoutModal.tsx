@@ -28,7 +28,7 @@ const CheckoutModal: React.FC = () => {
 
   const grandTotal = total + shipping;
   return (
-    <Overlay position={{ top: 0, left: 0 }} delay={0.85}>
+    <Overlay position={{ top: "9.8rem", left: 0 }} delay={0.85}>
       <motion.dialog
         className={classes.container}
         initial={{ opacity: 0 }}

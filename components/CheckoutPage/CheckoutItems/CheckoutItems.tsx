@@ -1,7 +1,7 @@
 "use client";
 import useCart from "@/hooks/use-cart";
 import classes from "./CheckoutItems.module.css";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { renameProduct } from "@/helpers/algorithm";
 import Button from "../../UI/Button/Button";
@@ -15,12 +15,15 @@ import { AnimatePresence } from "framer-motion";
 import ResponsiveImage from "@/components/UI/ResponsiveImage";
 import BackButton from "@/components/UI/BackButton/BackButton";
 import NoContent from "@/components/UI/NoContentCard/NoContent";
+import { useSession } from "next-auth/react";
 
 const CheckoutItems: React.FC = () => {
   const { items, total, shipping, removeItem, removeAll } = useCart();
   const [cartData, setCartData] = useState<ICartData[]>([]);
   const [isPending, setIsPending] = useState<boolean>(false);
   const [modal, setModal] = useState<boolean>(false);
+  const router = useRouter();
+  const session = useSession();
   const searchParams = useSearchParams();
 
   //Fix SSR Error
@@ -43,6 +46,9 @@ const CheckoutItems: React.FC = () => {
 
   const onCheckOut = async () => {
     setIsPending(true);
+    console.log(session);
+    
+    if (session.status === "unauthenticated") router.push("/sign-in");
     try {
       const response = await axios.post("/api/checkout", items);
       window.location = response.data.url;
