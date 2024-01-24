@@ -3,14 +3,17 @@
 For DEMO, use [Stripe Testing Cards](https://stripe.com/docs/testing)
 
 ## IMPROTANT !!!
+
 Unfortunately, the resend email function is not operational without a custom domain, so I have included screenshots with the emails
 
 ## Test account
+
 - Login: test@example.com
 - Password: Kw1234!
 
 
-## Key Features:
+## Key Features
+
 - Authorization using NextAuth (Google, Github, Email).
 - Beautiful emails for signing up and after purchase.
 - Stripe Checkout.
@@ -23,10 +26,13 @@ Unfortunately, the resend email function is not operational without a custom dom
 
 
 ## What could I do better?
+
 - Utilizing Zod validation with server actions instead of using Tanstack Query, Formik, and Yup
+- Should write simpler and less complex function for easier unit testing
 
 
 ## What I've learned
+
 - In-depth exploration of Next.js functionalities.
 - Implementation of authentication using NextAuth.
 - Sending emails through Resend and React Email.
