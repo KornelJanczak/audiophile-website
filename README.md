@@ -28,4 +28,4 @@ For DEMO, use [Stripe Testing Cards](https://stripe.com/docs/testing)
 - Sending emails through Resend and React Email.
 - Proficiency in working with MongoDB and Mongoose.
 - Developing a straightforward backend using API Routes.
-= Integration of Stripe with the website.
+- Integration of Stripe with the website.
