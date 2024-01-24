@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
           error:
             "Invalid input - password should also be at least 7 characters long.",
         },
-        { status: 422 }
+        { status: 401 }
       );
     }
     await connect();
@@ -45,6 +45,8 @@ export async function POST(request: NextRequest) {
       email: email,
       password: hashedPassword,
     });
+
+    newUser.isVerfied = true;
 
     const savedUser = await newUser.save();
 

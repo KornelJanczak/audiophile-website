@@ -6,7 +6,6 @@ import ResponsiveImage from "@/components/UI/ResponsiveImage";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { HeroMobileVariants, HeroVariants } from "@/animations/animations";
-import HeroWrapper from "@/animations/HeroWrapper";
 
 const mobile = window.innerWidth < 800;
 
@@ -18,14 +17,14 @@ const HeroSection: React.FC = () => {
       <motion.div
         className={classes.container}
         variants={HeroVariants}
-        initial={!mobile && "initial"}
-        animate={!mobile && "animate"}
+        initial={!mobile ? "initial" : ""}
+        animate={!mobile ? "animate" : ""}
       >
         <motion.div
           className={classes.hero__text__box}
           variants={mobile ? HeroMobileVariants : {}}
-          initial={mobile && "initial"}
-          animate={mobile && "animate"}
+          initial={mobile ? "initial" : ""}
+          animate={mobile ? "animate" : ""}
         >
           <p className={classes.hero__span}>NEW PRODUCT</p>
           <h1 className={classes.hero__h1}>XX99 MARK II HEADPHONES</h1>

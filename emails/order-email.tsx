@@ -49,7 +49,7 @@ export default function OrderEmail({
               src={`${baseUrl}/assets/shared/logo.png`}
               width="143"
               height="25"
-              alt="Nike"
+              alt="audiophile"
               style={{
                 margin: "auto",
                 filter: "invert(100%)",
