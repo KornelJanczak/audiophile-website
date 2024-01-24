@@ -145,14 +145,38 @@
 }
 
 @media (max-width: 33.5em) {
-  .container{
+  .container {
     max-width: 40rem;
   }
 }
 
 @media (max-width: 29.25em) {
-  .container{
+  .container {
     padding: 2.4rem;
     max-width: 32rem;
+    max-height: 100%;
+    height: auto;
+  }
+
+  .info__container {
+    padding-top: 0rem;
+  }
+
+  .content__container {
+    gap: 0.5rem;
+  }
+
+  .content__container h3 {
+    font-size: 2.7rem;
+  }
+
+  .total__summary {
+    padding: 2.4rem;
+  }
+}
+
+@media (max-height: 46.5em) {
+  .container {
+    transform: translate(-50%, -41.5%);
   }
 }
