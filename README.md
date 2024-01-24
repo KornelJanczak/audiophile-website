@@ -3,8 +3,7 @@
 For DEMO, use [Stripe Testing Cards](https://stripe.com/docs/testing)
 
 ## IMPROTANT !!!
-Unfortunetly, resend emial doesn't work without custom domain, if you want to test website with functions like: 
-reset password without been logged or verify account by email you need to setup .env file by yor own resend api key
+Unfortunately, the resend email function is not operational without a custom domain, so I have included screenshots with the emails
 
 ## Test account
 - Login: test@example.com
@@ -34,39 +33,5 @@ reset password without been logged or verify account by email you need to setup 
 - Proficiency in working with MongoDB and Mongoose.
 - Developing a straightforward backend using API Routes.
 - Integration of Stripe with the website.
-
-
-### Cloning the repository
-```shell
-git clone https://github.com/KornelJanczak/audiophile-website.git
-```
-
-
-## Setup env file
-```js
-# Next auth 
-NEXTAUTH_SECRET=
-NEXTAUTH_URL= http://localhost:3000
-# Github login
-GITHUB_ID=
-GITHUB_SECRET=
-# Google login
-GOOGLE_ID=
-GOOGLE_SECRET=
-# Database url's
-DATABASE_URL=mongodb+srv://korneljanczak10:5587@korneljanczak.j7uozhb.mongodb.net/Audiophile?retryWrites=true&w=majority
-MONGO_URL=mongodb+srv://korneljanczak10:5587@cluster0.y9shkot.mongodb.net/Audiophile?retryWrites=true&w=majority
-# Emailar 
-DOMAIN=http://localhost:3000
-VERIFY="VERIFY"
-RESET="RESET"
-ORDER="ORDER"
-# RESEND
-RESEND_API_KEY=
-# STRIPE
-STRIPE_API_KEY=
-FRONTEND_STORE_URL=http://localhost:3000
-STRIPE_WEBHOOK_SECRET=
-```
 
 
