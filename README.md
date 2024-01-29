@@ -22,7 +22,7 @@ Unfortunately, the resend email function is not operational without a custom dom
 - You will be able to change your password either when you are logged in or if you have forgotten it. 
 - Animations using Framer motion.
 - The functionality is written in TypeScript
-- Responsive layoyut
+- Responsive layout
 
 
 ## What could I do better?
