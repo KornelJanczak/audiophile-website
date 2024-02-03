@@ -50,6 +50,7 @@ export async function POST(req: Request) {
       Math.floor(Math.random() * 100)
     ).join("");
 
+    console.log(orderNumber);
 
     const order = new Order({
       userId: user.id,
