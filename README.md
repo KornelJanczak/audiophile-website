@@ -6,6 +6,9 @@ For DEMO, use [Stripe Testing Cards](https://stripe.com/docs/testing)
 
 Unfortunately, the resend email function is not operational without a custom domain, so I have included screenshots with the emails
 
+
+![email-verify](public/assets/ss/verify-mail.png)
+
 ## Test account
 
 - Login: test@example.com
@@ -22,7 +25,7 @@ Unfortunately, the resend email function is not operational without a custom dom
 - You will be able to change your password either when you are logged in or if you have forgotten it. 
 - Animations using Framer motion.
 - The functionality is written in TypeScript
-- Responsive layoyut
+- Responsive layout
 
 
 ## What could I do better?
@@ -40,4 +43,4 @@ Unfortunately, the resend email function is not operational without a custom dom
 - Developing a straightforward backend using API Routes.
 - Integration of Stripe with the website.
 
-
+<p>Part of design is from <a href="https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx" target="_blank">Frontend mentor</a></p>
