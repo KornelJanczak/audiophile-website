@@ -6,8 +6,9 @@ For DEMO, use [Stripe Testing Cards](https://stripe.com/docs/testing)
 
 Unfortunately, the resend email function is not operational without a custom domain, so I have included screenshots with the emails
 
-
 ![email-verify](public/assets/ss/verify-mail.png)
+![email-reset-password](public/assets/ss/reset-password.png)
+![email-order](public/assets/ss/order-mail.png)
 
 ## Test account
 
