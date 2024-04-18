@@ -44,4 +44,4 @@ Unfortunately, the resend email function is not operational without a custom dom
 - Developing a straightforward backend using API Routes.
 - Integration of Stripe with the website.
 
-<p>Part of design is from <a href="https://www.frontendmentor.io/challenges/product-feedback-app-wbvUYqjR6" target="_blank">Frontend mentor</a></p>
+<p>Part of design is from <a href="https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx" target="_blank">Frontend mentor</a></p>
